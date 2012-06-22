@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/samuel/projects/festup/config'
+let g:netrw_dirhist_2='/home/samuel/projects/festup/.git'
+let g:netrw_dirhist_3='/home/samuel/.vim/_colorschemes'
+let g:netrw_dirhist_4='/usr/share/vim/vim73'
+let g:netrw_dirhist_5='/home/samuel/projects/festup/app'
+let g:netrw_dirhist_6='/etc/fonts/conf.avail'
+let g:netrw_dirhist_7='/home/samuel/.config/awesome'
