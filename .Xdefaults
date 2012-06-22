@@ -1,0 +1,82 @@
+# URxvt
+URxvt*termName:		xterm-color
+# Xft
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1 
+Xft.rgba: rgb
+
+!!!!!!!!
+! urxvt, Config
+!!!!!!!!
+URxvt*geometry:                	80x20
+URxvt*font:  			xft:Liberation Mono:bold:pixelsize=10:hinting=full
+URxvt*foreground:            	#ffffff
+URxvt*borderless: 		0
+URxvt*scrollBar:            	false
+URxvt*saveLines:  		32767
+URxvt.cursorBlink:		true
+URxvt.iconFile: 		/usr/share/icons/Faenza/apps/scalable/terminal.svg
+! perl ext
+URxvt.perl-ext-common:  default,matcher
+URxvt.urlLauncher:      /usr/bin/chromium
+URxvt.matcher.button:   1
+
+! remove tab shortcuts
+URxvt.keysym.Shift-Right:       \033[1;2C
+URxvt.keysym.Shift-Left:        \033[1;2D
+
+! True transparency
+URxvt*depth: 32
+URxvt*background: rgba:1111/1111/1111/aaaa
+
+!!!!
+! terminal colors
+!!!!
+*foreground:              #a0a0a0
+*background:		  #121212
+!black
+*color0:                  #1B1D1E
+*color8:                  #505354
+!red
+*color1:  		  #9E1828
+!*color9:  		  #e05050
+*color9:  		  #cf6171
+!green
+*color2:                  #82B414
+*color10:                 #B6E354
+!yellow
+*color3:                  #FD971F
+*color11:                 #FEED6C
+!blue
+*color4:                  #4E82AA
+*color12:                 #4186be
+!magenta
+*color5:                  #8C54FE
+*color13:                 #9E6FFE
+!cyan
+*color6:  		  #56cce2
+*color14:                 #899CA1
+!white
+*color7:                  #CCCCC6
+*color15:                 #F8F8F2
+
+! old colors, backup purpose
+!URxvt*color0:      #000000
+!URxvt*color1:      #9e1828
+!URxvt*color2:      #aece92
+!URxvt*color3:      #968a38
+!URxvt*color4:      #414171
+!URxvt*color5:      #963c59
+!URxvt*color6:      #418179
+!URxvt*color7:      #bebebe
+!URxvt*color8:      #666666
+!URxvt*color9:      #cf6171
+!URxvt*color10:     #c5f779
+!URxvt*color11:     #fff796
+!URxvt*color12:     #4186be
+!URxvt*color13:     #cf9ebe
+!URxvt*color14:     #71bebe
+!URxvt*color15:     #ffffff

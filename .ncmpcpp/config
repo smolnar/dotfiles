@@ -1,0 +1,23 @@
+mpd_host = "localhost"
+mpd_port = "6600"
+mpd_music_dir = "/media/hd_Data/music"
+
+
+# ------
+# Colors 
+# ------
+colors_enabled = "yes"
+color1 = "red"
+color2 = "black"
+empty_tag_color = "yellow"
+main_window_color = "cyan"
+main_window_highlight_color = "blue"
+active_column_color = "cyan"
+active_window_border = "black"
+statusbar_color = "yellow"
+header_window_color = "magenta"
+
+# ------------
+# Progress bar 
+# ------------
+progressbar_color = "cyan"
