@@ -7,7 +7,7 @@ mpdwidget = wibox.widget.textbox()
 			if args["{state}"] == "Stop" then
 				return "  " .. colcya .. "not playing" .. coldef .. ""
 			elseif args["{state}"] == "Play" then
-				return "  " .. colcya .. "playing " .. coldef .. colbwhi .. args["{Artist}"] .. " - " .. args["{Album}"] .. " - " .. args["{Title}"] .. coldef .. ""
+				return "  " .. colcya .. "playing " .. coldef .. colbwhi .. args["{Artist}"] .. " - " .. args["{Title}"] .. coldef .. ""
 			elseif args["{state}"] == "Pause" then
 				return "  " .. colcya .. "paused " .. coldef .. colbyel .. coldef .. ""
 			end
