@@ -1,0 +1,27 @@
+colorscheme simple_dark
+set guioptions=brs
+
+" Nicer hints
+set hintkeys=asdf
+highlight Hint font-size: 12px; background: #71badc !important; width: 30px !important; border: 1px solid #71badc; border-radius: 3px; font-weight: bold; color: black; font-family: sans; line-height:1em; text-align: center;
+highlight HintActive background: #878787 !important;
+highlight HintElem background: #dedede !important;
+
+" Move between tabs
+map J gt
+map K gT
+
+" Focus first input.. fast
+map i gi
+
+" Disable some Pentadactyl default mappings
+nmap a <Nop>
+nmap w <Nop>
+
+" Fix the common shortcuts
+inoremap <c-v> <c-v><c-v>
+inoremap <c-c> <c-v><c-c>
+noremap <c-c> <c-v><c-c>
+inoremap <c-x> <c-v><c-x>
+noremap <c-a> <c-v><c-a>
+inoremap <c-a> <c-v><c-a>
