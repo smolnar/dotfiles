@@ -11,6 +11,7 @@ let loaded_matchparen=1
 "" Things you might want to change
 set nocompatible
 colorscheme slate 
+
 "" You probably don't want to change these
 set hidden
 syntax on
@@ -66,13 +67,12 @@ set smartindent
 filetype plugin indent on
 
 " Moving around
-map! <S-Left> b
-map! <S-Right> w
+"map! <S-Left> b
+"map! <S-Right> w
 
 " Resize vertical slit easily
 "nnoremap <C-> :vertical res +1<CR> 
 "nnoremap <C-.> :vertical res -1<CR>
-
 
 "ruby
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
@@ -100,7 +100,6 @@ let g:html5_aria_attributes_complete = 0
 nnoremap <F2> :FufFile<CR>
 nnoremap <F3> :FufCoverageFile<CR>
 nnoremap <F4> :FufBuffer<CR>
-
 
 " GUI settings
 if has('gui_running')
