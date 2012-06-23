@@ -15,6 +15,7 @@ colorscheme slate
 "" You probably don't want to change these
 set hidden
 syntax on
+set ts=4
 set t_Co=256
 set ic
 set hls
@@ -37,11 +38,25 @@ set autoread
 "" we like big histories!
 set history=1000
 "" For colorized in 256 mode
+
 "" Gundoo 
 nnoremap <F6> :GundoToggle<CR>
 
+"" Gist vim
+let g:gist_clip_command = 'xclip -selection clipboard'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_browser_command = 'chromium %URL% &'
+let g:gist_show_privates = 1
 
+"" Nerdtree stuff
 nnoremap <F1> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind 
+
+"" Syntastic
+nnoremap <C-E> :SyntasticCheck<CR>
+
+
 "" Rails
 nnoremap <C-p> :completefunc()<CR>
 nnoremap <F7> :Rlib 
@@ -80,6 +95,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby set nocursorline
+autocmd FileType ruby,eruby set ts=2 
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238
 
@@ -95,13 +111,32 @@ let g:html5_rdfa_attributes_complete = 0
 let g:html5_microdata_attributes_complete = 0
 let g:html5_aria_attributes_complete = 0
 
-" Powerline
+" Powerline statusbar
+" Nice statusbar
+  set laststatus=2
+  set statusline=\ "
+  set statusline+=%f\ " file name
+  set statusline+=[
+  set statusline+=%{strlen(&ft)?&ft:'none'}, " filetype
+  set statusline+=%{&fileformat}] " file format
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  set statusline+=\ %{fugitive#statusline()}
+  set statusline+=%h%1*%m%r%w%0* " flag
+  set statusline+=%= " right align
+  set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
+
+" Turn off rails bits of statusbar
+  let g:rails_statusline=0
+
 " Fuzzyfinder
 nnoremap <F2> :FufFile<CR>
 nnoremap <F3> :FufCoverageFile<CR>
 nnoremap <F4> :FufBuffer<CR>
 
-" GUI settings
+
+" GUI setting
 if has('gui_running')
 	set guifont=Liberation\ Mono\ 8
 	set guioptions-=m  "remove menu bar
