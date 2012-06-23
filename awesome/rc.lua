@@ -56,7 +56,7 @@ beautiful.init("/home/samuel/.config/awesome/themes/niceandclean/theme.lua")
 
 -- CONFIGS
 require("colours")
-require("remind")
+-- require("remind") #dont really need it
 require("tags")
 require("my_menu")
 require("widgetstop")

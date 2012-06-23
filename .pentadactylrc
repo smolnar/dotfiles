@@ -1,7 +1,6 @@
 colorscheme simple_dark
 set guioptions=brs
 
-" Nicer hints
 set hintkeys=asdf
 highlight Hint font-size: 12px; background: #71badc !important; width: 30px !important; border: 1px solid #71badc; border-radius: 3px; font-weight: bold; color: black; font-family: sans; line-height:1em; text-align: center;
 highlight HintActive background: #878787 !important;

@@ -19,6 +19,7 @@ URxvt*scrollBar:            	false
 URxvt*saveLines:  		32767
 URxvt.cursorBlink:		true
 URxvt.iconFile: 		/usr/share/icons/Faenza/apps/scalable/terminal.svg
+
 ! perl ext
 URxvt.perl-ext-common:  default,matcher
 URxvt.urlLauncher:      /usr/bin/chromium

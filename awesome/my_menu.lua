@@ -14,7 +14,6 @@ graphicsmenu = {
 	{ "gimp",       "gimp"                  },
 }
 utilitiesmenu = {
-	{ "truecrypt",  "truecrypt"             }
 }
 awesomemenu = {
 	{ "lock",       terminal .. " -e xflock4" },

@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bira"
+ZSH_THEME="asylum"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -285,7 +285,7 @@ zstyle ':completion:*:mv:*' ignore-line yes
 #		RPROMPT='${vcs_info_msg_0_}'
 #	fi
 #fi
-PROMPT="%{$fg[green]%}%m %1~$%{$reset_color%} "
+#PROMPT="%{$fg[green]%}%m %1~$%{$reset_color%} "
 #RPROMPT="${$(git_prompt_info)%{$reset_color%}"
 
 # List prompt - don't ask 'do you want to see all ...' in menu selection {{{

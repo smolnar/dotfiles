@@ -2,7 +2,7 @@
 require("colours")
 
 function cal_gett()
-	local fp = io.popen("remind /home/jack/.reminders")
+	local fp = io.popen("remind /home/samuel/.reminders")
 	local rem = fp:read("*a")
 	fp:close()
 		rem = string.gsub(rem, "\027%[0m", "</span>")
