@@ -286,7 +286,7 @@ zstyle ':completion:*:mv:*' ignore-line yes
 #	fi
 #fi
 PROMPT="%{$fg[green]%}%m %1~$%{$reset_color%} "
-RPROMPT="${$(git_prompt_info)%{$reset_color%}"
+#RPROMPT="${$(git_prompt_info)%{$reset_color%}"
 
 # List prompt - don't ask 'do you want to see all ...' in menu selection {{{
 LISTPROMPT=''

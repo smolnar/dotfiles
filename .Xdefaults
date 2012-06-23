@@ -12,7 +12,7 @@ Xft.rgba: rgb
 ! urxvt, Config
 !!!!!!!!
 URxvt*geometry:                	80x20
-URxvt*font:  			xft:Liberation Mono:bold:pixelsize=10:hinting=full
+URxvt*font:  			xft:Liberation Mono:bold:size=8:hinting=full
 URxvt*foreground:            	#ffffff
 URxvt*borderless: 		0
 URxvt*scrollBar:            	false
