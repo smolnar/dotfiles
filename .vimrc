@@ -1,6 +1,6 @@
 " Do not remove the following 4 lines
-filetype off 
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 "------------------------------------------
 
@@ -39,6 +39,9 @@ set autoread
 set history=1000
 "" For colorized in 256 mode
 
+" relative number
+set relativenumber
+
 "" Gundoo 
 nnoremap <F6> :GundoToggle<CR>
 
@@ -51,7 +54,6 @@ let g:gist_show_privates = 1
 
 "" Nerdtree stuff
 nnoremap <F1> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind 
 
 "" Syntastic
 nnoremap <C-E> :SyntasticCheck<CR>
@@ -76,7 +78,6 @@ set cursorline
 "" We need some buffering
 set lazyredraw
 set wildmenu
-set number
 set wrap
 set smartindent
 filetype plugin indent on
