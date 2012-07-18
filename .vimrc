@@ -40,7 +40,7 @@ set history=1000
 "" For colorized in 256 mode
 
 " relative number
-set relativenumber
+set number
 
 "" Gundoo 
 nnoremap <F6> :GundoToggle<CR>

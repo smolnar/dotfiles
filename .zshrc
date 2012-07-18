@@ -35,6 +35,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+############################################################################
+
 # Author: Kim Silkebækken <kim.silkebaekken+github@gmail.com>
 # Source: https://github.com/Lokaltog/sync
 # Environment variables {{{
@@ -299,8 +301,8 @@ SPROMPT='Did you mean %{$fg[green]%}'%r' %{$reset_color%}? ([Y]es/[N]o/[E]dit/[A
 #
 case $TERM in
       urxvt*|rxvt*|xterm*)
-          #precmd () { print -Pn "\e]0;%n@%m: %~\a"}
-	  #preexec () { print -Pn "\e]0;%n@%m: $1\a" }
+          precmd () { print -Pn "\e]0;%n@%m: %~\a"}
+	  	  preexec () { print -Pn "\e]0;%n@%m: $1\a" }
           ;;
 esac
 
