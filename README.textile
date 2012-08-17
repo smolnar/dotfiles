@@ -1,4 +1,5 @@
 h2. References
+
 @awesome@ is based on this configuration :https://github.com/JackH79/.dotfiles/tree/master/.config/awesome
 
 @vimrc@ is briefly based on configuration from :https://github.com/lusis/vim-configs
