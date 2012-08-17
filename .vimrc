@@ -15,7 +15,7 @@ colorscheme slate
 "" You probably don't want to change these
 set hidden
 syntax on
-set ts=4
+set ts=2
 set t_Co=256
 set ic
 set hls
