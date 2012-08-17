@@ -11,12 +11,12 @@ Xft.rgba: rgb
 !!!!!!!!
 ! urxvt, Config
 !!!!!!!!
-URxvt*geometry:                	80x20
+URxvt*geometry:        	80x20
 URxvt*font:  			xft:Liberation Mono:bold:size=8:hinting=full
-URxvt*foreground:            	#ffffff
+URxvt*foreground:     	#ffffff
 URxvt*borderless: 		0
-URxvt*scrollBar:            	false
-URxvt*saveLines:  		32767
+URxvt*scrollBar:       	false
+URxvt*saveLines: 		32767
 URxvt.cursorBlink:		true
 URxvt.iconFile: 		/usr/share/icons/Faenza/apps/scalable/terminal.svg
 
@@ -36,13 +36,13 @@ URxvt*background: rgba:1111/1111/1111/aaaa
 !!!!
 ! terminal colors
 !!!!
-*foreground:              #a0a0a0
+*foreground:          #a0a0a0
 *background:		  #121212
 !black
-*color0:                  #1B1D1E
-*color8:                  #505354
+*color0:              #1B1D1E
+*color8:              #505354
 !red
-*color1:  		  #9E1828
+*color1:  		  		#9E1828
 !*color9:  		  #e05050
 *color9:  		  #cf6171
 !green
