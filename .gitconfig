@@ -3,10 +3,28 @@
 	email = molnar.samuel@gmail.com
 [merge]
 	tool=meld
+
 [color]
-	current=blue
-	local=cyan
-	remote=yellow
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
 [alias]
 	df=diff
 	co=checkout
