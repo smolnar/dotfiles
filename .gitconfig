@@ -3,7 +3,6 @@
 	email = molnar.samuel@gmail.com
 [merge]
 	tool=meld
-
 [color]
   branch = auto
   diff = auto
@@ -24,7 +23,6 @@
   added = yellow
   changed = green
   untracked = cyan
-
 [alias]
 	df=diff
 	co=checkout
