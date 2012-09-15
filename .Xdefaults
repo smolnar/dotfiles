@@ -1,6 +1,7 @@
-# URxvt
+! URxvt
 URxvt*termName:		xterm-color
-# Xft
+
+! Xft
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
@@ -8,9 +9,10 @@ Xft.hinting: 1
 Xft.antialias: 1 
 Xft.rgba: rgb
 
-!!!!!!!!
+! X11
+Xcursor.theme: default 
+
 ! urxvt, Config
-!!!!!!!!
 URxvt*geometry:        	80x20
 URxvt*font:  			xft:Liberation Mono:bold:size=8:hinting=full
 URxvt*foreground:     	#ffffff
