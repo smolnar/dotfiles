@@ -2,8 +2,6 @@
 -- Layouts
 layouts =
 {
-	awful.layout.suit.fair,
-	awful.layout.suit.fair.horizontal,
 	awful.layout.suit.tile,
 	awful.layout.suit.tile.left,
 	awful.layout.suit.tile.bottom,
@@ -14,9 +12,10 @@ layouts =
 
 -- Shifty: predefined tags
 shifty.config.tags   = {
-	["init"]        = { init = true, position = 1, layout = awful.layout.suit.tile        },
-	["doc"]    = { init = true, position = 2, layout = awful.layout.suit.max  },
+	["def"]        = { init = true, position = 1, layout = awful.layout.suit.floating        },
+	["doc"]    = { init = true, position = 2, layout = awful.layout.suit.floating  },
 	["web"] = { init = true, position = 3, layout = awful.layout.suit.max                      },
+	--["IDE"] = { init = true, position = 4, layout = awful.layout.suit.floating                      },
 	["1:work"]  = { init = true,  position = 4, layout = awful.layout.suit.tile                 },
 	["2:work"]  = { init = true, position = 5, layout = awful.layout.suit.tile              },
 	["3:work"]   = { init = true, position = 6, layout = awful.layout.suit.tile  },
@@ -33,7 +32,6 @@ shifty.config.apps = {
 	-- net
 	{ match = { "Thunderbird", "Firefox"       }, tag = "web",                                               },
 	{ match = { "mutt"                   }, tag = "web",                                               },
-	{ match = { "irssi"                  }, tag = "im",                                               },
 	--office
 	{ match = { "Libreoffice", "Lynx"   }, tag = "doc",                                            },
 	-- gimp
@@ -46,9 +44,10 @@ shifty.config.apps = {
 	-- music
 	{ match = { "audacious"  }, tag = "music",                                             },
 	-- im
-	{ match = { "^pidgin%" 				}, tag = "im" },
+	{ match = { "irssi", "Pidgin"                  }, tag = "im", geometry = { 1000, 40, 200, 40 }  , float = true             },
 	-- miscellaneous
 	{ match = { "sxiv", "gpicview", "feh"       }, tag = "picture",                                             },
+	--{ match = { "Eclipse",        }, tag = "IDE",                                             },
 	
 	-- client manipulation
 	{ match = { "" },
@@ -62,7 +61,7 @@ shifty.config.apps = {
 
 -- shifty: defaults
 shifty.config.defaults = {
-	layout = awful.layout.suit.max,
+	layout = awful.layout.suit.floating,
 }
 shifty.config.layouts = layouts
 shifty.init()

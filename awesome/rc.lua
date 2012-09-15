@@ -65,3 +65,7 @@ require("creation")
 require("bindings")
 require("autostart")
 require("signals")
+
+-- set default init tag
+awful.client.movetotag(shifty.getpos(1))
+

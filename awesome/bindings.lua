@@ -146,3 +146,6 @@ end
 root.keys(globalkeys)
 shifty.config.globalkeys = globalkeys
 shifty.config.clientkeys = clientkeys
+
+
+
