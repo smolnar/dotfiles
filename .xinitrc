@@ -14,7 +14,7 @@ export DE=gnome
 export BROWSER=firefox
 
 # cursor fix
-xsetroot -cursor_name arrow &
+#xsetroot -cursor_name arrow &
 
 #case $1 in
 #"opnbx")
