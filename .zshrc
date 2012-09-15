@@ -330,3 +330,8 @@ bindkey . smartdot
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # }}}
+
+# {{{
+# JVM & JAVA options
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on  -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.aatext=true'
+# }}}
