@@ -9,7 +9,7 @@ call pathogen#helptags()
 " plugins
 filetype plugin indent on
 
-colorscheme slate
+colorscheme Monokai 
 set encoding=utf-8
 let loaded_matchparen=1 " dont match paranthesis
 set backspace=2 				" backspace similar to other gui apps
@@ -94,6 +94,12 @@ nmap <leader><space> :noh<cr>
 
 " open vertical split and switch to it
 nnoremap <leader>w <C-w>v<C-w>l
+
+" tabs - moving around
+map <C-n> :tabnew
+map <A-Right> :tabnext<cr>
+map <A-Left> :tabprevious<cr>
+
 
 " }}}
 
@@ -239,9 +245,16 @@ let g:rails_statusline = 1
 " GUI setting
 " {{{
 if has('gui_running')
-  set guifont=Liberation\ Mono\ 8
+  set guifont=Liberation\ Mono\ 9 
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=l
+  set guioptions-=h
+  set guioptions-=b
+  set guioptions-=R
+  set guioptions-=L
+  colorscheme molokai
+  set showtabline=2
 endif
 " }}}
