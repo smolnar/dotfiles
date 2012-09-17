@@ -31,6 +31,8 @@ URxvt.matcher.button:   1
 URxvt.keysym.Shift-Right:       \033[1;2C
 URxvt.keysym.Shift-Left:        \033[1;2D
 
+URxvt*meta8:False
+
 ! True transparency
 URxvt*depth: 32
 URxvt*background: rgba:1111/1111/1111/aaaa
