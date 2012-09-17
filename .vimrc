@@ -254,7 +254,13 @@ if has('gui_running')
   set guioptions-=b
   set guioptions-=R
   set guioptions-=L
-  colorscheme molokai
-  set showtabline=2
+  set showtabline=2   "show tabs in gvim, not vim
+
+
+  " bindings 
+  " {{{
+  nnoremap <c-o> :browse tabnew<CR>
+  nnoremap <c-a-s> :browse saveas<CR>
+  " }}}
 endif
 " }}}
