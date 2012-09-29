@@ -4,3 +4,21 @@ style "vimfix" {
 }
 widget "vim-main-window.*GtkForm" style "vimfix"
 
+# fix for eclipse gigantic tabs
+style "compact-toolbar"
+{
+	GtkToolbar::internal-padding = 0
+	xthickness = 0 
+	ythickness = 0
+}
+
+style "compact-button"
+{
+	xthickness = 0
+	ythickness = 0
+}
+
+class "GtkToolbar"   				style "compact-toolbar" 
+widget_class "*<GtkToolbar>*<GtkButton>"	style "compact-button"
+
+
