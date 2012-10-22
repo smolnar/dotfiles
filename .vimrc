@@ -41,7 +41,6 @@ set ignorecase
 set smartcase 
 set lazyredraw 					" get faster
 set linespace=0
-"set list listchars=trail:·,extends:>
 let c_no_trail_space_error = 1	" see java errors
 let java_space_errors = 1		" see c errors
 set showcmd
@@ -65,9 +64,10 @@ set cursorline
 
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238
-
-
 " }}}
+
+" open every files as tab
+"au BufAdd,BufNewFile .* nested tab sball "dotfiles as well
 
 " binding 
 " {{{
@@ -96,10 +96,17 @@ nmap <leader><space> :noh<cr>
 nnoremap <leader>w <C-w>v<C-w>l
 
 " tabs - moving around
-map <C-n> :tabnew
+map <C-n> :tabnew<CR>
+map <C-A-n> :tabedit %<CR> 
 map <A-Right> :tabnext<cr>
 map <A-Left> :tabprevious<cr>
 
+" buffers - moving around
+map <A-b-Left> :bprevious<CR>
+map <A-b-Right> :bNext<CR>
+
+" copy/paste to clipboard
+map <Y> "+y<CR>
 
 " }}}
 
@@ -109,7 +116,6 @@ map <A-Left> :tabprevious<cr>
 " HTML, XML {{{
 augroup FTHtml
   au!
-  "au BufRead,BufNewFile *.html.erb set ft=html.erb
   autocmd FileType html,xhtml,wml,cf      setlocal ai et sta sw=2 sts=2
   autocmd FileType xml,xsd,xslt           setlocal ai et sta sw=2 sts=2 ts=2
   autocmd FileType html setlocal iskeyword+=~
@@ -119,8 +125,8 @@ augroup END
 augroup FTRuby
   au!
   autocmd FileType eruby,yaml,ruby        setlocal ai et sta sw=2 sts=2
-  autocmd FileType ruby,eruby set 		  omnifunc=rubycomplete#Complete
-  autocmd FileType ruby,eruby set nocursorline "dont show cursorline 
+  autocmd FileType ruby,eruby set 		    omnifunc=rubycomplete#Complete
+  autocmd BufNewFile,BufRead *.html.erb   set filetype=eruby.html  " load html snippets along with erb
 augroup END
 " }}}
 
@@ -128,6 +134,11 @@ augroup END
 " {{{
 au BufNewFile,BufReadPost *.coffee setl sw=2 expandtab
 "}}}
+
+augroup C
+  au!
+  autocmd FileType c,cpp,h,hpp     colorscheme molokai
+augroup END
 
 " }}}
 
@@ -223,6 +234,10 @@ let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=1
 let g:NERTreeHighlightCursorLine=1
 "}}}
+"
+" NerdTree Tabs {{{
+nnoremap <c-F1> :NERDTreeTabsToggle<CR>
+" }}}
 
 " Rails
 " {{{
@@ -239,13 +254,14 @@ let g:rails_statusline = 1
 " }}}
 
 
-
 " }}}
 
 " GUI setting
 " {{{
 if has('gui_running')
-  set guifont=Liberation\ Mono\ 9 
+  set guifont=Liberation\ Mono\ 9
+  "set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+  "set guifont=Monaco\ 10
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
@@ -254,13 +270,14 @@ if has('gui_running')
   set guioptions-=b
   set guioptions-=R
   set guioptions-=L
-  set showtabline=2   "show tabs in gvim, not vim
-
-
+  set showtabline=2   " show tabs in gvim, not vim
+  set guitablabel=%t  " show simple filname as tabname
+  
   " bindings 
   " {{{
-  nnoremap <c-o> :browse tabnew<CR>
-  nnoremap <c-a-s> :browse saveas<CR>
+  nnoremap <c-o> :browse tabnew :pwd<CR>
+  nnoremap <c-a-s> :browse saveas :pwd<CR>
+  nnoremap <c-a-w> :wq<CR>
   " }}}
 endif
 " }}}
