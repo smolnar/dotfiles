@@ -36,7 +36,8 @@ end
 theme.font          = "Sans 7" 
 
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#71badc"
+theme.bg_focus     = "#222222"
+--theme.bg_focus      = "#71badc"
 --theme.bg_focus      = "#33aacc"
 --theme.bg_focus      = "#dedede"
 
@@ -44,7 +45,7 @@ theme.bg_urgent     = "#d02e54"
 theme.bg_minimize   = "#444444"
 
 theme.fg_normal     = "#eeeeee"
-theme.fg_focus      = "#000000"
+theme.fg_focus      = "#71badc"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
