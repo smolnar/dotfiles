@@ -21,4 +21,5 @@ style "compact-button"
 class "GtkToolbar"   				style "compact-toolbar" 
 widget_class "*<GtkToolbar>*<GtkButton>"	style "compact-button"
 
-
+# fix for eclipse crash
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
