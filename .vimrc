@@ -1,5 +1,5 @@
 " init 
-" {{{
+" {{{ 
 call pathogen#infect()
 call pathogen#helptags()
 " }}}
@@ -53,6 +53,7 @@ set wrap
 set textwidth=80
 set foldenable
 set foldmethod=manual
+set showmatch
 
 set completeopt=longest,menu,preview
 
@@ -125,8 +126,11 @@ augroup END
 augroup FTRuby
   au!
   autocmd FileType eruby,yaml,ruby        setlocal ai et sta sw=2 sts=2
-  autocmd FileType ruby,eruby set 		    omnifunc=rubycomplete#Complete
   autocmd BufNewFile,BufRead *.html.erb   set filetype=eruby.html  " load html snippets along with erb
+  autocmd FileType ruby,eruby             let g:rubycomplete_rails = 1
+  autocmd FileType ruby,eruby             let g:rubycomplete_classes_in_global=1
+  autocmd FileType ruby,eruby             let g:rubycomplete_buffer_loading = 1
+
 augroup END
 " }}}
 
