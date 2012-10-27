@@ -14,7 +14,7 @@ require("menubar")
 -- menubar.cache_entries = true
 -- menubar.app_folders = { "/usr/share/applications/" }
 -- menubar.show_categories = true   -- Change to false if you want only programs to appear in the menu
--- menubar.set_icon_theme("Faenza")
+-- menubar.lines = 2
 
 --ERRORS
 -- Startup error handling
