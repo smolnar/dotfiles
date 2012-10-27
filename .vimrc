@@ -30,7 +30,7 @@ set autoread 						" supress warnings
 set wildmenu
 set clipboard+=unnamed,unnamedplus,autoselect
 set history=1000
-set tag=.tags,tags;/
+set tags=.tags,tags;/
 set directory=~/.vim/tmp/swap,~/.vim/tmp/ " set tmp dirs
 set undodir=.vim/tmp/undo
 set ttyfast
