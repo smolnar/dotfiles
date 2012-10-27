@@ -100,7 +100,7 @@ wifiwidget = wibox.widget.textbox()
 			wifidownwidget.visible = false
 			wifiupwidget.visible = false
 			return ""
-		else
+		elseif ip_addr() then
 			wifidownwidget.visible = true
 			wifiupwidget.visible = true
 			if args["{link}"]/70*100 <= 50 then
@@ -108,8 +108,10 @@ wifiwidget = wibox.widget.textbox()
 			elseif args["{link}"]/70*100 > 50 and args["{link}"]/70*100 <=75 then
 				return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colyel .. " at " .. coldef .. colbyel .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
 			else
-				return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colwhi .. " at " .. coldef .. colbwhi .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
+        return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colwhi .. " at " .. coldef .. colbwhi .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
 			end
+    else 
+      return ""
 		end
 	end, refresh_delay, "wlan0" )
 
