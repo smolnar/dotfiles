@@ -66,7 +66,7 @@ export LC_IDENTIFICATION="en_US.utf8"
 export LC_ALL=""
 # }}}
 # Applications {{{
-export PAGER="vimpager"
+export PAGER="less"
 export MANPAGER="vimpager"
 export EDITOR="vim"
 export VISUAL="vim"
@@ -156,6 +156,7 @@ alias svim="sudo -E vim"
 alias rc.d="s rc.d"
 alias copy_ssh_key="xclip -sel clip < ~/.ssh/id_rsa.pub"
 alias gg="tig"
+alias service="s systemctl"
 # }}}
 # Default sudo commands {{{
 #for cmd in mount ifconfig pacman chmod chown rc.d; do
