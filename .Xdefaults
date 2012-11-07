@@ -1,5 +1,5 @@
 ! URxvt
-URxvt*termName:		xterm-color
+URxvt*termName:		xterm
 
 ! Xft
 Xft.autohint: 0
