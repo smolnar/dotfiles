@@ -66,6 +66,8 @@ set cursorline
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238
 " }}}
+"
+
 
 " open every files as tab
 "au BufAdd,BufNewFile .* nested tab sball "dotfiles as well
@@ -96,6 +98,10 @@ nmap <leader><space> :noh<cr>
 " open vertical split and switch to it
 nnoremap <leader>w <C-w>v<C-w>l
 
+" open horizontal  split and switch to it
+nnoremap <leader>h :split<CR>
+
+
 " tabs - moving around
 map <C-n> :tabnew<CR>
 map <C-A-n> :tabedit %<CR> 
@@ -108,6 +114,9 @@ map <A-b-Right> :bNext<CR>
 
 " copy/paste to clipboard
 map <Y> "+y<CR>
+
+" run ctags
+map <leader-r> :!ctags -R<CR>
 
 " }}}
 
@@ -130,7 +139,6 @@ augroup FTRuby
   autocmd FileType ruby,eruby             let g:rubycomplete_rails = 1
   autocmd FileType ruby,eruby             let g:rubycomplete_classes_in_global=1
   autocmd FileType ruby,eruby             let g:rubycomplete_buffer_loading = 1
-
 augroup END
 " }}}
 
@@ -184,12 +192,16 @@ set statusline+=%= " right align
 set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
 " }}}
 
-" Fuzzy finder 
+" CtrlP
 " {{{
-" Fuzzyfinder
-nnoremap <F2> :FufFile<CR>
-nnoremap <F3> :FufCoverageFile<CR>
-nnoremap <F4> :FufBuffer<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+nnoremap <F3> :CtrlP<CR>
+nnoremap <F4> :CtrlPBuffer<CR>
+nnoremap <F2> :CtrlPDir<CR>
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$'
+      \ }
 " }}}
 
 " gist vim 
