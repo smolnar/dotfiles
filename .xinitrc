@@ -13,6 +13,9 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export DE=gnome
 export BROWSER=firefox
 
+# fix for new locale support in archlinux
+export LANG="en_US.utf-8"
+
 # cursor fix
 #xsetroot -cursor_name arrow &
 
@@ -31,4 +34,4 @@ export BROWSER=firefox
 #	;;
 #esac
 
-exec ck-launch-session dbus-launch awesome 
+exec awesome 
