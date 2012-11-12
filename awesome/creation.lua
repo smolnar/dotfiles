@@ -83,7 +83,7 @@ for s = 1, screen.count() do
       mypromptbox[s],
       layout = awful.widget.layout.horizontal.leftright
      },
-     
+ 
      mylayoutbox[s],
      separator,
      clockwidget,
@@ -95,6 +95,7 @@ for s = 1, screen.count() do
      widget({ type = "systray" }),
      separator,
      kbdcfg.widget,
+     mytasklist[s],
      layout = awful.widget.layout.horizontal.rightleft
   }
   

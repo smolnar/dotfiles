@@ -100,7 +100,7 @@ weatherwidget = widget({ type = 'textbox' })
   -- Keyboard map indicator and changer
   kbdcfg = {}
   kbdcfg.cmd = "setxkbmap"
-  kbdcfg.layout = { "us", "fr", "dvorak" }
+  kbdcfg.layout = { "us", "sk" }
   kbdcfg.current = 1  -- us is our default layout
   kbdcfg.widget = widget({ type = "textbox", align = "right" })
   kbdcfg.widget.text = colcya.. " " .. kbdcfg.layout[kbdcfg.current] .. " " .. coldef

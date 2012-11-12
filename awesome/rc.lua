@@ -41,7 +41,7 @@ do local in_error = false
 end
 
 -- DEFAULTS
-terminal   = "urxvt"
+terminal   = "gnome-terminal"
 editor     = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 browser    = "firefox"
