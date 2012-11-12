@@ -45,19 +45,24 @@ globalkeys = awful.util.table.join(
 			client.focus:raise()
 		end
 	end),
-	awful.key({ modkey, "Control" }, "Right",                function () awful.tag.incmwfact( 0.05) end),
-	awful.key({ modkey, "Control" }, "Left",                 function () awful.tag.incmwfact(-0.05) end),
+  awful.key({ modkey, "Control" }, "Right",                function () awful.tag.incmwfact( 0.05) end),
+  awful.key({ modkey, "Control" }, "Left",                 function () awful.tag.incmwfact(-0.05) end),
 
-	-- Programs
-	-- launchers
-	awful.key({ modkey,           }, "p", function() menubar.show() end),
-	awful.key({ modkey,           }, "Return", function() awful.util.spawn(terminal) end),
-	-- miscellaneous
-	awful.key({ modkey, "Shift"   }, "l",                    function () awful.util.spawn(terminal .. " -e xflock4") end),
-	awful.key({ modkey,           }, "grave",                function () awful.util.spawn(terminal .. " -e htop") end),
-	  -- remind output
-	awful.key({ modkey, "Control" }, "r",                    function () naughty.notify({ text = cal_gett(), border_color = brblk, timeout = 20, hover_timeout = 0.5 }) end),
-	-- volume + mpd
+  -- Programs
+  -- launchers
+  awful.key({ modkey,           }, "p",  function ()
+                awful.util.spawn("dmenu_run -i -b -nb '" .. 
+                      beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
+                      "' -sb '" .. beautiful.bg_focus .. 
+                      "' -sf '" .. beautiful.fg_focus .. "'") 
+  end),
+  awful.key({ modkey,           }, "Return", function() awful.util.spawn(terminal) end),
+  -- miscellaneous
+  awful.key({ modkey, "Shift"   }, "l",                    function () awful.util.spawn(terminal .. " -e xflock4") end),
+  awful.key({ modkey,           }, "grave",                function () awful.util.spawn(terminal .. " -e htop") end),
+  -- remind output
+  awful.key({ modkey, "Control" }, "r",                    function () naughty.notify({ text = cal_gett(), border_color = brblk, timeout = 20, hover_timeout = 0.5 }) end),
+  -- volume + mpd
 	awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 2dB-") end),
 	awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 2dB+") end),
 	awful.key({                   }, "XF86AudioStop",        function () awful.util.spawn("mpc stop") end),
@@ -146,6 +151,8 @@ end
 root.keys(globalkeys)
 shifty.config.globalkeys = globalkeys
 shifty.config.clientkeys = clientkeys
+
+-- Disable sloppy windows
 
 
 

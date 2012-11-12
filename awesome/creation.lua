@@ -105,10 +105,14 @@ for s = 1, screen.count() do
   infobox[s].widgets = {
     {
       mpdimagewidget,
+      plaympdwidget,
+      stopmpdwidget,
+      pausempdwidget,
+      prevmpdwidget,
+      nextmpdwidget,
       mpdwidget,
       layout = awful.widget.layout.horizontal.leftright
     },
-
     volwidget,
     volimagewidget,
     separator,
@@ -126,7 +130,6 @@ for s = 1, screen.count() do
     separator,
     tempwidget,
     cpuwidget,
-    cpugraph,
     cpuimagewidget,
     wifiwidget,
     separator,

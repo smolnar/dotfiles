@@ -83,7 +83,7 @@ end
 --	clockwidget:connect_signal('mouse::enter', function () cal_remt = { naughty.notify({ text = cal_gett(), border_color = "" .. blk .. "", timeout = 0 }) } end)
 --	clockwidget:connect_signal('mouse::leave', function () naughty.destroy(cal_remt[1]) end)
 
-clockwidget = awful.widget.textclock({ format = " %H:%M:%S ", timeout =  1 })
+clockwidget = awful.widget.textclock({}, " %H:%M:%S ", 1) 
 -- Weather widget
 weatherwidget = widget({ type = 'textbox' })
 	vicious.register(weatherwidget, vicious.widgets.weather,

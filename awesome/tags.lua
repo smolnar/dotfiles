@@ -19,7 +19,7 @@ shifty.config.tags   = {
 	["1:work"]  = { init = true,  position = 4, layout = awful.layout.suit.tile                 },
 	["2:work"]  = { init = true, position = 5, layout = awful.layout.suit.tile              },
 	["3:work"]   = { init = true, position = 6, layout = awful.layout.suit.tile  },
-	["im"]= { init = true, position = 7, layout = awful.layout.suit.floating                     },
+	["im"]= { init = true, position = 7, layout = awful.layout.suit.tile.left                     },
 	["music"]        = { init = false, position = 8, layout = awful.layout.suit.floating                      },
 	["gimp"]        = { init = false, position = 9, layout = awful.layout.suit.floating                     },
 	["video"]  = { position = 10, layout = awful.layout.suit.floating                                    },
@@ -44,7 +44,7 @@ shifty.config.apps = {
 	-- music
 	{ match = { "audacious"  }, tag = "music",                                             },
 	-- im
-	{ match = { "irssi", "Pidgin"                  }, tag = "im", geometry = { 1000, 40, 200, 40 }  , float = true             },
+	{ match = { "irssi", "Pidgin"                  }, tag = "im"     },
 	-- miscellaneous
 	{ match = { "sxiv", "gpicview", "feh"       }, tag = "picture",                                             },
 	--{ match = { "Eclipse",        }, tag = "IDE",                                             },
