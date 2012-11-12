@@ -118,6 +118,9 @@ map <Y> "+y<CR>
 " run ctags
 map <leader-r> :!ctags -R<CR>
 
+" copy from clipboard with ease
+nnoremap <leader>p "+p
+nnoremap <leader>y "+yy
 " }}}
 
 " filetypes
