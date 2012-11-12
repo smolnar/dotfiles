@@ -7,8 +7,6 @@ require("beautiful")
 require("naughty")
 require("vicious")
 require("shifty")
-require("menubar")
-
 
 -- MENUBAR
 -- menubar.cache_entries = true
@@ -28,7 +26,7 @@ end
 
 -- Runtime errors after startup
 do local in_error = false
-	awesome.connect_signal("debug::error",
+	awesome.add_signal("debug::error",
 	function (err)
 		-- Make sure we don't go into an endless error loop
 		if in_error then return end

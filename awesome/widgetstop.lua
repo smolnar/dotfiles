@@ -1,7 +1,7 @@
 -- WIDGETS TOP
 -- Right
 -- Calendar widget
-calwidget = wibox.widget.textbox()
+calwidget = widget({ type = 'textbox' })
 	function dayth()
 		local osd = os.date("%d")
 		if osd == "01" or osd == "21" or osd == "31" then
@@ -83,9 +83,9 @@ end
 --	clockwidget:connect_signal('mouse::enter', function () cal_remt = { naughty.notify({ text = cal_gett(), border_color = "" .. blk .. "", timeout = 0 }) } end)
 --	clockwidget:connect_signal('mouse::leave', function () naughty.destroy(cal_remt[1]) end)
 
-clockwidget = awful.widget.textclock( " %H:%M:%S ", 1 )
+clockwidget = awful.widget.textclock({ format = " %H:%M:%S ", timeout =  1 })
 -- Weather widget
-weatherwidget = wibox.widget.textbox()
+weatherwidget = widget({ type = 'textbox' })
 	vicious.register(weatherwidget, vicious.widgets.weather,
 	function (widget, args)
 		if args["{tempc}"] == "N/A" then
@@ -97,23 +97,21 @@ weatherwidget = wibox.widget.textbox()
 		end
 	end, 1200, "LZIB" )
 
+  -- Keyboard map indicator and changer
+  kbdcfg = {}
+  kbdcfg.cmd = "setxkbmap"
+  kbdcfg.layout = { "us", "fr", "dvorak" }
+  kbdcfg.current = 1  -- us is our default layout
+  kbdcfg.widget = widget({ type = "textbox", align = "right" })
+  kbdcfg.widget.text = colcya.. " " .. kbdcfg.layout[kbdcfg.current] .. " " .. coldef
+  kbdcfg.switch = function ()
+    kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
+    local t = colcya.. " " .. kbdcfg.layout[kbdcfg.current] .. " " .. coldef
+    kbdcfg.widget.text = t
+    os.execute( kbdcfg.cmd .. t )
+  end
 
--- Keyboard map indicator and changer
-    kbdcfg = {}
-    kbdcfg.cmd = "setxkbmap "
-    kbdcfg.layout = { "us", "sk" }
-    kbdcfg.current = 1  -- us is our default layout
-    kbdcfg.widget = wibox.widget.textbox() 
-    kbdcfg.align = "right"
-	kbdcfg.widget.set_markup(kbdcfg.widget, colcya.. " " .. kbdcfg.layout[kbdcfg.current] .. " " .. coldef)
-    kbdcfg.switch = function ()
-       kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
-       local t = colcya .. " " .. kbdcfg.layout[kbdcfg.current] .. " " ..coldef
-       kbdcfg.widget:set_markup(t)
-       os.execute( kbdcfg.cmd .. kbdcfg.layout[kbdcfg.current])
-    end
-    
-    -- Mouse bindings
-    kbdcfg.widget:buttons(awful.util.table.join(
-        awful.button({ }, 1, function () kbdcfg.switch() end)
-    ))
+  -- Mouse bindings
+  kbdcfg.widget:buttons(awful.util.table.join(
+  awful.button({ }, 1, function () kbdcfg.switch() end)
+  ))

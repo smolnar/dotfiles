@@ -51,8 +51,8 @@ mytasklist.buttons = awful.util.table.join(
 	end))
 
 -- Separator
-separator = wibox.widget.textbox() 
-separator:set_markup(" :: ")
+separator = widget({ type = "textbox" })
+separator.text = " :: "
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
@@ -61,9 +61,11 @@ for s = 1, screen.count() do
 	-- a promptbox
 	mypromptbox[s] = awful.widget.prompt()
 	-- a taglist widget
-	mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
-	-- a tasklist widget
-	mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
+	mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, mytaglist.buttons)
+    -- Create a tasklist widget
+    mytasklist[s] = awful.widget.tasklist(function(c)
+                                              return awful.widget.tasklist.label.currenttags(c, s)
+                                          end, mytasklist.buttons)
 	-- layout box !	
 	mylayoutbox[s] = awful.widget.layoutbox(s)
     	mylayoutbox[s]:buttons(awful.util.table.join(
@@ -74,71 +76,65 @@ for s = 1, screen.count() do
 	-- create wiboxes
 	-- top
 	mywibox[s] = awful.wibox({ position = "top", height = "14", screen = s })
-		-- widgets left
-		local left_layout = wibox.layout.fixed.horizontal()
-			left_layout:add(mylauncher)
-			left_layout:add(mytaglist[s])
-			left_layout:add(mypromptbox[s])
-		-- widgets right
-		local right_layout = wibox.layout.fixed.horizontal()
-		right_layout:add(kbdcfg.widget)
-		right_layout:add(separator)
-		right_layout:add(wibox.widget.systray()) 
-		right_layout:add(separator)
-		right_layout:add(weatherwidget)
-		right_layout:add(separator)
-		right_layout:add(calwidget)
-		right_layout:add(separator)
-		right_layout:add(clockwidget)
-		right_layout:add(mylayoutbox[s])
-	-- combine above elements
-	local layout = wibox.layout.align.horizontal()
-		layout:set_left(left_layout)
-		layout:set_middle(mytasklist[s])
-		layout:set_right(right_layout)
-	mywibox[s]:set_widget(layout)
+	mywibox[s].widgets = {
+    {   
+      mylauncher,
+      mytaglist[s],
+      mypromptbox[s],
+      layout = awful.widget.layout.horizontal.leftright
+     },
+     
+     mylayoutbox[s],
+     separator,
+     clockwidget,
+     separator,
+     calwidget,
+     separator,
+     weatherwidget,
+     separator,
+     widget({ type = "systray" }),
+     separator,
+     kbdcfg.widget,
+     layout = awful.widget.layout.horizontal.rightleft
+  }
+  
+  
 	-- bottom
 	infobox[s] = awful.wibox({ position = "bottom", height = "14", screen = s })
-		-- widgets left
-		local left_layout = wibox.layout.fixed.horizontal()
-			left_layout:add(mpdimagewidget)
-			left_layout:add(mpdwidget)
-			
-		-- widgets right
-		local right_layout = wibox.layout.fixed.horizontal()
-			right_layout:add(netdownimagewidget)
-			right_layout:add(netdownwidget)
-			right_layout:add(netupimagewidget)
-			right_layout:add(netupwidget)
-			right_layout:add(netimagewidget)
-			right_layout:add(netwidget)
---			right_layout:add(wifidownwidget)
-			right_layout:add(separator)
---			right_layout:add(wifiupwidget)
-			right_layout:add(wifiwidget)
-			right_layout:add(cpuimagewidget)
-			right_layout:add(cpugraph)
-			right_layout:add(cpuwidget)
-			right_layout:add(tempwidget)
-			right_layout:add(separator)
---			right_layout:add(tempwidget)
-			right_layout:add(ramimagewidget)
-			right_layout:add(memwidget)
-			right_layout:add(separator)
-			right_layout:add(fsrimagewidget)
-			right_layout:add(fsrwidget)
-			right_layout:add(separator)
-			right_layout:add(fsrimagewidget)
-			right_layout:add(fshwidget)
-			right_layout:add(separator)
-			right_layout:add(batimagewidget)
-			right_layout:add(batwidget)
-			right_layout:add(separator)
-			right_layout:add(volimagewidget)
-			right_layout:add(volwidget)
-	-- combine above elements
-	local layout = wibox.layout.align.horizontal()
-		layout:set_left(left_layout)
-		layout:set_right(right_layout)
-	infobox[s]:set_widget(layout)
+  infobox[s].widgets = {
+    {
+      mpdimagewidget,
+      mpdwidget,
+      layout = awful.widget.layout.horizontal.leftright
+    },
+
+    volwidget,
+    volimagewidget,
+    separator,
+    batwidget,
+    batimagewidget,
+    separator,
+    fshwidget,
+    fsrimagewidget,
+    separator,
+    fsrwidget,
+    fsrimagewidget,
+    separator,
+    memwidget,
+    ramimagewidget,
+    separator,
+    tempwidget,
+    cpuwidget,
+    cpugraph,
+    cpuimagewidget,
+    wifiwidget,
+    separator,
+    netwidget,
+    netimagewidget,
+    netupwidget,
+    netupimagewidget,
+    netdownwidget,
+    netdownimagewidget,
+    layout = awful.widget.layout.horizontal.rightleft
+  }
 end

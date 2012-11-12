@@ -1,7 +1,7 @@
 -- WIDGETS BOTTOM
 -- Left
 -- MPD widget
-mpdwidget = wibox.widget.textbox()
+mpdwidget = widget({ type = "textbox" })
 	vicious.register(mpdwidget, vicious.widgets.mpd,
 		function (widget, args)
 			if args["{state}"] == "Stop" then
@@ -39,30 +39,30 @@ mpdwidget = wibox.widget.textbox()
 --nextmpdwidget:buttons(awful.util.table.join(awful.button({}, 1, function () awful.util.spawn("mpc next", false) end)))
 --
 --
-mpdimagewidget = wibox.widget.imagebox()
-mpdimagewidget:set_image(theme.widget_mpd)
+mpdimagewidget = widget({ type = "imagebox" })
+mpdimagewidget.image = image(theme.widget_mpd)
 mpdimagewidget:buttons(awful.util.table.join(awful.button({}, 1, function () awful.util.spawn("mpc play", false) end)))
 mpdimagewidget:buttons(awful.util.table.join(awful.button({}, 3, function () awful.util.spawn("mpc stop", false) end)))
 
 -- Right (from left to right)
 -- Net widgets
 -- eth
-netimagewidget = wibox.widget.imagebox()
-netimagewidget:set_image(theme.widget_net)
+netimagewidget = widget({ type = "imagebox" })
+netimagewidget.image = image(theme.widget_net)
 
-netdownimagewidget = wibox.widget.imagebox()
-netdownimagewidget:set_image(theme.widget_down)
-netdownwidget = wibox.widget.textbox()
+netdownimagewidget =  widget({ type = "imagebox" })
+netdownimagewidget.image = image(theme.widget_down)
+netdownwidget = widget({ type = "textbox" })
 	vicious.cache(vicious.widgets.net)
 	vicious.register(netdownwidget, vicious.widgets.net, "" .. colcya .. " " ..coldef .. colbwhi .. "${eth0 down_kb} " .. coldef .. "")
 
-netupimagewidget = wibox.widget.imagebox()
-netupimagewidget:set_image(theme.widget_up)
-netupwidget = wibox.widget.textbox()
+netupimagewidget =  widget({ type = "imagebox" })
+netupimagewidget.image = image(theme.widget_up)
+netupwidget = widget({ type = "textbox" })
 vicious.register(netupwidget, vicious.widgets.net, "" .. colcya .. " " .. coldef .. colbwhi .. "${eth0 up_kb} " .. coldef .. "")
 
 -- make net widget invisible while net is down
-netwidget = wibox.widget.textbox()
+netwidget = widget({ type = "textbox" })
 	vicious.register(netwidget, vicious.widgets.net,
 	function (widget, args)
 		function ip_addr()
@@ -80,13 +80,13 @@ netwidget = wibox.widget.textbox()
 	end, refresh_delay, "eth0")
 
 -- wlan
-wifidownwidget = wibox.widget.textbox()
+wifidownwidget = widget({ type = "textbox" })
 	vicious.register(wifidownwidget, vicious.widgets.net, "" .. colcya .. "down " .. coldef .. colbwhi .. "${wlan0 down_kb} " .. coldef .. "")
 
-wifiupwidget = wibox.widget.textbox()
+wifiupwidget = widget({ type = "textbox" })
 	vicious.register(wifiupwidget, vicious.widgets.net, "" .. colcya .. "up " .. coldef .. colbwhi .. "${wlan0 up_kb} " .. coldef .. "")
 
-wifiwidget = wibox.widget.textbox()
+wifiwidget = widget({ type = "textbox" })
 	vicious.register(wifiwidget, vicious.widgets.wifi,
 	function (widget, args)
 		function ip_addr()
@@ -116,10 +116,10 @@ wifiwidget = wibox.widget.textbox()
 	end, refresh_delay, "wlan0" )
 
 -- CPU widget
-cpuimagewidget = wibox.widget.imagebox()
-cpuimagewidget:set_image(theme.widget_cpu)
-cpuwidget = wibox.widget.textbox()
-	vicious.register(cpuwidget, vicious.widgets.cpu,
+cpuimagewidget = widget({ type = "imagebox" })
+cpuimagewidget.image = image(theme.widget_cpu)
+cpuwidget = widget({ type = "textbox" })
+vicious.register(cpuwidget, vicious.widgets.cpu,
 	function (widget, args)
 		if  args[1] >= 50 and args[1] <= 75 then
 			return "   " .. colyel ..  coldef .. colbyel .. args[1] .. "% " .. coldef .. ""
@@ -144,8 +144,8 @@ cpugraph:set_color("#0077BB")
 vicious.register(cpugraph,  vicious.widgets.cpu,      "$1")
 --vicious.register(tempcpuwidget, vicious.widgets.thermal, "  $1 °C", 19, "thermal_zone0")
  -- CPU temp widget
- tempwidget = wibox.widget.textbox()
- 	vicious.register(tempwidget, vicious.widgets.thermal,
+ tempwidget = widget({ type = "textbox" })
+ vicious.register(tempwidget, vicious.widgets.thermal,
  	function (widget, args)
  		if  args[1] >= 65 and args[1] < 75 then
  			return "" .. colyel .. "   " .. coldef .. colbyel .. args[1] .. "°C " .. coldef .. ""
@@ -160,17 +160,17 @@ vicious.register(cpugraph,  vicious.widgets.cpu,      "$1")
  	end, 1, "thermal_zone0" )
 
 -- Ram widget
-ramimagewidget = wibox.widget.imagebox()
-ramimagewidget:set_image(theme.widget_ram)
-memwidget = wibox.widget.textbox()
+ramimagewidget = widget({ type = "imagebox" })
+ramimagewidget.image = image(theme.widget_ram)
+memwidget = widget({ type = "textbox" })
 	vicious.cache(vicious.widgets.mem)
 	vicious.register(memwidget, vicious.widgets.mem, "   " .. colcya ..  coldef .. colbwhi .. "$1% ($2 MiB) " .. coldef .. "", 2)
 
 -- Filesystem widgets
 -- root
-fsrimagewidget = wibox.widget.imagebox()
-fsrimagewidget:set_image(theme.widget_disk)
-fsrwidget = wibox.widget.textbox()
+fsrimagewidget = widget({ type = "imagebox" })
+fsrimagewidget.image = image(theme.widget_disk)
+fsrwidget = widget({ type = "textbox" })
 	vicious.register(fsrwidget, vicious.widgets.fs,
 	function (widget, args)
 		if  args["{/ used_p}"] >= 93 and args["{/ used_p}"] < 97 then
@@ -187,9 +187,9 @@ fsrwidget = wibox.widget.textbox()
 
 -- /home
 --
-fshimagewidget = wibox.widget.imagebox()
-fshimagewidget:set_image(theme.widget_fs2)
-fshwidget = wibox.widget.textbox()
+fshimagewidget = widget({ type = "imagebox" })
+fshimagewidget.image = image(theme.widget_fs2)
+fshwidget = widget({ type = "textbox" })
 	vicious.register(fshwidget, vicious.widgets.fs,
 	function (widget, args)
 		if  args["{/home used_p}"] >= 97 and args["{/home used_p}"] < 98 then
@@ -205,45 +205,45 @@ fshwidget = wibox.widget.textbox()
 	end, 622)
 
 -- Battery widget
-batimagewidget = wibox.widget.imagebox()
-batimagewidget:set_image(theme.widget_ac)
-batwidget = wibox.widget.textbox()
-	vicious.register(batwidget, vicious.widgets.bat,
+batimagewidget = widget({ type = "imagebox" })
+batimagewidget.image = image(theme.widget_ac)
+batwidget = widget({ type = "textbox"} )
+vicious.register(batwidget, vicious.widgets.bat,
 	function (widget, args)
 		if args[2] >= 50 and args[2] < 100 and args[1] == "-" then
-			batimagewidget:set_image(theme.widget_batfull)
+			batimagewidget.image = image(theme.widget_batfull)
 			return "" .. colyel .. "   " .. coldef .. colwhi .. args[2] .. "% " .. coldef .. ""
 		elseif args[2] >= 20 and args[2] < 50 and args[1] == "-" then
-			batimagewidget:set_image(theme.widget_batfull)
+			batimagewidget.image = image(theme.widget_batfull)
 			return "" .. colyel .. "   " .. coldef .. colbyel ..  args[2] .. "% " .. coldef .. ""
 
 		elseif args[2] >= 10 and args[2] < 20 and args[1] == "-" then
-			batimagewidget:set_image(theme.widget_batmed)
+			batimagewidget.image = image(theme.widget_batmed)
 			return "" .. colred .. "   " .. coldef .. colbred  .. args[2] .. "% " .. coldef .. ""
 		elseif args[2] < 10 and args[1] == "-" then
 			naughty.notify({ title = "Battery Warning", text = "Battery low! "..args[2].."% left!\nBetter get some power.", timeout = 10, position = "top_right", fg = beautiful.fg_urgent, bg = beautiful.bg_urgent })
-			batimagewidget:set_image(theme.widget_batlow)
+			batimagewidget.image = image(theme.widget_batlow)
 			return "" .. colred .. "   " .. coldef .. colbred .. args[2] .. "% " .. coldef .. ""
 		elseif args[2] < 10 then 
-			batimagewidget:set_image(theme.widget_batempty)
+			batimagewidget.image = image(theme.widget_batempty)
 			return "" .. colred .. "   " .. coldef .. colbred .. args[2] .. "% " .. coldef .. ""
 		else
-			batimagewidget:set_image(theme.widget_ac)
+			batimagewidget.image = image(theme.widget_ac)
 			return "" .. colcya .. "   " .. coldef .. colbwhi .. args[2] .. "% " .. coldef .. ""
 		end
 	end, 60, "BAT0" )
 
 -- Volume widget
-volimagewidget = wibox.widget.imagebox()
-volimagewidget:set_image(theme.widget_vol)
-volwidget = wibox.widget.textbox()
+volimagewidget = widget({ type = "imagebox" })
+volimagewidget.image = image(theme.widget_vol)
+volwidget = widget({ type = "textbox" })
 	vicious.register(volwidget, vicious.widgets.volume,
 		function (widget, args)
 			if args[1] == 0 or args[2] == "♩" then
-				volimagewidget:set_image(theme.widget_mute)
+				volimagewidget.image = image(theme.widget_mute)
 				return "" .. colcya .. "   " .. coldef .. colbred .. "0 %" .. coldef .. "" 
 			else
-				volimagewidget:set_image(theme.widget_vol)
+				volimagewidget.image = image(theme.widget_vol)
 				return "" .. colcya .. "   " .. coldef .. colbwhi .. args[1] .. "% " .. coldef .. ""
 			end
 		end, 0.5, "Master" )

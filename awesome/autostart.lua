@@ -5,9 +5,8 @@ do
 	{ 
 		"pyvolwheel",
 		"pidgin",
-		"thunar --daemon",
 		"/home/samuel/.conky/startconky.sh",
-    "wicd-client --tray"
+    "mpd"
 	}
 
 	for _,i in pairs(cmds) do
