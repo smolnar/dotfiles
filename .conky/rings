@@ -16,7 +16,7 @@ imlib_cache_size 0
 # -- Window specifications -- #
  
 own_window_class Conky
-own_window no
+own_window false
 own_window_type desktop
 own_window_argb_visual yes
 own_window_argb_value 180
