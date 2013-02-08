@@ -50,11 +50,11 @@ globalkeys = awful.util.table.join(
 
   -- Programs
   -- launchers
-  awful.key({ modkey,           }, "p",  function ()
-                awful.util.spawn("dmenu_run -i -b -nb '" .. 
-                      beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
-                      "' -sb '" .. beautiful.bg_focus .. 
-                      "' -sf '" .. beautiful.fg_focus .. "'") 
+  awful.key({ modkey,           }, "p", function ()
+    awful.util.spawn("dmenu_run -i -b -p 'Run:' -nb '" .. 
+    beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
+    "' -sb '" .. beautiful.bg_focus .. 
+    "' -sf '" .. beautiful.fg_focus .. "'") 
   end),
   awful.key({ modkey,           }, "Return", function() awful.util.spawn(terminal) end),
   -- miscellaneous
@@ -151,8 +151,4 @@ end
 root.keys(globalkeys)
 shifty.config.globalkeys = globalkeys
 shifty.config.clientkeys = clientkeys
-
--- Disable sloppy windows
-
-
 
