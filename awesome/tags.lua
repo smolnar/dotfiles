@@ -15,14 +15,15 @@ shifty.config.tags   = {
 	["def"]        = { init = true, position = 1, layout = awful.layout.suit.floating        },
 	["doc"]    = { init = true, position = 2, layout = awful.layout.suit.floating  },
 	["web"] = { init = true, position = 3, layout = awful.layout.suit.max                      },
-	--["IDE"] = { init = true, position = 4, layout = awful.layout.suit.floating                      },
 	["1:work"]  = { init = true,  position = 4, layout = awful.layout.suit.tile                 },
 	["2:work"]  = { init = true, position = 5, layout = awful.layout.suit.tile              },
 	["3:work"]   = { init = true, position = 6, layout = awful.layout.suit.tile  },
-	["im"]= { init = true, position = 7, layout = awful.layout.suit.tile.left                     },
-	["music"]        = { init = false, position = 8, layout = awful.layout.suit.floating                      },
-	["gimp"]        = { init = false, position = 9, layout = awful.layout.suit.floating                     },
-	["video"]  = { position = 10, layout = awful.layout.suit.floating                                    },
+	["4:work"]   = { init = true, position = 7, layout = awful.layout.suit.tile  },
+	["5:work"]   = { init = true, position = 8, layout = awful.layout.suit.tile  },
+	["im"]= { init = true, position = 9, layout = awful.layout.suit.tile.left                     },
+	["music"]        = { init = false, position = 10, layout = awful.layout.suit.floating                      },
+	["gimp"]        = { init = false, position = 11, layout = awful.layout.suit.floating                     },
+	["video"]  = { position = 12, layout = awful.layout.suit.floating                                    },
 	["picture"]  = { layout = awful.layout.suit.max                                    },
 	["foo"] = { init = true, layout = awful.layout.suit.floating } 
 }
@@ -44,10 +45,9 @@ shifty.config.apps = {
 	-- music
 	{ match = { "audacious"  }, tag = "music",                                             },
 	-- im
-	{ match = { "irssi", "Pidgin"                  }, tag = "im"     },
+	{ match = { "irssi", "Pidgin", "Buddy List" }, tag = "im", float = true     },
 	-- miscellaneous
 	{ match = { "sxiv", "gpicview", "feh"       }, tag = "picture",                                             },
-	--{ match = { "Eclipse",        }, tag = "IDE",                                             },
 	
 	-- client manipulation
 	{ match = { "" },
