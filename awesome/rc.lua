@@ -1,18 +1,11 @@
 -- LIBRARIES
 require("awful")
 require("awful.autofocus")
-require("awful.rules")
 require("wibox")
 require("beautiful")
 require("naughty")
 require("vicious")
 require("shifty")
-
--- MENUBAR
--- menubar.cache_entries = true
--- menubar.app_folders = { "/usr/share/applications/" }
--- menubar.show_categories = true   -- Change to false if you want only programs to appear in the menu
--- menubar.lines = 2
 
 --ERRORS
 -- Startup error handling
@@ -44,7 +37,7 @@ end
 terminal   = "gnome-terminal"
 editor     = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-browser    = "firefox"
+browser    = "chromium-browser"
 modkey     = "Mod4"
 altkey     = "Mod1"
 
@@ -63,7 +56,4 @@ require("creation")
 require("bindings")
 require("autostart")
 require("signals")
-
--- set default init tag
-awful.client.movetotag(shifty.getpos(1))
 
