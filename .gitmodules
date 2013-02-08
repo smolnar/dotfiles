@@ -76,9 +76,9 @@
 [submodule ".vim/bundle/l9"]
 	path = .vim/bundle/l9
 	url = https://github.com/vim-scripts/L9.git
-[submodule ".vim/bundle/autocomplprop"]
-	path = .vim/bundle/autocomplprop
-	url = https://github.com/vim-scripts/AutoComplPop.git
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/vim-easytags"]
+	path = .vim/bundle/vim-easytags
+	url = git://github.com/xolox/vim-easytags.git
