@@ -132,6 +132,7 @@ augroup FTHtml
   autocmd FileType html,xhtml,wml,cf      setlocal ai et sta sw=2 sts=2
   autocmd FileType xml,xsd,xslt           setlocal ai et sta sw=2 sts=2 ts=2
   autocmd FileType html setlocal iskeyword+=~
+
 augroup END
 " }}}
 " Ruby {{{
@@ -152,13 +153,11 @@ au BufNewFile,BufReadPost *.coffee setl sw=2 expandtab
 
 augroup C
   au!
-  autocmd FileType c,cpp,h,hpp     colorscheme molokai
+  ""autocmd FileType c,cpp,h,hpp     colorscheme molokai
 augroup END
 
-" }}}
 
-
-" plugins
+" Plugins
 " {{{
 
 " html5 plugin
@@ -175,6 +174,12 @@ let g:html5_aria_attributes_complete = 0
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+" }}}
+
+" Easytags
+" {{{
+let g:easytags_dynamic_files = 1
+autocmd FileType ruby let b:easytags_auto_highlight = 0
 " }}}
 
 " statusline 
@@ -300,3 +305,4 @@ if has('gui_running')
   " }}}
 endif
 " }}}
+"
