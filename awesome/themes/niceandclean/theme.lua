@@ -36,10 +36,7 @@ end
 theme.font          = "Sans 7"
 
 theme.bg_normal     = "#222222"
-theme.bg_focus     = "#222222"
---theme.bg_focus      = "#71badc"
---theme.bg_focus      = "#33aacc"
---theme.bg_focus      = "#dedede"
+theme.bg_focus      = "#222222"
 
 theme.bg_urgent     = "#d02e54"
 theme.bg_minimize   = "#444444"
@@ -51,7 +48,7 @@ theme.fg_minimize   = "#ffffff"
 
 theme.border_width  = "1"
 theme.border_normal = "#747474"
-theme.border_focus  = "#71badc"
+theme.border_focus  = "#2b83ad"
 theme.border_marked = "#91231c"
 --theme.border_focus  = "#dedede"
 
