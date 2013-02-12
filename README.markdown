@@ -1,0 +1,31 @@
+# Dotfiles
+
+## Install
+
+```
+git clone git://github.com/smolnar/dotfiles.git
+cd dotfiles
+git submodule init
+git submodule update
+```
+
+Symlink files you need in ~.
+
+## Screenshots
+
+[Clean](screenshots/clean.png)
+[Dirty](screenshots/dirty.png)
+[Vim](screenshots/vim.png)
+
+## References
+`awesome` is based on this configuration [JackH79 cfg](https://github.com/JackH79/.dotfiles/tree/master/.config/awesome)
+
+`vimrc` is briefly based on configuration from [lusis vim configs](https://github.com/lusis/vim-configs) and mainly on [kremso vimrc](https://github.com/kremso/dotfiles)
+
+`pentadactylrc` is based on [azuswis pentadactyl](https://github.com/azuwis/.pentadactyl)
+
+`zshrc` is based on configuration from [Lokaltog zsh](https://github.com/Lokaltog/sync) and [kremso zsh](https://github.com/kremso/dotfiles/blob/master/.zshrc)
+
+## TODO
+
+* Create Rakefile for complete setup.
