@@ -116,7 +116,7 @@ map <A-b-Right> :bNext<CR>
 map <Y> "+y<CR>
 
 " run ctags
-map <leader-r> :!ctags -R<CR>
+map <leader>r :silent! !ctags -R . &<CR>
 
 " copy from clipboard with ease
 nnoremap <leader>p "+p
@@ -179,7 +179,8 @@ let g:html_indent_style1 = "inc"
 " Easytags
 " {{{
 let g:easytags_dynamic_files = 1
-autocmd FileType ruby let b:easytags_auto_highlight = 0
+let g:easytags_auto_highlight = 0
+let g:easytags_on_cursorhold = 0
 " }}}
 
 " statusline 
@@ -283,7 +284,7 @@ let g:rails_statusline = 1
 " GUI setting
 " {{{
 if has('gui_running')
-  set guifont=Liberation\ Mono\ 9
+  set guifont=Dejavu\ Sans\ Mono\ 9
   "set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
   "set guifont=Monaco\ 10
   set guioptions-=m  "remove menu bar
