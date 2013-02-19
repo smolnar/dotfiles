@@ -85,6 +85,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, "space",                function () awful.layout.inc(layouts,  1) end),
 	awful.key({ modkey, "Shift"   }, "space",                function () awful.layout.inc(layouts, -1) end),
 
+  -- Gvim
+	awful.key({ modkey,           }, "g",                    function () awful.util.spawn("run_gvim") end),
 
 	-- Keyboard layout
 	awful.key({ altkey}, "Shift_L", function() kbdcfg.switch() end), 
