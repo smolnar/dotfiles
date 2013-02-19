@@ -11,7 +11,7 @@
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export DE=gnome
-export BROWSER=firefox
+export BROWSER=google-chrome
 
 # fix for new locale support in archlinux
 export LANG="en_US.utf-8"
@@ -35,7 +35,7 @@ export LANG="en_US.utf-8"
 #esac
 
 gnome-settings-daemon &
-sleep 1 &
+sleep 2
 gnome-screensaver &
 gnome-power-manager &
 nm-applet &
