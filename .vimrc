@@ -94,9 +94,11 @@ set encoding=utf-8
 
   " Removes trailing spaces
   function! TrimWhiteSpace()
-    %s/^\s*$//
+    %s/^\s*$//e
     ''
   :endfunction
+
+
 
   " Filter and trim whitespaces
   autocmd FileWritePre * :call TrimWhiteSpace()
