@@ -17,9 +17,6 @@ Symlink files you need in ~.
 [Dirty](https://raw.github.com/smolnar/dotfiles/ubuntu/screenshots/dirty.png)
 [Vim](https://raw.github.com/smolnar/dotfiles/ubuntu/screenshots/vim.png)
 
-<img src="https://raw.github.com/smolnar/dotfiles/ubuntu/screenshots/clean.png"
-height="384" width="683"/>
-
 ## References
 `awesome` is based on this configuration [JackH79 cfg](https://github.com/JackH79/.dotfiles/tree/master/.config/awesome)
 
