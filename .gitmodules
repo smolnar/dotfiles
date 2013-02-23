@@ -73,9 +73,6 @@
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
-[submodule ".vim/bundle/l9"]
-	path = .vim/bundle/l9
-	url = https://github.com/vim-scripts/L9.git
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
