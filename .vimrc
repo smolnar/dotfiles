@@ -66,7 +66,7 @@ set encoding=utf-8
 
   set expandtab
   set wrap
-  set foldenable
+  set nofoldenable
   set foldmethod=manual
   set showmatch
 
@@ -97,8 +97,6 @@ set encoding=utf-8
     %s/^\s*$//e
     ''
   :endfunction
-
-
 
   " Filter and trim whitespaces
   autocmd FileWritePre * :call TrimWhiteSpace()
@@ -158,11 +156,11 @@ set encoding=utf-8
   map <Y> "+y<CR>
 
   " run ctags silently
-  map <leader>r :silent! !ctags -R . &<CR>
+  map <leader>t :silent! !ctags -R . &<CR>
 
   " copy from clipboard with ease
   nnoremap <leader>p "+p
-  nnoremap <leader>y "+yy
+  nnoremap <leader>y "+y
   " }}}
   "
   " start ack search
@@ -171,6 +169,10 @@ set encoding=utf-8
   " reformat whole file
   nnoremap <leader>= ggVG=
 
+" convert {} to do/end
+  nnoremap <leader>b ^f{cwdo<cr><esc>$xxoend<esc>
+
+  " }}}
 
 " Filetypes
 " {{{
@@ -221,6 +223,14 @@ set encoding=utf-8
     ""autocmd FileType c,cpp,h,hpp     colorscheme molokai
   augroup END
 
+  " }}}
+
+  " Git {{{
+    augroup FTGit
+      au!
+      autocmd FileType git,gitcommit setlocal foldmethod=syntax foldlevel=1
+      autocmd FileType gitcommit setlocal spell
+    augroup END
   " }}}
 
 " Plugins
@@ -276,6 +286,12 @@ set encoding=utf-8
         \ 'dir':  '\v[\/]\.(git|hg|svn)$',
         \ 'file': '\v\.(exe|so|dll)$'
         \ }
+  map <leader>f :CtrlP<cr>
+  map <leader>b :CtrlPMRU<cr>
+  map <leader>gv :CtrlP app/views<cr>
+  map <leader>gc :CtrlP app/controllers<cr>
+  map <leader>gm :CtrlP app/models<cr>
+
   " }}}
 
   " gist vim
@@ -309,7 +325,7 @@ set encoding=utf-8
   " }}}
 
   " Gundo {{{
-  nnoremap <F6> :GundoToggle<CR>
+  nnoremap <leader>g :GundoToggle<CR>
   " }}}
 
   " Fugitive {{{
@@ -332,16 +348,30 @@ set encoding=utf-8
   " Rails
   " {{{
   nnoremap <C-p> :completefunc()<CR>
-  nnoremap <F7> :Rlib
-  nnoremap <F8> :Rake
-  nnoremap <F9> :Rmodel
-  nnoremap <F10> :Rview
-  nnoremap <F11> :Rcontroller
-  nnoremap <F12> :Rgenerate
+  nnoremap <F6> :Rails 
+  nnoremap <F7> :Rgenerate 
+  nnoremap <F8> :Rake 
+  nnoremap <F9> :Rinitializer 
+  nnoremap <F10> :Rmodel 
+  nnoremap <F11> :Rview 
+  nnoremap <F12> :Rcontroller 
+
+  nnoremap <leader>r :Rails 
+  nnoremap <leader>rc :Rails console<CR>
+  nnoremap <leader>rg :Rgenerate 
+  nnoremap <leader>rr :Rake 
+  nnoremap <leader>ri :Rinitializer 
+  " routes leads to empty initializer path
+  nnoremap <leader>ro :Rinitializer<CR>
+  nnoremap <leader>rv :Rview 
+  nnoremap <leader>rc :Rcontroller 
+  nnoremap <leader>rm :Rmodel 
+
 
   " set rails status line
   let g:rails_statusline = 1
   " }}}
+
 
 " }}}
 
@@ -362,9 +392,9 @@ if has('gui_running')
 
   " Bindings
   " {{{
-  nnoremap <c-o> :browse tabnew :pwd<CR>
-  nnoremap <c-a-s> :browse saveas :pwd<CR>
-  nnoremap <c-a-w> :wq<CR>
+    nnoremap <c-o> :browse tabnew :pwd<CR>
+    nnoremap <c-a-s> :browse saveas :pwd<CR>
+    nnoremap <c-a-w> :wq<CR>
   " }}}
 endif
 " }}}
