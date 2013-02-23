@@ -33,7 +33,7 @@ set encoding=utf-8
   set ttyfast
   set gdefault
   set list
-  set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:~
+  set listchars=tab:▸\ ,trail:¬,extends:❯,precedes:❮,nbsp:~
   set mouse=a " use mouse for everything
   set equalalways " split windows equally
   set splitright splitbelow " new splits right from current and other below
@@ -139,7 +139,7 @@ set encoding=utf-8
   nmap <leader><space> :noh<cr>
 
   " open vertical split and switch to it
-  nnoremap <leader>w <C-w>v<C-w>l
+  nnoremap <leader>v <C-w>v<C-w>l
 
   " open horizontal  split and switch to it
   nnoremap <leader>h :split<CR>
