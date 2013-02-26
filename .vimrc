@@ -1,5 +1,7 @@
 " init
 " {{{
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -33,7 +35,7 @@ set encoding=utf-8
   set ttyfast
   set gdefault
   set list
-  set listchars=tab:▸\ ,trail:¬,extends:❯,precedes:❮,nbsp:~
+  set listchars=tab:»·,trail:¬,extends:❯,precedes:❮,nbsp:~
   set mouse=a " use mouse for everything
   set equalalways " split windows equally
   set splitright splitbelow " new splits right from current and other below
@@ -94,18 +96,20 @@ set encoding=utf-8
 
   " Removes trailing spaces
   function! TrimWhiteSpace()
-    %s/^\s*$//e
-    ''
-  :endfunction
+    if !&binary && &filetype != 'diff'
+      normal mz
+      normal Hmy
+      %s/^\s\+$//e
+      normal 'yz<CR>
+      normal `z
+    endif
+  endfunction
 
   " Filter and trim whitespaces
   autocmd FileWritePre * :call TrimWhiteSpace()
   autocmd FileAppendPre * :call TrimWhiteSpace()
   autocmd FilterWritePre * :call TrimWhiteSpace()
   autocmd BufWritePre * :call TrimWhiteSpace()
-
-  map <F8> :call TrimWhiteSpace()<CR>
-  map! <F8> :call TrimWhiteSpace()<CR>
 
   " Use relative numbering in insert mode
   autocmd InsertEnter * :set relativenumber
@@ -117,6 +121,9 @@ set encoding=utf-8
 " {{{
 " Map leader
   let mapleader = ','
+
+  " Open all folds
+  nnoremap <space> :%foldopen<CR>
 
   " convenient window switching
   map <C-h> <C-w>j
@@ -133,24 +140,28 @@ set encoding=utf-8
   " Save like a pro
   nnoremap <c-s> :w<cr>
 
+  nnoremap <C-M-q> :q<CR>
+  nnoremap <leader>q :q<CR>
+
   " this key combination gets rid of the search highlights
   nmap <leader><space> :noh<cr>
 
   " open vertical split and switch to it
   nnoremap <leader>v <C-w>v<C-w>l
+  nnoremap <C-M-v> <C-w>v<C-w>l
 
   " open horizontal  split and switch to it
   nnoremap <leader>h :split<CR>
 
   " tabs - moving around
   map <C-n> :tabnew<CR>
-  map <C-A-n> :tabedit %<CR>
-  map <A-Right> :tabnext<cr>
-  map <A-Left> :tabprevious<cr>
+  map <C-M-n> :tabedit %<CR>
+  map <M-Right> :tabnext<cr>
+  map <M-Left> :tabprevious<cr>
 
   " buffers - moving around
-  map <A-b-Left> :bprevious<CR>
-  map <A-b-Right> :bNext<CR>
+  map <M-b-Left> :bprevious<CR>
+  map <M-b-Right> :bNext<CR>
 
   " copy/paste to clipboard
   map <Y> "+y<CR>
@@ -160,18 +171,68 @@ set encoding=utf-8
 
   " copy from clipboard with ease
   nnoremap <leader>p "+p
-  nnoremap <leader>y "+y
+  nnoremap <leader>y "+yy
   " }}}
   "
   " start ack search
-  nnoremap <leader>a :Ack 
+  nnoremap <leader>a :Ack
 
   " reformat whole file
   nnoremap <leader>= ggVG=
 
-" convert {} to do/end
+  " convert {} to do/end
   nnoremap <leader>b ^f{cwdo<cr><esc>$xxoend<esc>
 
+
+  " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
+  " (it will prompt for sudo password when writing)
+  cmap w!! %!sudo tee > /dev/null %
+
+  " upper/lower word
+  nmap <leader>u mQviwU`Q
+  nmap <leader>l mQviwu`Q
+
+  " upper/lower first char of word
+  nmap <leader>wu mQgewvU`Q
+  nmap <leader>wl mQgewvu`Q
+
+  " cd to the directory containing the file in the buffer
+  nmap <silent> <leader>cd :lcd %:h<CR>
+
+  " Create the directory containing the file in the buffer
+  nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
+
+  " Swap two words
+  nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
+
+  " Map the arrow keys to be based on display lines, not physical lines
+  map <Down> gj
+  map <Up> gk
+
+  " Toggle hlsearch with <leader>hs
+  nmap <leader>hs :set hlsearch! hlsearch?<CR>
+
+  " Map Alt-# to switch tabs
+  map  <M-0> 0gt
+  imap <M-0> <Esc>0gt
+  map  <M-1> 1gt
+  imap <M-1> <Esc>1gt
+  map  <M-2> 2gt
+  imap <M-2> <Esc>2gt
+  map  <M-3> 3gt
+  imap <M-3> <Esc>3gt
+  map  <M-4> 4gt
+  imap <M-4> <Esc>4gt
+  map  <M-5> 5gt
+  imap <M-5> <Esc>5gt
+  map  <M-6> 6gt
+  imap <M-6> <Esc>6gt
+  map  <M-7> 7gt
+  imap <M-7> <Esc>7gt
+  map  <M-8> 8gt
+  imap <M-8> <Esc>8gt
+  map  <M-9> 9gt
+  imap <M-9> <Esc>9gt
   " }}}
 
 " Filetypes
@@ -288,9 +349,9 @@ set encoding=utf-8
         \ }
   map <leader>f :CtrlP<cr>
   map <leader>b :CtrlPMRU<cr>
-  map <leader>gv :CtrlP app/views<cr>
-  map <leader>gc :CtrlP app/controllers<cr>
-  map <leader>gm :CtrlP app/models<cr>
+  map <leader>ev :CtrlP app/views<cr>
+  map <leader>ec :CtrlP app/controllers<cr>
+  map <leader>em :CtrlP app/models<cr>
 
   " }}}
 
@@ -325,13 +386,13 @@ set encoding=utf-8
   " }}}
 
   " Gundo {{{
-  nnoremap <leader>g :GundoToggle<CR>
+  nnoremap <leader>gu :GundoToggle<CR>
   " }}}
 
   " Fugitive {{{
-  nnoremap <c>gs :Gstatus<cr>
-  nnoremap <c>gc :Gcommit<cr>
-  nnoremap <c>gd :Gdiff<cr>
+  nnoremap <leader>gs :Gstatus<cr>
+  nnoremap <leader>gc :Gcommit<cr>
+  nnoremap <leader>gd :Gdiff<cr>
   " }}}
 
   " NERDTree {{{
@@ -348,24 +409,23 @@ set encoding=utf-8
   " Rails
   " {{{
   nnoremap <C-p> :completefunc()<CR>
-  nnoremap <F6> :Rails 
-  nnoremap <F7> :Rgenerate 
-  nnoremap <F8> :Rake 
-  nnoremap <F9> :Rinitializer 
-  nnoremap <F10> :Rmodel 
-  nnoremap <F11> :Rview 
-  nnoremap <F12> :Rcontroller 
+  nnoremap <F6> :Rails
+  nnoremap <F7> :Rgenerate
+  nnoremap <F8> :Rake
+  nnoremap <F9> :Rinitializer
+  nnoremap <F10> :Rmodel
+  nnoremap <F11> :Rview
+  nnoremap <F12> :Rcontroller
 
-  nnoremap <leader>r :Rails 
-  nnoremap <leader>rc :Rails console<CR>
-  nnoremap <leader>rg :Rgenerate 
-  nnoremap <leader>rr :Rake 
-  nnoremap <leader>ri :Rinitializer 
+  nnoremap <leader>ra :Rails
+  nnoremap <leader>rg :Rgenerate
+  nnoremap <leader>rr :Rake
+  nnoremap <leader>ri :Rinitializer
   " routes leads to empty initializer path
   nnoremap <leader>ro :Rinitializer<CR>
-  nnoremap <leader>rv :Rview 
-  nnoremap <leader>rc :Rcontroller 
-  nnoremap <leader>rm :Rmodel 
+  nnoremap <leader>rv :Rview
+  nnoremap <leader>rc :Rcontroller
+  nnoremap <leader>rm :Rmodel
 
 
   " set rails status line
@@ -392,10 +452,14 @@ if has('gui_running')
 
   " Bindings
   " {{{
-    nnoremap <c-o> :browse tabnew :pwd<CR>
-    nnoremap <c-a-s> :browse saveas :pwd<CR>
-    nnoremap <c-a-w> :wq<CR>
+    nnoremap <C-o> :browse tabnew :pwd<CR>
+    nnoremap <C-M-s> :browse saveas :pwd<CR>
+    nnoremap <C-M-w> :wq<CR>
+    nnoremap <C-M-f> :set guifont=*<CR>
   " }}}
+  "
+  cd $HOME/projects
 endif
 " }}}
 "
+
