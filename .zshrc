@@ -63,7 +63,7 @@ export LC_ADDRESS="en_US.utf8"
 export LC_TELEPHONE="en_US.utf8"
 export LC_MEASUREMENT="en_US.utf8"
 export LC_IDENTIFICATION="en_US.utf8"
-export LC_ALL=""
+export LC_ALL="en_US.utf-8"
 # }}}
 # Applications {{{
 export PAGER="less"
