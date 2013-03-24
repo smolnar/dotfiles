@@ -143,6 +143,13 @@
       map <C-k> <C-w>i
       map <C-l> <C-w>l
 
+      map <C-S-Left> <C-w><Left>
+      map <C-S-Right> <C-w><Right>
+      map <C-S-Up> <C-w><Up>
+      map <C-S-Down> <C-w><Down>
+
+
+
       " Emacs-like keybindings
       cnoremap <C-a> <Home>
       cnoremap <C-e> <End>
