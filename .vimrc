@@ -21,6 +21,7 @@
       set backupdir=~/.vim/tmp/backup " where to put backup files
       set undodir=~/.vim/tmp/undo " directory to place undo files in
       set undofile " create undo file
+      set noswapfile
       set mouse=a " use mouse for everything
       set equalalways " split windows equally
       set splitright splitbelow " new splits right from current and other below
@@ -53,7 +54,7 @@
       set gdefault  " global matching is default
       set smartcase " use smartcase, when search query starts with Uppercase, turn off case insensitive search
 
-      "set list " show trailing characters
+      set list " show trailing characters
       set listchars=tab:▸\ ,trail:¬,extends:❯,precedes:❮,nbsp:~ " it show ¬ character when as you type, fill free to comment out set list
 
       set number " set line numbering
@@ -143,10 +144,10 @@
       map <C-k> <C-w>i
       map <C-l> <C-w>l
 
-      map <C-S-Left> <C-w><Left>
-      map <C-S-Right> <C-w><Right>
-      map <C-S-Up> <C-w><Up>
-      map <C-S-Down> <C-w><Down>
+      map <M-Left> <C-w><Left>
+      map <M-Right> <C-w><Right>
+      map <M-Up> <C-w><Up>
+      map <M-Down> <C-w><Down>
 
 
 
@@ -171,8 +172,8 @@
       " tabs - moving around, (CTRL+n to new tab)
       map <C-t> :tabnew<CR>
       map <leader>t :tabnew<CR>
-      map <M-Right> :tabnext<cr>
-      map <M-Left> :tabprevious<cr>
+      map <M-S-Right> :tabnext<cr>
+      map <M-S-Left> :tabprevious<cr>
 
       " buffers - moving around
       map <A-x-Left> :bprevious<CR>
@@ -465,7 +466,7 @@
       set guioptions-=b
       set guioptions-=R
       set guioptions-=L
-      set showtabline=2   " show tabs in gvim, not vim
+      set showtabline=1   " show tabs in gvim, not vim
       set guitablabel=%t  " show simple filname as tabname
 
       " Bindings
