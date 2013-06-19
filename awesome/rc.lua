@@ -273,7 +273,9 @@ function (widget, args)
     state = "paused"
   end
 
-  return span_container(theme.init_color) .. span('#FFFFFF') .. state .. spandef .. spandef
+  if state then
+    return span_container(theme.init_color) .. span('#FFFFFF') .. state .. spandef .. spandef
+  end
 end, 1 )
 
   --{{---| TaskWarrior widget |-----------------------------------------------------------------------
