@@ -39,7 +39,9 @@
     " }}}
 
     " UI {{{
-      colorscheme Monokai " Color scheme
+      syntax enable
+      set background=dark
+      colorscheme Monokai
 
       set tabstop=4 " when there's tab, it should be indented by 4 spaces
       set shiftwidth=2 " Number of spaces to use for each step of (auto)indent
@@ -85,7 +87,40 @@
       set tabstop=4 " real tabs should be 4, and they will show with set list on
 
       set completeopt=longest,menu,preview
-      " }}}
+
+      " configure cursor for temrinal
+      " color
+"      if &term =~ "xterm\\|rxvt"
+        "" use an orange cursor in insert mode
+        ""let &t_SI = "\<Esc>]12;orange\x7"
+        "" use a red cursor otherwise
+        ""let &t_EI = "\<Esc>]12;red\x7"
+        ""silent !echo -ne "\003]12;gray\007"
+        "" reset cursor when vim exits
+        ""autocmd VimLeave * silent !echo -ne "\033]112\007"
+        "" use \003]12;gray\007 for gnome-terminal
+      "endif
+
+      """ shape
+      "if &term =~ '^xterm'
+        "" solid underscore
+        "let &t_SI .= "\<Esc>[4 q"
+        "" solid block
+        "let &t_EI .= "\<Esc>[2 q"
+        "" 1 or 0 -> blinking block
+        "" 3 -> blinking underscore
+        "" Recent versions of xterm (282 or above) also support
+        "" 5 -> blinking vertical bar
+        "" 6 -> solid vertical bar
+"      endif
+
+      " if we run gnome-terminal, use gconf tool
+"      au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+      "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+      "au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+      "au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+
+    " }}}
 
     " Advanced macros
     " {{{
@@ -286,6 +321,7 @@
         autocmd FileType ruby,eruby             let g:rubycomplete_rails=1
         autocmd FileType ruby,eruby             let g:rubycomplete_classes_in_global=1
         autocmd FileType ruby,eruby             let g:rubycomplete_buffer_loading = 1
+        autocmd FileType ruby,eruby             set foldmethod=manual
       augroup END
       " }}}
 
