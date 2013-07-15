@@ -184,8 +184,6 @@
       map <M-Up> <C-w><Up>
       map <M-Down> <C-w><Down>
 
-
-
       " Emacs-like keybindings
       cnoremap <C-a> <Home>
       cnoremap <C-e> <End>
@@ -218,7 +216,8 @@
       nnoremap <C-M-w> :wq<CR>
 
       " run ctags silently
-      map <leader>ct :silent! !ctags -R . &<CR>
+      map <leader>ct :silent! ctags -R . &> /dev/null<CR>
+      " au BufWritePost *.* silent! !ctags -R  &> /dev/null &
 
       " copy from clipboard with ease (<leader>p => paste what you copied by CTRL+c in clipboard)
       nnoremap <leader>p "+p
@@ -233,14 +232,6 @@
       " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
       " (it will prompt for sudo password when writing)
       cmap w!! %!sudo tee > /dev/null %
-
-      " upper/lower word
-      nmap <leader>u mQviwU`Q
-      nmap <leader>l mQviwu`Q
-
-      " upper/lower first char of word
-      nmap <leader>wu mQgewvU`Q
-      nmap <leader>wl mQgewvu`Q
 
       " cd to the directory containing the file in the buffer
       nmap <silent> <leader>cd :lcd %:h<CR>
@@ -342,13 +333,13 @@
         autocmd FileType gitcommit setlocal spell
       augroup END
       " }}}
+      "
 
 
     " }}}
 
     " Plugins
     " {{{
-
 
       " Clang 
       " {{{
@@ -370,6 +361,17 @@
       let g:html_indent_inctags = "html,body,head,tbody"
       let g:html_indent_script1 = "inc"
       let g:html_indent_style1 = "inc"
+      " }}}
+      "
+
+      " vim-tags
+      " {{{
+      let g:vim_tags_auto_generate = 1
+      let g:vim_tags_use_vim_dispatch = 1
+      let g:vim_tags_directories = ['.tags'] " if tags directory exists, put tags there
+
+      let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore']
+
       " }}}
 
       " Statusline (vim-powerline)
@@ -396,6 +398,7 @@
       set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
       nnoremap <F3> :CtrlP<CR>
       nnoremap <F4> :CtrlPBuffer<CR>
+      nnoremap <F5> :CtrlPTag<CR>
       nnoremap <F2> :CtrlPDir<CR>
       let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -514,70 +517,4 @@
       " }}}
     endif
     " }}}
-" }}}
-
-" Misc
-" {{{
-  "here is a more exotic version of my original Kwbd script
-  "delete the buffer; keep windows; create a scratch buffer if no buffers left
-  function! s:Kwbd(kwbdStage)
-    if(a:kwbdStage == 1)
-      if(!buflisted(winbufnr(0)))
-        bd!
-        return
-      endif
-      let s:kwbdBufNum = bufnr("%")
-      let s:kwbdWinNum = winnr()
-      windo call s:Kwbd(2)
-      execute s:kwbdWinNum . 'wincmd w'
-      let s:buflistedLeft = 0
-      let s:bufFinalJump = 0
-      let l:nBufs = bufnr("$")
-      let l:i = 1
-      while(l:i <= l:nBufs)
-        if(l:i != s:kwbdBufNum)
-          if(buflisted(l:i))
-            let s:buflistedLeft = s:buflistedLeft + 1
-          else
-            if(bufexists(l:i) && !strlen(bufname(l:i)) && !s:bufFinalJump)
-              let s:bufFinalJump = l:i
-            endif
-          endif
-        endif
-        let l:i = l:i + 1
-      endwhile
-      if(!s:buflistedLeft)
-        if(s:bufFinalJump)
-          windo if(buflisted(winbufnr(0))) | execute "b! " . s:bufFinalJump | endif
-        else
-          enew
-          let l:newBuf = bufnr("%")
-          windo if(buflisted(winbufnr(0))) | execute "b! " . l:newBuf | endif
-        endif
-        execute s:kwbdWinNum . 'wincmd w'
-      endif
-      if(buflisted(s:kwbdBufNum) || s:kwbdBufNum == bufnr("%"))
-        execute "bd! " . s:kwbdBufNum
-      endif
-      if(!s:buflistedLeft)
-        set buflisted
-        set bufhidden=delete
-        set buftype=
-        setlocal noswapfile
-      endif
-    else
-      if(bufnr("%") == s:kwbdBufNum)
-        let prevbufvar = bufnr("#")
-        if(prevbufvar > 0 && buflisted(prevbufvar) && prevbufvar != s:kwbdBufNum)
-          b #
-        else
-          bn
-        endif
-      endif
-    endif
-  endfunction
-
-  command! Kwbd call s:Kwbd(1)
-  nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
-
 " }}}
