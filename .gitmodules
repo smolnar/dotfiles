@@ -100,6 +100,3 @@
 [submodule ".vim/bundle/vim-tags"]
 	path = .vim/bundle/vim-tags
 	url = https://github.com/szw/vim-tags.git
-[submodule ".vim/bundle/vim-snippets"]
-	path = .vim/bundle/vim-snippets
-	url = https://github.com/smolnar/vim-snippets.git
