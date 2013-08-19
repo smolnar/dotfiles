@@ -70,8 +70,8 @@ export PAGER="less"
 export MANPAGER="$PAGER"
 export EDITOR="vim"
 export VISUAL="vim"
-export BROWSER="firefox"
-export TERM="xterm-color"
+export BROWSER="google-chrome"
+export TERM="xterm-256color"
 # }}}
 # Paths {{{
 export PATH="$HOME/sync/bin:/usr/bin/vendor_perl:$PATH" # Add sync/bin to path

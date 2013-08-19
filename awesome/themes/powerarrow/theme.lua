@@ -50,7 +50,7 @@ theme.color = {
   "#352d2d"
 }
 
-theme.font                                  = "Liberation Sans 8"
+theme.font          = "Liberation Sans 8"
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#222222"
 
