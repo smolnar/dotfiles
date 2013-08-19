@@ -103,3 +103,9 @@
 [submodule ".vim/bundle/vim-snippets"]
 	path = .vim/bundle/vim-snippets
 	url = https://github.com/smolnar/vim-snippets.git
+[submodule ".vim/bundle/vim-delimitMate"]
+	path = .vim/bundle/vim-delimitMate
+	url = https://github.com/Raimondi/delimitMate
+[submodule ".vim/bundle/vim-rspec"]
+	path = .vim/bundle/vim-rspec
+	url = https://github.com/thoughtbot/vim-rspec
