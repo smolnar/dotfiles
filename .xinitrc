@@ -48,5 +48,6 @@ export GNOME_KEYRING_PID
 
 mpd & 
 dropbox start &
+xmodmap ~/.xmodmaprc &
 
 exec awesome 
