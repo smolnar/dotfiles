@@ -307,12 +307,13 @@
       " Ruby {{{
       augroup FTRuby
         au!
-        autocmd FileType eruby,yaml,ruby        setlocal ai et sta sw=2 sts=2
-        autocmd BufNewFile,BufRead *.html.erb   set filetype=eruby.html  " load html snippets along with erb
-        autocmd FileType ruby,eruby             let g:rubycomplete_rails=1
-        autocmd FileType ruby,eruby             let g:rubycomplete_classes_in_global=1
-        autocmd FileType ruby,eruby             let g:rubycomplete_buffer_loading = 1
-        autocmd FileType ruby,eruby             set foldmethod=manual
+        autocmd FileType eruby,yaml,ruby         setlocal ai et sta sw=2 sts=2
+        autocmd BufNewFile,BufRead *.html.erb    set filetype=eruby.html  " load html snippets along with erb
+        autocmd FileType ruby,eruby              let g:rubycomplete_rails=1
+        autocmd FileType ruby,eruby              let g:rubycomplete_classes_in_global=1
+        autocmd FileType ruby,eruby              let g:rubycomplete_buffer_loading = 1
+        autocmd FileType ruby,eruby              set foldmethod=manual
+        autocmd BufReadPost,BufNewFile *_spec.rb set syntax=rspec
       augroup END
       " }}}
 
@@ -334,7 +335,6 @@
       augroup END
       " }}}
       "
-
 
     " }}}
 
