@@ -313,7 +313,11 @@
         autocmd FileType ruby,eruby              let g:rubycomplete_classes_in_global=1
         autocmd FileType ruby,eruby              let g:rubycomplete_buffer_loading = 1
         autocmd FileType ruby,eruby              set foldmethod=manual
-        autocmd BufReadPost,BufNewFile *_spec.rb set syntax=rspec
+
+        " Rspec {{{
+        autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let double mock
+        highlight def link rubyRspec Identifier
+        " }}}
       augroup END
       " }}}
 
