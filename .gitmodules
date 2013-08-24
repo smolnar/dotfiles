@@ -109,6 +109,3 @@
 [submodule ".vim/bundle/vim-rspec"]
 	path = .vim/bundle/vim-rspec
 	url = https://github.com/thoughtbot/vim-rspec
-[submodule ".vim/bundle/vim-rspec-syntax"]
-	path = .vim/bundle/vim-rspec-syntax
-	url = https://github.com/Keithbsmiley/rspec.vim.git
