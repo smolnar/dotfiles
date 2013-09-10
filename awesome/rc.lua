@@ -499,12 +499,17 @@ awful.key({ modkey,           }, "Return", function() awful.util.spawn(terminal)
 awful.key({ modkey,           }, "grave",                function () awful.util.spawn(terminal .. " -e htop") end),
 -- volume + mpd
 awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 2dB-") end),
+awful.key({ modkey,           }, "F11", function () awful.util.spawn("amixer -q sset Master 2dB-") end),
 awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 2dB+") end),
+awful.key({ modkey,           }, "F12", function () awful.util.spawn("amixer -q sset Master 2dB+") end),
 awful.key({                   }, "XF86AudioStop",        function () awful.util.spawn("mpc stop") end),
+awful.key({ modkey,           }, "Up",        function () awful.util.spawn("mpc stop") end),
+awful.key({ modkey,           }, "Down",        function () awful.util.spawn("mpc toggle") end),
 awful.key({                   }, "XF86AudioPlay",        function () awful.util.spawn("mpc toggle") end),
 awful.key({                   }, "XF86AudioNext",        function () awful.util.spawn("mpc next") end),
 awful.key({                   }, "XF86AudioPrev",        function () awful.util.spawn("mpc prev") end),
 awful.key({                   }, "XF86AudioMute",        function () awful.util.spawn("amixer -q sset Master toggle") end),
+awful.key({ modkey,           }, "F10",        function () awful.util.spawn("amixer -q sset Master toggle") end),
 awful.key({ modkey, "Shift"          }, "m",                    function () awful.util.spawn(terminal .. " -e ncmpcpp") end),
 -- file managers
 awful.key({ modkey,   "Shift"        }, "n",                    function () awful.util.spawn(terminal .. " -e nautilus") end),
