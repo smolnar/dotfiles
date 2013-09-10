@@ -185,10 +185,11 @@
       map <M-Down> <C-w><Down>
 
       " Emacs-like keybindings
-      cnoremap <C-a> <Home>
-      cnoremap <C-e> <End>
-      inoremap <C-a> <Esc>^i
-      inoremap <C-e> <Esc>A
+      inoremap <C-a> <Home>
+      inoremap <C-e> <End>
+      nnoremap <c-a> <Home>
+      nnoremap <c-e> <End>
+
 
       " Save like a pro (CTRL+s)
       nnoremap <c-s> :w<cr>

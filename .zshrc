@@ -345,3 +345,5 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # enable CTRL+S / Q
 stty -ixon
+
+#export LOAD_GEMS_FROM_LOCAL=1
