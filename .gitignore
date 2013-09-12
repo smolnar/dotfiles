@@ -3,3 +3,7 @@
 *~
 *.log
 /.vim/.netrwhist
+/.mpd/mpd.db
+/.mpd/mpdstate
+/.mpd/playlists/SomaFM_IndiePopRocks.m3u
+/.mpd/sticker.sql
