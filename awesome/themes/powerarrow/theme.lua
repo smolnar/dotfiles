@@ -50,7 +50,7 @@ theme.color = {
   "#352d2d"
 }
 
-theme.font          = "Liberation Sans 8"
+theme.font          = "Liberation Sans 10"
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#222222"
 
@@ -95,7 +95,7 @@ theme.notify_font_color_1                   = green
 theme.notify_font_color_2                   = dblue
 theme.notify_font_color_3                   = black
 theme.notify_font_color_4                   = white
-theme.notify_font                           = "Liberation Sans 8"
+theme.notify_font                           = "Liberation Sans 10"
 theme.notify_fg                             = theme.fg_normal
 theme.notify_bg                             = theme.bg_normal
 theme.notify_border                         = theme.border_focus
@@ -105,10 +105,10 @@ theme.awful_widget_color                    = dblue
 theme.awful_widget_gradien_color_1          = orange
 theme.awful_widget_gradien_color_2          = orange
 theme.awful_widget_gradien_color_3          = orange
-theme.awful_widget_height                   = 12
-theme.wibox_height                          = 14
-theme.awful_widget_margin_top               = 1
-theme.arrow = "⮂" 
+theme.awful_widget_height                   = 13
+theme.wibox_height                          = 16
+theme.awful_widget_margin_top               = 0
+theme.arrow = "⮂"
 
 -- There are other variable sets
 -- overriding the default one when

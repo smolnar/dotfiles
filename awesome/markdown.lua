@@ -1,17 +1,17 @@
 spandef = '</span>'
 
 function span_container(bg)
-  return '<span background="' ..  bg .. '" font="Liberation Sans 9"> '
+  return '<span background="' ..  bg .. '" font="Liberation Sans 10"> '
 end
 
 function span_arrow(bg, color)
-  return '<span font="Terminus 8" color="' .. color .. '" background="' .. bg .. '"> ' .. theme.arrow .. "</span>"
+  return '<span font="Dejavu Mono for Powerline 10" color="' .. color .. '" background="' .. bg .. '"> ' .. theme.arrow .. "</span>"
 end
 
 function span(color, bg)
   if bg then
-    return '<span color="' .. color .. '" font="Liberation Sans 8" background="' .. bg .. '"> '
+    return '<span color="' .. color .. '" font="Liberation Sans 10" background="' .. bg .. '"> '
   else
-    return '<span color="' .. color .. '" font="Liberation Sans 8"> '
+    return '<span color="' .. color .. '" font="Liberation Sans 10"> '
   end
 end
