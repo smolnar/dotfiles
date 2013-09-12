@@ -38,6 +38,7 @@ gnome-settings-daemon &
 sleep 2
 gnome-screensaver &
 gnome-power-manager &
+gnome-sound-applet &
 nm-applet &
 eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
 
