@@ -1,8 +1,8 @@
 [user]
-	name = Samuel Molnar
-	email = molnar.samuel@gmail.com
+  name = Samuel Molnar
+  email = molnar.samuel@gmail.com
 [merge]
-	tool=meld
+  tool=meld
 [color]
   branch = auto
   diff = auto
@@ -24,9 +24,11 @@
   changed = green
   untracked = cyan
 [alias]
-	df=diff
-	co=checkout
-	cl=clone
-	cm=commit
-	st=status
-	pp=push origin master
+  df=diff
+  co=checkout
+  cl=clone
+  cm=commit
+  st=status
+  pp=push origin master
+  lg=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
