@@ -29,7 +29,7 @@
       set wildmenu " wildmenu when autocomplting option
       set wildmode=full " complete the full match, this is default behaviour
       set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png " there files will be ignored when completing in wild menu
-      set clipboard+=unnamed,unnamedplus,autoselect " share clipboard
+      set clipboard+=unnamedplus " share clipboard
       set history=1000
       set undolevels=700
       set tags=.tags;/ " save tags generated for files in current working directory
@@ -222,7 +222,8 @@
 
       " copy from clipboard with ease (<leader>p => paste what you copied by CTRL+c in clipboard)
       nnoremap <leader>p "+p
-      nnoremap <leader>y "+yy
+      nnoremap <leader>c "+dd
+      nnoremap <leader>y "+y
 
       " start ack search, (using ACK tool, like grep but for source code)
       nnoremap <leader>a :Ack 
@@ -316,7 +317,7 @@
         autocmd FileType ruby,eruby              set foldmethod=manual
 
         " Rspec {{{
-        autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let double mock
+        autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context expect let double mock
         highlight def link rubyRspec Identifier
         " }}}
       augroup END
@@ -501,7 +502,7 @@
     " GUI setting
     " {{{
     if has('gui_running')
-      set guifont=Dejavu\ Sans\ Mono\ 9
+      set guifont=Ubuntu\ Mono\ 12
       set guioptions-=m  "remove menu bar
       set guioptions-=T  "remove toolbar
       set guioptions-=r  "remove right-hand scroll bar
