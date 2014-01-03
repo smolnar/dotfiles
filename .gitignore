@@ -8,3 +8,4 @@
 /.mpd/mpdstate
 /.mpd/playlists/*
 /.mpd/sticker.sql
+/.mpd/mpd.pid
