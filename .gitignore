@@ -1,9 +1,10 @@
 .vim/tmp/*
 .vim/swap/*
+.vim/undo/*
 *~
 *.log
 /.vim/.netrwhist
 /.mpd/mpd.db
 /.mpd/mpdstate
-/.mpd/playlists/SomaFM_IndiePopRocks.m3u
+/.mpd/playlists/*
 /.mpd/sticker.sql
