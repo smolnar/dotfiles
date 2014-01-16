@@ -1,10 +1,7 @@
 " Init
 " {{{
-
   set nocompatible
   filetype off
-  syntax on
-  set encoding=utf-8
 
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
@@ -46,14 +43,16 @@
   Bundle 'Raimondi/delimitMate'
   Bundle 'thoughtbot/vim-rspec'
   Bundle 'bling/vim-airline'
-  Bundle 'bling/vim-bufferline'
+  " Bundle 'bling/vim-bufferline'
   Bundle 'edkolev/tmuxline.vim'
 " }}}
 
 " Settings
 " {{{
 "   Basic {{{
+      filetype on
       filetype plugin indent on
+      set encoding=utf-8
 
       set backspace=indent,eol,start " make backspace a more flexible
       let loaded_matchparen=1 " match paranthesis
