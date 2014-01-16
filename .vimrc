@@ -48,6 +48,7 @@
   Bundle 'thoughtbot/vim-rspec'
   Bundle 'bling/vim-airline'
   Bundle 'bling/vim-bufferline'
+  Bundle 'edkolev/tmuxline.vim'
   " Bundle 'Lokaltog/vim-powerline'
 " }}}
 
@@ -430,6 +431,23 @@
       let g:airline_branch_prefix = '⭠ '
       let g:airline_readonly_symbol = '⭤'
       let g:airline_linecolumn_prefix = '⭡'
+      " }}}
+
+      " Tmuxline
+      " {{{
+      let g:tmuxline_preset = {
+            \'a'    : '#S',
+            \'win'  : ['#I', '#W'],
+            \'cwin' : ['#I', '#W', '#F'],
+            \'y'    : ['%R', '%a', '%Y'],
+            \'z'    : '#H'}
+
+      let g:tmuxline_separators = {
+            \ 'left' : '⮀',
+            \ 'left_alt': '⮁',
+            \ 'right' : '⮂',
+            \ 'right_alt' : '⮃',
+            \ 'space' : ' '}
       " }}}
 
       " vim-powerline
