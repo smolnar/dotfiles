@@ -1,13 +1,54 @@
 " Init
 " {{{
-  runtime bundle/vim-pathogen/autoload/pathogen.vim
-
-  call pathogen#infect()
-  call pathogen#helptags()
 
   set nocompatible
+  filetype off
   syntax on
   set encoding=utf-8
+
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+
+  " let Vundle manage Vundle
+  " required! 
+  Bundle 'gmarik/vundle'
+
+  Bundle 'mattn/gist-vim'
+  Bundle 'sjl/gundo.vim'
+  Bundle 'othree/html5.vim'
+  Bundle 'scrooloose/nerdtree'
+  Bundle 'ervandew/supertab'
+  Bundle 'scrooloose/syntastic'
+  Bundle 'tomtom/tlib_vim'
+  Bundle 'tpope/vim-commentary'
+  Bundle 'ap/vim-css-color'
+  Bundle 'tpope/vim-endwise'
+  Bundle 'tpope/vim-fugitive'
+  Bundle 'pangloss/vim-javascript'
+  Bundle 'tpope/vim-rails'
+  " Bundle 'marcweber/vim-addon-mw-utils'
+  " Bundle 'garbas/vim-snipmate'
+  Bundle 'tpope/vim-surround'
+  Bundle 'mileszs/ack.vim'
+  Bundle 'kchmck/vim-coffee-script'
+  Bundle 'jistr/vim-nerdtree-tabs'
+  Bundle 'scrooloose/nerdcommenter'
+  Bundle 'vim-ruby/vim-ruby'
+  Bundle 'kien/ctrlp.vim'
+  Bundle 'mileszs/ack.vim'
+  Bundle 'Rip-Rip/clang_complete'
+  Bundle 'tpope/vim-git'
+  Bundle 'altercation/vim-colors-solarized'
+  Bundle 'tpope/vim-bundler'
+  Bundle 'tpope/vim-rake'
+  Bundle 'tpope/vim-dispatch.git'
+  Bundle 'szw/vim-tags.git'
+  " Bundle 'smolnar/vim-snippets.git'
+  Bundle 'Raimondi/delimitMate'
+  Bundle 'thoughtbot/vim-rspec'
+  Bundle 'bling/vim-airline'
+  Bundle 'bling/vim-bufferline'
+  " Bundle 'Lokaltog/vim-powerline'
 " }}}
 
 " Settings
@@ -206,12 +247,8 @@
       " tabs - moving around, (CTRL+n to new tab)
       map <C-t> :tabnew<CR>
       map <leader>t :tabnew<CR>
-      map <M-S-Right> :tabnext<cr>
-      map <M-S-Left> :tabprevious<cr>
-
-      " buffers - moving around
-      map <A-x-Left> :bprevious<CR>
-      map <A-x-Right> :bNext<CR>
+      map <M-S-Right> :bprevious<cr>
+      map <M-S-Left> :bnext<cr>
 
       " Write and quit current buffer
       nnoremap <C-M-w> :wq<CR>
@@ -380,23 +417,37 @@
 
       " }}}
 
-      " Statusline (vim-powerline)
+      " vim-airline
       " {{{
-      " Powerline statusbar
       set laststatus=2
-      set statusline=\ "
-      set statusline+=%f\ " file name
-      set statusline+=[
-      set statusline+=%{strlen(&ft)?&ft:'none'}, " filetype
-      set statusline+=%{&fileformat}] " file format
-      set statusline+=%#warningmsg#
-      set statusline+=%{SyntasticStatuslineFlag()}
-      set statusline+=%*
-      set statusline+=\ %{fugitive#statusline()}
-      set statusline+=%h%1*%m%r%w%0* " flag
-      set statusline+=%= " right align
-      set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
-      let g:Powerline_symbols = 'fancy'
+      let g:airline_powerline_fonts = 1
+      let g:airline_theme = 'powerlineish'
+      let g:airline_powerline_fonts=1
+      let g:airline_left_sep = '⮀'
+      let g:airline_left_alt_sep = '⮁'
+      let g:airline_right_sep = '⮂'
+      let g:airline_right_alt_sep = '⮃'
+      let g:airline_branch_prefix = '⭠ '
+      let g:airline_readonly_symbol = '⭤'
+      let g:airline_linecolumn_prefix = '⭡'
+      " }}}
+
+      " vim-powerline
+      " {{{
+      "set laststatus=2
+      "set statusline=\ "
+      "set statusline+=%f\ " file name
+      "set statusline+=[
+      "set statusline+=%{strlen(&ft)?&ft:'none'}, " filetype
+      "set statusline+=%{&fileformat}] " file format
+      "set statusline+=%#warningmsg#
+      "set statusline+=%{SyntasticStatuslineFlag()}
+      "set statusline+=%*
+      "set statusline+=\ %{fugitive#statusline()}
+      "set statusline+=%h%1*%m%r%w%0* " flag
+      "set statusline+=%= " right align
+      "set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
+      "let g:Powerline_symbols = 'fancy'
       " }}}
 
       " CtrlP
@@ -427,12 +478,12 @@
       let g:gist_show_privates = 1
       " }}}
 
-      " supertab {{{
+      " Supertab {{{
       let g:SuperTabDefaultCompletionType = 'context'
       let g:SuperTabContextDefaultCompletionType = '<c-n>'
       " }}}
 
-      " syntastic {{{
+      " Syntastic {{{
       nnoremap <C-E> :SyntasticCheck<CR>
       let g:syntastic_auto_loc_list=1
       let g:syntastic_enable_signs=1
