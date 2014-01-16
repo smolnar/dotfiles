@@ -26,8 +26,9 @@
   Bundle 'tpope/vim-fugitive'
   Bundle 'pangloss/vim-javascript'
   Bundle 'tpope/vim-rails'
-  " Bundle 'marcweber/vim-addon-mw-utils'
-  " Bundle 'garbas/vim-snipmate'
+  Bundle 'MarcWeber/vim-addon-mw-utils'
+  Bundle 'garbas/vim-snipmate'
+  Bundle 'smolnar/vim-snippets.git'
   Bundle 'tpope/vim-surround'
   Bundle 'mileszs/ack.vim'
   Bundle 'kchmck/vim-coffee-script'
@@ -38,18 +39,15 @@
   Bundle 'mileszs/ack.vim'
   Bundle 'Rip-Rip/clang_complete'
   Bundle 'tpope/vim-git'
-  Bundle 'altercation/vim-colors-solarized'
   Bundle 'tpope/vim-bundler'
   Bundle 'tpope/vim-rake'
   Bundle 'tpope/vim-dispatch.git'
   Bundle 'szw/vim-tags.git'
-  " Bundle 'smolnar/vim-snippets.git'
   Bundle 'Raimondi/delimitMate'
   Bundle 'thoughtbot/vim-rspec'
   Bundle 'bling/vim-airline'
   Bundle 'bling/vim-bufferline'
   Bundle 'edkolev/tmuxline.vim'
-  " Bundle 'Lokaltog/vim-powerline'
 " }}}
 
 " Settings
@@ -232,33 +230,31 @@
       nnoremap <c-a> <Home>
       nnoremap <c-e> <End>
 
-
       " Save like a pro (CTRL+s)
       nnoremap <c-s> :w<cr>
 
       " Quit like a pro
       nnoremap <leader>q :q<CR>
 
-      " open vertical split and switch to it
+      " Open vertical split and switch to it
       nnoremap <leader>v <C-w>v<C-w>l
 
-      " open horizontal  split and switch to it
+      " Open horizontal  split and switch to it
       nnoremap <leader>h :split<CR>
 
-      " tabs - moving around, (CTRL+n to new tab)
+      " Tabs - moving around, (CTRL+n to new tab)
       map <C-t> :tabnew<CR>
       map <leader>t :tabnew<CR>
-      map <M-S-Right> :bprevious<cr>
-      map <M-S-Left> :bnext<cr>
+      map <M-S-Left> :bprevious<cr>
+      map <M-S-Right> :bnext<cr>
 
       " Write and quit current buffer
       nnoremap <C-M-w> :wq<CR>
 
       " run ctags silently
       map <leader>ct :silent! ctags -R . &> /dev/null<CR>
-      " au BufWritePost *.* silent! !ctags -R  &> /dev/null &
 
-      " copy from clipboard with ease (<leader>p => paste what you copied by CTRL+c in clipboard)
+      " Copy from clipboard with ease (<leader>p => paste what you copied by CTRL+c in clipboard)
       nnoremap <leader>p "+p
       nnoremap <leader>c "+dd
       nnoremap <leader>y "+y
@@ -266,7 +262,7 @@
       " start ack search, (using ACK tool, like grep but for source code)
       nnoremap <leader>a :Ack 
 
-      " reformat whole file
+      " Reformat whole file
       nnoremap <leader>= ggVG=
 
       " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
@@ -413,7 +409,6 @@
       let g:vim_tags_auto_generate = 1
       let g:vim_tags_use_vim_dispatch = 1
       let g:vim_tags_directories = ['.tags'] " if tags directory exists, put tags there
-
       let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore']
 
       " }}}
@@ -433,7 +428,14 @@
       let g:airline_linecolumn_prefix = '⭡'
       " }}}
 
-      " Tmuxline
+
+      " vim-bufferline
+      " {{{
+      let g:bufferline_fname_mod = ':p:.'
+
+      " }}}
+
+      " vim-tmuxline
       " {{{
       let g:tmuxline_preset = {
             \'a'    : '#S',
@@ -448,24 +450,6 @@
             \ 'right' : '⮂',
             \ 'right_alt' : '⮃',
             \ 'space' : ' '}
-      " }}}
-
-      " vim-powerline
-      " {{{
-      "set laststatus=2
-      "set statusline=\ "
-      "set statusline+=%f\ " file name
-      "set statusline+=[
-      "set statusline+=%{strlen(&ft)?&ft:'none'}, " filetype
-      "set statusline+=%{&fileformat}] " file format
-      "set statusline+=%#warningmsg#
-      "set statusline+=%{SyntasticStatuslineFlag()}
-      "set statusline+=%*
-      "set statusline+=\ %{fugitive#statusline()}
-      "set statusline+=%h%1*%m%r%w%0* " flag
-      "set statusline+=%= " right align
-      "set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
-      "let g:Powerline_symbols = 'fancy'
       " }}}
 
       " CtrlP
