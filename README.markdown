@@ -1,15 +1,17 @@
 # Dotfiles
 
-## Install
+## Installation
 
 ```
-git clone git://github.com/smolnar/dotfiles.git
-cd dotfiles
+git clone https://github.com/smolnar/oh-my-zsh ~/.oh-my-zsh
+git clone https://github.com/smolnar/dotfiles.git ~/.dotfiles
+cd .dotfiles
 git submodule init
 git submodule update
+vim +BundleInstall +qall
 ```
 
-Symlink files you need in ~.
+Symlink files you need to ~.
 
 ## Screenshots
 
