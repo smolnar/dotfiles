@@ -15,8 +15,8 @@ Symlink files you need to ~.
 
 ## Screenshots
 
-[Clean](https://raw.github.com/smolnar/dotfiles/powerarrow/screenshots/clean.png)
-[Dirty](https://raw.github.com/smolnar/dotfiles/powerarrow/screenshots/dirty.png)
+[Clean](https://raw.github.com/smolnar/dotfiles/master/screenshots/clean.png)
+[Dirty](https://raw.github.com/smolnar/dotfiles/master/screenshots/dirty.png)
 
 ## References
 `awesome` is based on this configuration [JackH79 cfg](https://github.com/JackH79/.dotfiles/tree/master/.config/awesome)
