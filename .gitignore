@@ -1,6 +1,6 @@
-.vim/tmp/*
-.vim/swap/*
-.vim/undo/*
+/.vim/tmp/backup
+/.vim/tmp/swap
+/.vim/tmp/undo
 *~
 *.log
 /.vim/.netrwhist
