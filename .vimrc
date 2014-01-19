@@ -6,45 +6,57 @@
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
 
-  " let Vundle manage Vundle
-  " required! 
   Bundle 'gmarik/vundle'
 
-  Bundle 'mattn/gist-vim'
-  Bundle 'sjl/gundo.vim'
-  Bundle 'othree/html5.vim'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'ervandew/supertab'
-  Bundle 'scrooloose/syntastic'
-  Bundle 'tomtom/tlib_vim'
-  Bundle 'tpope/vim-commentary'
-  Bundle 'ap/vim-css-color'
-  Bundle 'tpope/vim-endwise'
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'pangloss/vim-javascript'
-  Bundle 'tpope/vim-rails'
-  Bundle 'MarcWeber/vim-addon-mw-utils'
-  Bundle 'garbas/vim-snipmate'
-  Bundle 'smolnar/vim-snippets.git'
-  Bundle 'tpope/vim-surround'
-  Bundle 'mileszs/ack.vim'
-  Bundle 'kchmck/vim-coffee-script'
-  Bundle 'jistr/vim-nerdtree-tabs'
-  Bundle 'scrooloose/nerdcommenter'
-  Bundle 'vim-ruby/vim-ruby'
-  Bundle 'kien/ctrlp.vim'
-  Bundle 'mileszs/ack.vim'
-  Bundle 'Rip-Rip/clang_complete'
-  Bundle 'tpope/vim-git'
-  Bundle 'tpope/vim-bundler'
-  Bundle 'tpope/vim-rake'
-  Bundle 'tpope/vim-dispatch.git'
-  Bundle 'szw/vim-tags.git'
-  Bundle 'Raimondi/delimitMate'
-  Bundle 'thoughtbot/vim-rspec'
-  Bundle 'bling/vim-airline'
-  " Bundle 'bling/vim-bufferline'
-  Bundle 'edkolev/tmuxline.vim'
+  " Core
+  " {{{
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'tpope/vim-dispatch.git'
+    Bundle 'szw/vim-tags.git'
+    Bundle 'bling/vim-airline'
+    Bundle 'edkolev/tmuxline.vim'
+    " Bundle 'bling/vim-bufferline'
+  " }}}
+
+  " Helpers & Formatters
+  " {{{
+    Bundle 'sjl/gundo.vim'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'ervandew/supertab'
+    Bundle 'scrooloose/syntastic'
+    Bundle 'tomtom/tlib_vim'
+    Bundle 'tpope/vim-commentary'
+    Bundle 'tpope/vim-endwise'
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'MarcWeber/vim-addon-mw-utils'
+    Bundle 'tpope/vim-surround'
+    Bundle 'scrooloose/nerdcommenter'
+    Bundle 'Raimondi/delimitMate'
+  " }}}
+
+  " Languages
+  " {{{
+    Bundle 'ap/vim-css-color'
+    Bundle 'othree/html5.vim'
+    Bundle 'pangloss/vim-javascript'
+    Bundle 'mustache/vim-mustache-handlebars'
+    Bundle 'tpope/vim-rails'
+    Bundle 'kchmck/vim-coffee-script'
+    Bundle 'vim-ruby/vim-ruby'
+  " }}}
+
+  " Tools
+  " {{{
+    Bundle 'mattn/gist-vim'
+    Bundle 'mileszs/ack.vim'
+    Bundle 'tpope/vim-git'
+    Bundle 'tpope/vim-bundler'
+    Bundle 'tpope/vim-rake'
+    Bundle 'Rip-Rip/clang_complete'
+    Bundle 'thoughtbot/vim-rspec'
+    Bundle 'garbas/vim-snipmate'
+    Bundle 'smolnar/vim-snippets.git'
+  " }}}
 " }}}
 
 " Settings
@@ -127,40 +139,6 @@
 
       set completeopt=longest,menu,preview
 
-      " configure cursor for temrinal
-      " color
-"      if &term =~ "xterm\\|rxvt"
-        "" use an orange cursor in insert mode
-        ""let &t_SI = "\<Esc>]12;orange\x7"
-        "" use a red cursor otherwise
-        ""let &t_EI = "\<Esc>]12;red\x7"
-        ""silent !echo -ne "\003]12;gray\007"
-        "" reset cursor when vim exits
-        ""autocmd VimLeave * silent !echo -ne "\033]112\007"
-        "" use \003]12;gray\007 for gnome-terminal
-      "endif
-
-      """ shape
-      "if &term =~ '^xterm'
-        "" solid underscore
-        "let &t_SI .= "\<Esc>[4 q"
-        "" solid block
-        "let &t_EI .= "\<Esc>[2 q"
-        "" 1 or 0 -> blinking block
-        "" 3 -> blinking underscore
-        "" Recent versions of xterm (282 or above) also support
-        "" 5 -> blinking vertical bar
-        "" 6 -> solid vertical bar
-"      endif
-
-      " if we run gnome-terminal, use gconf tool
-"      au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-      "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-      "au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-      "au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-
-    " }}}
-
     " Advanced macros
     " {{{
 
@@ -174,7 +152,6 @@
       highlight Pmenu ctermbg=238
       " }}}
       "
-
       " Removes trailing spaces
       function! TrimWhiteSpace()
         if !&binary && &filetype != 'diff'
@@ -195,7 +172,6 @@
       " Use relative numbering in insert mode
       autocmd InsertEnter * :set relativenumber
       autocmd InsertLeave * :set number
-
     "}}}
 
     " Binding
@@ -251,7 +227,7 @@
       nnoremap <C-M-w> :wq<CR>
 
       " run ctags silently
-      map <leader>ct :silent! ctags -R . &> /dev/null<CR>
+      map <leader>ct :silent! ctags -R -f ./.tags . &> /dev/null<CR>
 
       " Copy from clipboard with ease (<leader>p => paste what you copied by CTRL+c in clipboard)
       nnoremap <leader>p "+p
@@ -380,7 +356,7 @@
     " Plugins
     " {{{
 
-      " Clang 
+      " Clang
       " {{{
       let g:clang_use_library=1
       let g:clang_library_path="/usr/lib/"
@@ -490,6 +466,12 @@
       let g:syntastic_enable_signs=1
       let g:synastic_quiet_warnings=1
 
+      " }}}
+
+      " Rspec
+      " {{{
+      map <Leader>s :call RunCurrentSpecFile()<CR>
+      map <Leader>l :call RunNearestSpec()<CR>
       " }}}
 
       " Rubycomplete {{{
