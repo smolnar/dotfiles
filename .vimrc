@@ -15,11 +15,11 @@
     Bundle 'szw/vim-tags.git'
     Bundle 'bling/vim-airline'
     Bundle 'edkolev/tmuxline.vim'
-    " Bundle 'bling/vim-bufferline'
-  " }}}
+    "" Bundle 'bling/vim-bufferline'
+  "" }}}
 
-  " Helpers & Formatters
-  " {{{
+  "" Helpers & Formatters
+  "" {{{
     Bundle 'sjl/gundo.vim'
     Bundle 'scrooloose/nerdtree'
     Bundle 'ervandew/supertab'
@@ -32,10 +32,10 @@
     Bundle 'tpope/vim-surround'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'Raimondi/delimitMate'
-  " }}}
+  "" }}}
 
-  " Languages
-  " {{{
+  "" Languages
+  "" {{{
     Bundle 'ap/vim-css-color'
     Bundle 'othree/html5.vim'
     Bundle 'pangloss/vim-javascript'
@@ -43,10 +43,11 @@
     Bundle 'tpope/vim-rails'
     Bundle 'kchmck/vim-coffee-script'
     Bundle 'vim-ruby/vim-ruby'
-  " }}}
+    Bundle 'smolnar/vim-ember-script'
+  "" }}}
 
-  " Tools
-  " {{{
+  "" Tools
+  "" {{{
     Bundle 'mattn/gist-vim'
     Bundle 'mileszs/ack.vim'
     Bundle 'tpope/vim-git'
@@ -56,7 +57,7 @@
     Bundle 'thoughtbot/vim-rspec'
     Bundle 'garbas/vim-snipmate'
     Bundle 'smolnar/vim-snippets.git'
-  " }}}
+"  " }}}
 " }}}
 
 " Settings
