@@ -29,7 +29,7 @@ ZSH_THEME="asylum"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=()
+plugins=(rails)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -158,10 +158,12 @@ alias copy_ssh_key="xclip -sel clip < ~/.ssh/id_rsa.pub"
 alias gg="tig"
 alias service="s service"
 # }}}
+
 # Default sudo commands {{{
-#for cmd in mount ifconfig pacman chmod chown rc.d; do
-#	alias $cmd="+ $cmd"
-#done
+for cmd in mount ifconfig apt-get apt-cache service chmod chown rc.d; do
+  alias $cmd="s $cmd"
+done
+
 # }}}
 # Multitail aliases {{{
 # }}}
@@ -200,104 +202,11 @@ zstyle ':completion:*:rm:*' ignore-line yes
 zstyle ':completion:*:cp:*' ignore-line yes
 zstyle ':completion:*:mv:*' ignore-line yes
 # }}}
-# Generic GNU compl. for apps that understang long options {{{
-#compdef _gnu_generic slrnpull make df du mv cp makepkg
-# }}}
-# }}}
-# Root settings {{{
-#if [[ $UID == 0 ]]; then
-#	# Close root shell after 180 seconds
-#	export TMOUT=180
-#fi
-# }}}
-# Prompt {{{
-#if [[ $TERM =~ '256color' ]]; then
-#	autoload -Uz vcs_info
-#
-#	zstyle ':vcs_info:*' get-revision true
-#	zstyle ':vcs_info:*' check-for-changes true
-#	zstyle ':vcs_info:*' formats '%u%c|%s ⭠ %b'
-#	zstyle ':vcs_info:*' actionformats '%c%u|%s@%a ⭠ %b'
-#	zstyle ':vcs_info:*' branchformat '%b@%r'
-#	zstyle ':vcs_info:*' unstagedstr "%{$fg_no_bold[red]%}"
-#	zstyle ':vcs_info:*' stagedstr "%{$fg_no_bold[yellow]%}"
-#	zstyle ':vcs_info:*' enable git hg svn
-#
-#	zstyle ':vcs_info:git*:*' formats '%s ⭠ %b'
-#	zstyle ':vcs_info:git*:*' actionformats '%c%u|%s@%a:%b@%.5i'
-#
-#	precmd () {
-#		vcs_info
-#
-#		if [[ $TMUX != '' ]]; then
-#			# Dynamic tmux status (path/branch stuff)
-#			#
-#			# This is a hack which sets window-specific stuff as the
-#			# window's title, so the title gets useless in e.g. dwm's
-#			# statusbar. This has to be done because tmux doesn't
-#			# support custom dynamic variables in the statusbar.
-#			STATUS=''
-#			STATUS_USER_FG=153
-#			STATUS_USER_BG=31
-#
-#			if [[ $UID == 0 ]]; then
-#				STATUS_USER_FG=231
-#				STATUS_USER_BG=160
-#			fi
-#
-#			if [[ ! -z "$SSH_CLIENT" ]]; then
-#				STATUS=$STATUS"#[fg=colour220,bg=colour166] ⭤ `hostname` #[fg=colour166,bg=colour$STATUS_USER_BG]⮀"
-#			fi
-#
-#			STATUS=$STATUS"#[fg=colour$STATUS_USER_FG,bg=colour$STATUS_USER_BG,bold] `whoami` #[fg=colour$STATUS_USER_BG,bg=colour239,nobold]⮀"
-#			if [[ $vcs_info_msg_0_ != '' ]]; then
-#				STATUS=$STATUS" #[fg=colour248]${vcs_info_msg_0_} ⮁"
-#			fi
-#			STATUS=$STATUS"#[fg=colour231,bg=colour239,bold] `pwd` #[fg=colour239,bg=colour236,nobold]⮀"
-#
-#			# Set the status bar info as the window title
-#			echo -n ']2;'$STATUS''
-#		fi
-#	}
-#
-#	if [[ $TMUX != '' ]]; then
-#		# Show shorter prompt in tmux because the statusbar has path/branch info
-#		if [[ $UID != 0 ]]; then
-#			PROMPT='%{[1m[38;5;76m%}▶ %{[0m%}'
-#		else
-#			PROMPT='%{[1m[38;5;160m%}▶ %{[0m%}'
-#		fi
-#	else
-#		C_RESET='%{[0m%}'
-#
-#		C_USER=$C_RESET'%{[1m[38;5;153m[48;5;31m%}'
-#		C_USER_SEP=$C_RESET'%{[48;5;237m[38;5;31m%}'
-#		C_PWD=$C_RESET'%{[38;5;248m[48;5;237m%}'
-#		C_PWD_SEP=$C_RESET'%{[38;5;237m%}'
-#		if [[ ! -z "$SSH_CLIENT" ]]; then
-#			SSHPROMPT=$C_RESET'%{[48;5;166m[38;5;220m%} ⭤ %M %{[38;5;166m%}'
-#
-#			if [[ $UID == 0 ]]; then
-#				SSHPROMPT=$SSHPROMPT'%{[48;5;88m%}⮀'
-#			else
-#				SSHPROMPT=$SSHPROMPT'%{[48;5;31m%}⮀'
-#			fi
-#		fi
-#		if [[ $UID == 0 ]]; then
-#			# Highlight root user
-#			C_USER=$C_RESET'%{[1m[38;5;231m[48;5;160m%}'
-#			C_USER_SEP=$C_RESET'%{[48;5;237m[38;5;160m%}'
-#		fi
-#		PROMPT=$SSHPROMPT$C_USER' %n '$C_USER_SEP'⮀'$C_PWD' %3~ '$C_PWD_SEP'⮀'$C_RESET' '
-#		RPROMPT='${vcs_info_msg_0_}'
-#	fi
-#fi
-#PROMPT="%{$fg[green]%}%m %1~$%{$reset_color%} "
-#RPROMPT="${$(git_prompt_info)%{$reset_color%}"
 
 # List prompt - don't ask 'do you want to see all ...' in menu selection {{{
 LISTPROMPT=''
 # }}}
+
 # Spelling prompt {{{
 #SPROMPT='zsh: correct '%R' to '%r'? ([Y]es/[N]o/[E]dit/[A]bort) '
 SPROMPT='Did you mean %{$fg[green]%}'%r' %{$reset_color%}? ([Y]es/[N]o/[E]dit/[A]bort) '
@@ -305,13 +214,11 @@ SPROMPT='Did you mean %{$fg[green]%}'%r' %{$reset_color%}? ([Y]es/[N]o/[E]dit/[A
 # Dynamic title urxvt {{{
 #
 case $TERM in
-      urxvt*|rxvt*|xterm*)
-          precmd () { print -Pn "\e]0;%n@%m: %~\a"}
-	  	  preexec () { print -Pn "\e]0;%n@%m: $1\a" }
-          ;;
+  urxvt*|rxvt*|xterm*)
+    precmd () { print -Pn "\e]0;%n@%m: %~\a"}
+    preexec () { print -Pn "\e]0;%n@%m: $1\a" }
+    ;;
 esac
-
-
 # }}}
 
 # }}}
@@ -319,19 +226,20 @@ esac
 # ZLE stuff {{{
 # Smart dot (e.g. enter ..../dir) {{{
 smartdot(){
-	if [[ $LBUFFER = *.. ]]; then
-		LBUFFER+=/..
-	else
-		LBUFFER+=.
-	fi
+  if [[ $LBUFFER = *.. ]]; then
+    LBUFFER+=/..
+  else
+    LBUFFER+=.
+  fi
 }
+
 zle -N smartdot smartdot
 bindkey . smartdot
 # }}}
 # }}}
 #
 #
-# {{{ 
+# {{{
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # }}}
@@ -342,8 +250,9 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on  -Dswing.defaultlaf=com.s
 # }}}
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:$HOME/bin # Add home bin path
 
 # enable CTRL+S / Q
 stty -ixon
 
-#export LOAD_GEMS_FROM_LOCAL=1
+export LOAD_GEMS_FROM_LOCAL=1
