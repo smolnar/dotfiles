@@ -32,6 +32,7 @@
     Bundle 'tpope/vim-surround'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'Raimondi/delimitMate'
+    Bundle 'kremso/vim-spectator'
   "" }}}
 
   "" Languages
@@ -43,7 +44,9 @@
     Bundle 'tpope/vim-rails'
     Bundle 'kchmck/vim-coffee-script'
     Bundle 'vim-ruby/vim-ruby'
+    Bundle 'heartsentwined/vim-emblem'
     Bundle 'smolnar/vim-ember-script'
+    Bundle 'tpope/vim-cucumber'
   "" }}}
 
   "" Tools
@@ -352,6 +355,14 @@
       " }}}
       "
 
+      " Latex
+      " {{{
+      augroup FTLatex
+        au!
+        autocmd FileType latex,tex setlocal spell spelllang=sk_SK
+      augroup END
+      " }}}
+
     " }}}
 
     " Plugins
@@ -437,7 +448,7 @@
       nnoremap <F2> :CtrlPDir<CR>
       let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(exe|so|dll)$'
+            \ 'file': '\v\.(exe|so|dll|png|jpg)$'
             \ }
 
       map <leader>f :CtrlP<cr>
@@ -466,6 +477,7 @@
       let g:syntastic_auto_loc_list=1
       let g:syntastic_enable_signs=1
       let g:synastic_quiet_warnings=1
+      let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['tex'] }
 
       " }}}
 
