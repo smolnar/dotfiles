@@ -25,7 +25,7 @@ nmap -builtin w <C-p>
 nmap -builtin e <C-n>
 
 "" back/forward
-nmap -builtin <C-Left <C-o>
+nmap -builtin <C-Left> <C-o>
 nmap -builtin <C-Right> <C-i>
 
 "" left/right
