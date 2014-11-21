@@ -14,7 +14,6 @@
     Bundle 'tpope/vim-dispatch.git'
     Bundle 'szw/vim-tags.git'
     Bundle 'bling/vim-airline'
-    Bundle 'edkolev/tmuxline.vim'
     "" Bundle 'bling/vim-bufferline'
   "" }}}
 
@@ -32,7 +31,7 @@
     Bundle 'tpope/vim-surround'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'Raimondi/delimitMate'
-    " Bundle 'kremso/vim-spectator'
+    Bundle 'kremso/vim-spectator'
   "" }}}
 
   "" Languages
@@ -84,7 +83,7 @@
       set wildmenu " wildmenu when autocomplting option
       set wildmode=full " complete the full match, this is default behaviour
       set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png " there files will be ignored when completing in wild menu
-      set clipboard+=unnamedplus " share clipboard
+      set clipboard+=unnamed " share clipboard
       set history=1000
       set undolevels=700
       set tags=.tags;/ " save tags generated for files in current working directory
@@ -186,28 +185,26 @@
       " Open all folds
       nnoremap <space> :%foldopen<CR>
 
-      " Toggle one fold
-      nnoremap f za
-
-      " Toggle all folds
-      nnoremap F zA
-
       " convenient window switching
       map <C-h> <C-w>j
       map <C-j> <C-w>k
       map <C-k> <C-w>i
       map <C-l> <C-w>l
 
+      map <C-Left> <Home>
+      map <C-Right> <End>
+
       map <S-Left> <C-w><Left>
       map <S-Right> <C-w><Right>
       map <S-Up> <C-w><Up>
       map <S-Down> <C-w><Down>
 
-      " Emacs-like keybindings
-      inoremap <C-a> <Home>
-      inoremap <C-e> <End>
-      nnoremap <c-a> <Home>
-      nnoremap <c-e> <End>
+      map <ESC>[H <Home>
+      map <ESC>[F <End>
+      imap <ESC>[H <C-O><Home>
+      imap <ESC>[F <C-O><End>
+      cmap <ESC>[H <Home>
+      cmap <ESC>[F <End>
 
       " Save like a pro (CTRL+s)
       nnoremap <c-s> :w<cr>
@@ -290,6 +287,15 @@
       imap <M-8> <Esc>8gt
       map  <M-9> 9gt
       imap <M-9> <Esc>9gt
+
+      " Fix for tmux CTRL
+      if &term =~ '^screen'
+        " tmux will send xterm-style keys when its xterm-keys option is on
+        execute "set <xUp>=\e[1;*A"
+        execute "set <xDown>=\e[1;*B"
+        execute "set <xRight>=\e[1;*C"
+        execute "set <xLeft>=\e[1;*D"
+      endif
    " }}}
 
     " Filetypes
