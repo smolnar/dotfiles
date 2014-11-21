@@ -32,7 +32,7 @@
     Bundle 'tpope/vim-surround'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'Raimondi/delimitMate'
-    Bundle 'kremso/vim-spectator'
+    " Bundle 'kremso/vim-spectator'
   "" }}}
 
   "" Languages
@@ -174,8 +174,8 @@
       autocmd BufWritePre * :call TrimWhiteSpace()
 
       " Use relative numbering in insert mode
-      autocmd InsertEnter * :set relativenumber
-      autocmd InsertLeave * :set number
+      autocmd InsertEnter * :set nonumber relativenumber
+      autocmd InsertLeave * :set number norelativenumber
     "}}}
 
     " Binding
@@ -198,10 +198,10 @@
       map <C-k> <C-w>i
       map <C-l> <C-w>l
 
-      map <M-Left> <C-w><Left>
-      map <M-Right> <C-w><Right>
-      map <M-Up> <C-w><Up>
-      map <M-Down> <C-w><Down>
+      map <S-Left> <C-w><Left>
+      map <S-Right> <C-w><Right>
+      map <S-Up> <C-w><Up>
+      map <S-Down> <C-w><Down>
 
       " Emacs-like keybindings
       inoremap <C-a> <Home>
@@ -403,16 +403,8 @@
       " vim-airline
       " {{{
       set laststatus=2
-      let g:airline_powerline_fonts = 1
       let g:airline_theme = 'powerlineish'
       let g:airline_powerline_fonts=1
-      let g:airline_left_sep = '⮀'
-      let g:airline_left_alt_sep = '⮁'
-      let g:airline_right_sep = '⮂'
-      let g:airline_right_alt_sep = '⮃'
-      let g:airline_branch_prefix = '⭠ '
-      let g:airline_readonly_symbol = '⭤'
-      let g:airline_linecolumn_prefix = '⭡'
       " }}}
 
 
@@ -447,7 +439,7 @@
       nnoremap <F5> :CtrlPTag<CR>
       nnoremap <F2> :CtrlPDir<CR>
       let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|public)$',
             \ 'file': '\v\.(exe|so|dll|png|jpg)$'
             \ }
 
@@ -477,7 +469,7 @@
       let g:syntastic_auto_loc_list=1
       let g:syntastic_enable_signs=1
       let g:synastic_quiet_warnings=1
-      let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['tex'] }
+      let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['tex', 'xml'] }
 
       " }}}
 
@@ -539,9 +531,6 @@
       nnoremap <leader>rv :Rview 
       nnoremap <leader>rc :Rcontroller 
       nnoremap <leader>rm :Rmodel 
-
-      " set rails status line
-      let g:rails_statusline = 1
       " }}}
 
     " }}}

@@ -51,19 +51,19 @@ export LS_COLORS="*.tar.bz2=38;5;226:*.tar.xz=38;5;130:*PKGBUILD=48;5;233;38;5;1
 # }}}
 # Locale {{{
 export LANG="en_US.utf-8"
-export LC_CTYPE="en_US.utf8"
-export LC_NUMERIC="en_US.utf8"
-export LC_TIME="en_US.utf8"
-export LC_COLLATE="en_US.utf8"
-export LC_MONETARY="en_US.utf8"
-export LC_MESSAGES="en_US.utf8"
-export LC_PAPER="en_US.utf8"
-export LC_NAME="en_US.utf8"
-export LC_ADDRESS="en_US.utf8"
-export LC_TELEPHONE="en_US.utf8"
-export LC_MEASUREMENT="en_US.utf8"
-export LC_IDENTIFICATION="en_US.utf8"
-export LC_ALL="en_US.utf8"
+export LC_CTYPE="en_US.utf-8"
+export LC_NUMERIC="en_US.utf-8"
+export LC_TIME="en_US.utf-8"
+export LC_COLLATE="en_US.utf-8"
+export LC_MONETARY="en_US.utf-8"
+export LC_MESSAGES="en_US.utf-8"
+export LC_PAPER="en_US.utf-8"
+export LC_NAME="en_US.utf-8"
+export LC_ADDRESS="en_US.utf-8"
+export LC_TELEPHONE="en_US.utf-8"
+export LC_MEASUREMENT="en_US.utf-8"
+export LC_IDENTIFICATION="en_US.utf-8"
+export LC_ALL="en_US.utf-8"
 # }}}
 # Applications {{{
 export PAGER="less"
@@ -145,7 +145,6 @@ alias less=$PAGER
 # }}}
 # General aliases {{{
 alias s="sudo"
-alias ls="ls --color=auto"
 alias lsa="ls -a"
 alias grep="grep --color=auto"
 alias shutdown="sudo shutdown -h now"
@@ -246,10 +245,10 @@ bindkey . smartdot
 
 # {{{
 # JVM & JAVA options
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on  -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.aatext=true'
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on  -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.aatext=true'
 # }}}
 
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$HOME/.rvm/bin:/usr/texbin:/usr/local/bin:$PATH # Add RVM to PATH for scripting
 export PATH=$PATH:$HOME/bin # Add home bin path
 
 # enable CTRL+S / Q
