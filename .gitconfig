@@ -2,7 +2,7 @@
   name = Samuel Molnar
   email = molnar.samuel@gmail.com
 [merge]
-  tool = vimdiff
+  tool = opendiff
   conflictstyle = diff3
 [color]
   branch = auto
@@ -29,3 +29,7 @@
   st=status
   pp=push origin master
   lg=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
