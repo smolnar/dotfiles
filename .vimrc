@@ -59,6 +59,7 @@
     Bundle 'thoughtbot/vim-rspec'
     Bundle 'garbas/vim-snipmate'
     Bundle 'smolnar/vim-snippets.git'
+    Bundle 'sjl/splice.vim'
 "  " }}}
 " }}}
 
@@ -185,26 +186,31 @@
       " Open all folds
       nnoremap <space> :%foldopen<CR>
 
+      " Toggle one fold
+      nnoremap f za
+
+      " Toggle all folds
+      nnoremap F zA
+
       " convenient window switching
       map <C-h> <C-w>j
       map <C-j> <C-w>k
       map <C-k> <C-w>i
       map <C-l> <C-w>l
 
-      map <C-Left> <Home>
-      map <C-Right> <End>
-
       map <S-Left> <C-w><Left>
       map <S-Right> <C-w><Right>
       map <S-Up> <C-w><Up>
       map <S-Down> <C-w><Down>
 
-      map <ESC>[H <Home>
-      map <ESC>[F <End>
-      imap <ESC>[H <C-O><Home>
-      imap <ESC>[F <C-O><End>
-      cmap <ESC>[H <Home>
-      cmap <ESC>[F <End>
+      " Emacs-like keybindings
+      inoremap <C-a> <Home>
+      inoremap <C-e> <End>
+      nnoremap <c-a> <Home>
+      nnoremap <c-e> <End>
+
+      " Run Make with Ctrl+M
+      nnoremap <C-M> :Make<CR>
 
       " Save like a pro (CTRL+s)
       nnoremap <c-s> :w<cr>
@@ -226,9 +232,6 @@
 
       " Write and quit current buffer
       nnoremap <C-M-w> :wq<CR>
-
-      " run ctags silently
-      map <leader>ct :silent! ctags -R -f ./.tags . &> /dev/null<CR>
 
       " Copy from clipboard with ease (<leader>p => paste what you copied by CTRL+c in clipboard)
       nnoremap <leader>p "+p
@@ -399,7 +402,7 @@
 
       " vim-tags
       " {{{
-      let g:vim_tags_auto_generate = 1
+      let g:vim_tags_auto_generate = 0
       let g:vim_tags_use_vim_dispatch = 1
       let g:vim_tags_directories = ['.tags'] " if tags directory exists, put tags there
       let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore']
@@ -411,6 +414,13 @@
       set laststatus=2
       let g:airline_theme = 'powerlineish'
       let g:airline_powerline_fonts=1
+      let g:airline_left_sep = ''
+      let g:airline_left_alt_sep = ''
+      let g:airline_right_sep = ''
+      let g:airline_right_alt_sep = ''
+      let g:airline_branch_prefix = ''
+      let g:airline_readonly_symbol = ''
+      let g:airline_linecolumn_prefix = ''
       " }}}
 
 
