@@ -105,34 +105,41 @@ setopt correct # Command correction
 setopt dvorak # Correkt dvorak typing mistakes
 setopt short_loops # Allow short loops
 # }}}
+
 # Keybindings {{{
 bindkey -v
 
-bindkey '^H' delete-word # iterm
-bindkey '^[[3~' delete-char # tmux
-
-bindkey '^[b' backward-word # iterm
-bindkey '^[^[[D' backward-word # tmux os x
-bindkey '^[[1;3D' backward-word # tmux ubuntu
-
-bindkey '^[w' forward-word # iterm
-bindkey '^[^[[C' forward-word # tmux os x
-bindkey '^[[1;3C' forward-word # tmux ubuntu
-
-bindkey '^[[H' beginning-of-line # iterm
-bindkey '^[[1~' beginning-of-line # tmux
-
-bindkey '^[[F' end-of-line # iterm
-bindkey '^[[4~' end-of-line # tmux
-
+bindkey "\e[1~" beginning-of-line # Home
+bindkey "\e[4~" end-of-line # End
+bindkey "\e[5~" beginning-of-history # PageUp
+bindkey "\e[6~" end-of-history # PageDown
+bindkey "\e[2~" quoted-insert # Ins
+bindkey "\e[3~" delete-char # Del
+bindkey "\e[5C" forward-word
+bindkey "\eOc" emacs-forward-word
+bindkey "\e[5D" backward-word
+bindkey "\eOd" emacs-backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+bindkey "\e[Z" reverse-menu-complete # Shift+Tab
+# for rxvt
+bindkey "\e[7~" beginning-of-line # Home
+bindkey "\e[8~" end-of-line # End
+# for non RH/Debian xterm, can't hurt for RH/Debian xterm
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
+# for freebsd console
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+# for guake
+bindkey "\eOF" end-of-line
+bindkey "\eOH" beginning-of-line
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+bindkey "\e[3~" delete-char # Del
 bindkey "^A" beginning-of-line # CTRL-A
 bindkey '^R' history-incremental-search-backward
 
-bindkey "^[[1;5D" beginning-of-line
-bindkey "^[[1;5C" end-of-line
-
-# Delete line with cmd-backspace
-bindkey '[I' kill-whole-line
 # }}}
 # Aliases {{{
 # Vimpager aliases {{{
@@ -141,7 +148,6 @@ alias less=$PAGER
 # General aliases {{{
 alias s="sudo"
 alias lsa="ls -a"
-alias grep="grep --color=auto"
 alias shutdown="sudo shutdown -h now"
 alias pacman="sudo pacman"
 alias rg="ranger"
