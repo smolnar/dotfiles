@@ -60,6 +60,7 @@
     Bundle 'garbas/vim-snipmate'
     Bundle 'smolnar/vim-snippets.git'
     Bundle 'sjl/splice.vim'
+    Bundle 'sophacles/vim-processing'
 "  " }}}
 " }}}
 
@@ -210,7 +211,7 @@
       nnoremap <c-e> <End>
 
       " Run Make with Ctrl+M
-      nnoremap <C-M> :Make<CR>
+      nnoremap <S-m> :Make<CR>
 
       " Save like a pro (CTRL+s)
       nnoremap <c-s> :w<cr>
@@ -481,7 +482,7 @@
       " }}}
 
       " Syntastic {{{
-      nnoremap <C-E> :SyntasticCheck<CR>
+      nnoremap <leader>E :SyntasticCheck<CR>
       let g:syntastic_auto_loc_list=1
       let g:syntastic_enable_signs=1
       let g:synastic_quiet_warnings=1
