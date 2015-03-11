@@ -3,3 +3,6 @@ js=.coffee
 
 --type-set
 coffee=.coffee
+
+--type-set
+emblem=.emblem
