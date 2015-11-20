@@ -14,7 +14,7 @@
     Bundle 'tpope/vim-dispatch.git'
     Bundle 'szw/vim-tags.git'
     Bundle 'bling/vim-airline'
-    "" Bundle 'bling/vim-bufferline'
+    " Bundle 'bling/vim-bufferline'
   "" }}}
 
   "" Helpers & Formatters
@@ -46,6 +46,7 @@
     Bundle 'heartsentwined/vim-emblem'
     Bundle 'smolnar/vim-ember-script'
     Bundle 'tpope/vim-cucumber'
+    Bundle 'slim-template/vim-slim'
   "" }}}
 
   "" Tools
@@ -183,6 +184,9 @@
     " {{{
     " Map leader
       let mapleader = ',' " used for lot of stuff, feel free to change it.
+
+      " Do not enter ex mode ever
+      map Q <Nop>
 
       " Open all folds
       nnoremap <space> :%foldopen<CR>
@@ -369,6 +373,9 @@
       " {{{
       augroup FTLatex
         au!
+
+        let g:tex_flavor='latex'
+
         autocmd FileType latex,tex setlocal spell spelllang=sk_SK
       augroup END
       " }}}
@@ -413,15 +420,16 @@
       " vim-airline
       " {{{
       set laststatus=2
+      let g:airline_symbols = {}
       let g:airline_theme = 'powerlineish'
       let g:airline_powerline_fonts=1
       let g:airline_left_sep = ''
       let g:airline_left_alt_sep = ''
       let g:airline_right_sep = ''
       let g:airline_right_alt_sep = ''
-      let g:airline_branch_prefix = ''
-      let g:airline_readonly_symbol = ''
-      let g:airline_linecolumn_prefix = ''
+      let g:airline_symbols.branch = ''
+      let g:airline_symbols.readonly = ''
+      let g:airline_symbols.linenr  = ''
       " }}}
 
 
@@ -455,6 +463,7 @@
       nnoremap <F4> :CtrlPBuffer<CR>
       nnoremap <F5> :CtrlPTag<CR>
       nnoremap <F2> :CtrlPDir<CR>
+      let g:ctrlp_show_hidden = 1
       let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/](\.git|\.hg|\.svn|public)$',
             \ 'file': '\v\.(exe|so|dll|png|jpg)$'
@@ -487,6 +496,7 @@
       let g:syntastic_enable_signs=1
       let g:synastic_quiet_warnings=1
       let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['tex', 'xml'] }
+      let g:syntastic_html_tidy_exec = 'tidy5'
 
       " }}}
 
