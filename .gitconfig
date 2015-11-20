@@ -8,11 +8,17 @@
   branch = auto
   diff = auto
   status = auto
+[diff]
+  renames = copies
+[push]
+  default = matching
+  followTags = true
 [color "branch"]
   current = yellow reverse
   local = yellow
   remote = green
 [color "diff"]
+  renames = copies
   meta = yellow bold
   frag = magenta bold
   old = red bold
@@ -22,14 +28,32 @@
   changed = green
   untracked = cyan
 [alias]
-  df=diff
-  co=checkout
-  cl=clone
-  cm=commit
-  st=status
-  pp=push origin master
-  lg=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-[filter "media"]
-  required = true
-  clean = git media clean %f
-  smudge = git media smudge %f
+  df = diff
+  co = checkout
+  cp = cherry-pick
+  cl = clone
+  cm = commit
+  st = status
+  ps = push origin
+  pp = push origin master
+  br = branch
+
+  # List aliases
+  la = "!git config -l | grep alias | cut -c 7-"
+
+  # List commits in short form with branch/tag annotations
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+
+
+  # List commits in short form with branch/tag annotations wit graph, use -p to see diffs
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
+
+  # List commits with files changed
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+  # List commits with relative dates
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+
+  # Find file and content in codebase
+  f = "!git ls-files | grep -i"
