@@ -1,0 +1,88 @@
+# General aliases {{{
+  alias s="sudo"
+  alias lsa="ls -a"
+  alias shutdown="sudo shutdown -h now"
+  alias pacman="sudo pacman"
+  alias rg="ranger"
+  alias reboot="sudo reboot"
+  alias svim="sudo -E vim"
+  alias rc.d="s rc.d"
+  alias gg="tig"
+  alias service="s service"
+  alias dl="cd ~/Downloads"
+  alias dt="cd ~/Desktop"
+  alias db="cd ~/Dropbox"
+  alias g="git"
+  alias h="history"
+  alias j="jobs"
+  alias p="cd ~/projects"
+
+  if ls --color > /dev/null 2>&1; then # GNU `ls`
+      alias ls="ls --color"
+  else
+      alias ls="ls -G"
+  fi
+#}}}
+
+# Helpers {{{
+# IP addresses
+  alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+  alias localip="ipconfig getifaddr en0"
+  alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+  # View HTTP traffic
+  if [ $(uname) = "Darwin" ]
+  then
+    sniff() {
+      if [ -z "$1" ]; then
+        interface="en0"
+      else
+        interface=$1
+      fi
+
+      sudo ngrep -d "$interface" -t '^(GET|POST) ' 'tcp and port 80'
+    }
+  else
+    alias sniff="sudo ngrep -d eth0 -t '^(GET|POST) ' 'tcp and port 80'"
+  fi
+
+  # Recursively delete `.DS_Store` files
+  alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+  # URL-encode strings
+  alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+  # Intuitive map function
+  # For example, to list all directories that contain a certain file:
+  # find . -name .gitattributes | map dirname
+  alias map="xargs -n1"
+
+  # Vagrant goodies
+  alias vp='vagrant provision'
+  alias vup='vagrant up'
+  alias vssh='vagrant ssh'
+  alias vdestroy='vagrant destroy'
+
+  # Vim for RVM
+  alias vim='rvm system do /usr/local/bin/vim $@'
+
+  if [ $(uname) = "Darwin" ]
+  then
+    # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+    alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+
+    # Lock the screen (when going AFK)
+    alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+    # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
+    alias stfu="osascript -e 'set volume output muted true'"
+    alias pumpitup="osascript -e 'set volume 7'"
+
+    # Merge PDF files
+    # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
+    alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
+
+    # make "ip" an alias to myip (on Linux, ip is a system command)
+    alias ip=myip
+  fi
+#}}}

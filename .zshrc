@@ -1,44 +1,12 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="asylum"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(rails)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-
-############################################################################
-
-# Author: Kim Silkebækken <kim.silkebaekken+github@gmail.com>
-# Source: https://github.com/Lokaltog/sync
 # Environment variables {{{
 # Command history {{{
 export HISTFILE=~/.zshhist
@@ -46,7 +14,7 @@ export HISTSIZE=10000
 export SAVEHIST=$HISTSIZE
 # }}}
 # Colors {{{
-#export GREP_COLORS="38;5;230:sl=38;5;240:cs=38;5;100:mt=38;5;161:fn=38;5;197:ln=38;5;212:bn=38;5;44:se=38;5;166"
+export GREP_COLORS="38;5;230:sl=38;5;240:cs=38;5;100:mt=38;5;161:fn=38;5;197:ln=38;5;212:bn=38;5;44:se=38;5;166"
 export LS_COLORS="*.tar.bz2=38;5;226:*.tar.xz=38;5;130:*PKGBUILD=48;5;233;38;5;160:*.html=38;5;213:*.htm=38;5;213:*.vim=38;5;142:*.css=38;5;209:*.screenrc=38;5;120:*.procmailrc=38;5;120:*.zshrc=38;5;120:*.bashrc=38;5;120:*.xinitrc=38;5;120:*.vimrc=38;5;120:*.htoprc=38;5;120:*.muttrc=38;5;120:*.gtkrc-2.0=38;5;120:*.fehrc=38;5;120:*.rc=38;5;120:*.md=38;5;130:*.markdown=38;5;130:*.conf=38;5;148:*.h=38;5;81:*.rb=38;5;192:*.c=38;5;110:*.diff=38;5;31:*.yml=38;5;208:*.pl=38;5;178:*.csv=38;5;136:tw=38;5;003:*.chm=38;5;144:*.bin=38;5;249:*.pdf=38;5;203:*.mpg=38;5;38:*.ts=38;5;39:*.sfv=38;5;191:*.m3u=38;5;172:*.txt=38;5;192:*.log=38;5;190:*.swp=38;5;241:*.swo=38;5;240:*.theme=38;5;109:*.zsh=38;5;173:*.nfo=38;5;113:mi=38;5;124:or=38;5;160:ex=38;5;197:ln=target:pi=38;5;130:ow=38;5;208:fi=38;5;007:so=38;5;167:di=34:*.pm=38;5;197:*.pl=38;5;166:*.sh=38;5;243:*.patch=38;5;37:*.tar=38;5;118:*.tar.gz=38;5;172:*.zip=38;5;11::*.rar=38;5;11:*.tgz=38;5;11:*.7z=38;5;11:*.mp3=38;5;173:*.flac=38;5;166:*.mkv=38;5;115:*.avi=38;5;114:*.wmv=38;5;113:*.jpg=38;5;66:*.jpeg=38;5;67:*.png=38;5;68:*.pacnew=38;5;33"
 # }}}
 # Locale {{{
@@ -69,15 +37,20 @@ export LC_ALL="en_US.utf-8"
 export PAGER="less"
 export MANPAGER="$PAGER"
 export EDITOR="vim"
-export VISUAL="vim"
-export BROWSER="google-chrome"
 export TERM="screen-256color"
 # }}}
 # Paths {{{
+export PATH=$HOME/.rvm/bin:/usr/texbin:/usr/local/bin:$PATH # Add RVM to PATH for scripting
 export PATH="$HOME/sync/bin:/usr/bin/vendor_perl:$PATH" # Add sync/bin to path
 # }}}
 # }}}
-# Load plugins {{{
+# Load additional files {{{
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.zsh/{aliases,functions,extra}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
 # }}}
 # Zsh options {{{
 typeset -g -A key
@@ -138,25 +111,13 @@ bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
 bindkey "\e[3~" delete-char # Del
 bindkey "^A" beginning-of-line # CTRL-A
+bindkey "^E" end-of-line
 bindkey '^R' history-incremental-search-backward
 
 # }}}
 # Aliases {{{
 # Vimpager aliases {{{
 alias less=$PAGER
-# }}}
-# General aliases {{{
-alias s="sudo"
-alias lsa="ls -a"
-alias shutdown="sudo shutdown -h now"
-alias pacman="sudo pacman"
-alias rg="ranger"
-alias reboot="sudo reboot"
-alias svim="sudo -E vim"
-alias rc.d="s rc.d"
-alias copy_ssh_key="xclip -sel clip < ~/.ssh/id_rsa.pub"
-alias gg="tig"
-alias service="s service"
 # }}}
 
 # Default sudo commands {{{
@@ -248,11 +209,31 @@ bindkey . smartdot
 # JVM & JAVA options
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on  -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.aatext=true'
 # }}}
-
-export PATH=$HOME/.rvm/bin:/usr/texbin:/usr/local/bin:$PATH # Add RVM to PATH for scripting
 export PATH=$PATH:$HOME/bin # Add home bin path
 
 # enable CTRL+S / Q
 stty -ixon
 
-export LOAD_GEMS_FROM_LOCAL=1
+# Generic Colouriser - GRC
+GRC=`which grc 2>/dev/null`
+if [ "$TERM" != dumb ] && [ -n "$GRC" ]
+then
+    alias colourify="$GRC -es --colour=auto"
+    alias configure='colourify ./configure'
+    alias diff='colourify diff'
+    alias make='colourify make'
+    alias gcc='colourify gcc'
+    alias g++='colourify g++'
+    alias as='colourify as'
+    alias ld='colourify ld'
+    alias netstat='colourify netstat'
+    alias ping='colourify ping'
+    alias traceroute='colourify /usr/sbin/traceroute'
+    alias head='colourify head'
+    alias tail='colourify tail'
+    alias dig='colourify dig'
+    alias mount='colourify mount'
+    alias ps='colourify ps'
+    alias mtr='colourify mtr'
+    alias df='colourify df'
+fi
