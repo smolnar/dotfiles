@@ -1,8 +1,32 @@
+# Basic options
+--ignore-case
+
+# Colorize
+--color
+
+# Types
 --type-add
-js=.coffee
+js=ext:coffee
 
 --type-set
-coffee=.coffee
+coffee=ext:coffee
 
 --type-set
-emblem=.emblem
+emblem=ext:emblem
+
+--type-set
+less=ext:less
+
+--type-set
+golang=ext:go
+
+# Ignore
+--ignore-dir=vendor
+--ignore-dir=log
+--ignore-dir=tmp
+
+--ignore-file=ext:log
+--ignore-file=ext:orig
+--ignore-file=ext:~
+--ignore-file=is:tags
+--ignore-file=is:Gemfile.lock.tags
