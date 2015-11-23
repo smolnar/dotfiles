@@ -16,6 +16,7 @@ brew install homebrew/dupes/openssh
 brew install vim --override-system-vi --disable-nls
 brew install ack
 brew install htop
+brew install ngrep
 
 # Git
 brew install git
