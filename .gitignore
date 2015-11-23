@@ -11,3 +11,5 @@
 /.mpd/playlists/*
 /.mpd/sticker.sql
 /.mpd/mpd.pid
+/.config/fish/fish_history
+/.config/fish/fishd*
