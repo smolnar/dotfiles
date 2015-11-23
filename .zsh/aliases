@@ -64,7 +64,7 @@
   alias vdestroy='vagrant destroy'
 
   # Vim for RVM
-  alias vim='rvm system do /usr/local/bin/vim $@'
+  # alias vim='rvm system do /usr/local/bin/vim $@'
 
   if [ $(uname) = "Darwin" ]
   then
