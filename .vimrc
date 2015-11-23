@@ -47,6 +47,7 @@
     Bundle 'smolnar/vim-ember-script'
     Bundle 'tpope/vim-cucumber'
     Bundle 'slim-template/vim-slim'
+    Bundle 'dag/vim-fish'
   "" }}}
 
   "" Tools
