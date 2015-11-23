@@ -40,7 +40,7 @@ export EDITOR="vim"
 export TERM="screen-256color"
 # }}}
 # Paths {{{
-export PATH=$HOME/.rvm/bin:/usr/texbin:/usr/local/bin:$PATH # Add RVM to PATH for scripting
+export PATH="$HOME/.rbenv/bin:/usr/local/bin:$PATH" # Add Rbenv
 export PATH="$HOME/sync/bin:/usr/bin/vendor_perl:$PATH" # Add sync/bin to path
 # }}}
 # }}}
@@ -201,8 +201,8 @@ bindkey . smartdot
 #
 #
 # {{{
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Rbenv
+eval "$(rbenv init -)"
 # }}}
 
 # {{{
