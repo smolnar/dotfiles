@@ -47,12 +47,12 @@ set -l green   "green"
 # http://fishshell.com/docs/2.0/index.html#variables-color
 
 set -g fish_color_normal          $base0
-set -g fish_color_command         $base0
+set -g fish_color_command         $base0 --bold
 set -g fish_color_quote           $yellow
 set -g fish_color_redirection     $base0
 set -g fish_color_end             $base0
 set -g fish_color_error           $red
-set -g fish_color_param           $base0 --bold
+set -g fish_color_param           $base0
 set -g fish_color_comment         $base0
 set -g fish_color_match           $base0
 set -g fish_color_search_match    --background=$base02
