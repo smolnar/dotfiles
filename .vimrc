@@ -3,75 +3,79 @@
   set nocompatible
   filetype off
 
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
+  set shell=/bin/bash
 
-  Bundle 'gmarik/vundle'
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
+
+  Plugin 'VundleVim/Vundle.vim'
 
   " Core
   " {{{
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'tpope/vim-dispatch.git'
-    Bundle 'szw/vim-tags.git'
-    Bundle 'bling/vim-airline'
-    " Bundle 'bling/vim-bufferline'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'tpope/vim-dispatch.git'
+    Plugin 'szw/vim-tags.git'
+    Plugin 'bling/vim-airline'
+    " Plugin 'bling/vim-bufferline'
   "" }}}
 
   "" Helpers & Formatters
   "" {{{
-    Bundle 'sjl/gundo.vim'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'ervandew/supertab'
-    Bundle 'scrooloose/syntastic'
-    Bundle 'tomtom/tlib_vim'
-    Bundle 'tpope/vim-commentary'
-    Bundle 'tpope/vim-endwise'
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'MarcWeber/vim-addon-mw-utils'
-    Bundle 'tpope/vim-surround'
-    Bundle 'scrooloose/nerdcommenter'
-    Bundle 'Raimondi/delimitMate'
-    Bundle 'kremso/vim-spectator'
+    Plugin 'sjl/gundo.vim'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'ervandew/supertab'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'tpope/vim-commentary'
+    Plugin 'tpope/vim-endwise'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tpope/vim-surround'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'Raimondi/delimitMate'
+    Plugin 'kremso/vim-spectator'
   "" }}}
 
   "" Languages
   "" {{{
-    Bundle 'ap/vim-css-color'
-    Bundle 'othree/html5.vim'
-    Bundle 'pangloss/vim-javascript'
-    Bundle 'mustache/vim-mustache-handlebars'
-    Bundle 'tpope/vim-rails'
-    Bundle 'kchmck/vim-coffee-script'
-    Bundle 'vim-ruby/vim-ruby'
-    Bundle 'heartsentwined/vim-emblem'
-    Bundle 'smolnar/vim-ember-script'
-    Bundle 'tpope/vim-cucumber'
-    Bundle 'slim-template/vim-slim'
-    Bundle 'dag/vim-fish'
+    Plugin 'ap/vim-css-color'
+    Plugin 'othree/html5.vim'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'mustache/vim-mustache-handlebars'
+    Plugin 'tpope/vim-rails'
+    Plugin 'kchmck/vim-coffee-script'
+    Plugin 'vim-ruby/vim-ruby'
+    Plugin 'heartsentwined/vim-emblem'
+    Plugin 'smolnar/vim-ember-script'
+    Plugin 'tpope/vim-cucumber'
+    Plugin 'slim-template/vim-slim'
+    Plugin 'dag/vim-fish'
   "" }}}
 
   "" Tools
   "" {{{
-    Bundle 'mattn/gist-vim'
-    Bundle 'mileszs/ack.vim'
-    Bundle 'tpope/vim-git'
-    Bundle 'tpope/vim-bundler'
-    Bundle 'tpope/vim-rake'
-    Bundle 'Rip-Rip/clang_complete'
-    Bundle 'thoughtbot/vim-rspec'
-    Bundle 'garbas/vim-snipmate'
-    Bundle 'smolnar/vim-snippets.git'
-    Bundle 'sjl/splice.vim'
-    Bundle 'sophacles/vim-processing'
-"  " }}}
+    Plugin 'mattn/gist-vim'
+    Plugin 'mileszs/ack.vim'
+    Plugin 'tpope/vim-git'
+    Plugin 'tpope/vim-bundler'
+    Plugin 'tpope/vim-rake'
+    Plugin 'Rip-Rip/clang_complete'
+    Plugin 'thoughtbot/vim-rspec'
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
+    Plugin 'sjl/splice.vim'
+    Plugin 'sophacles/vim-processing'
+  " }}}
+
+  call vundle#end()
+  filetype plugin indent on
 " }}}
 
 " Settings
 " {{{
 "   Basic {{{
-      filetype on
-      filetype plugin indent on
       set encoding=utf-8
+      set re=1 " Use old regex engine with makes things bit faster
 
       set backspace=indent,eol,start " make backspace a more flexible
       let loaded_matchparen=1 " match paranthesis
@@ -561,6 +565,12 @@
       nnoremap <leader>rm :Rmodel 
       " }}}
 
+      " UtilSnips
+      " {{{
+      let g:UltiSnipsExpandTrigger="<tab>"
+      let g:UltiSnipsJumpForwardTrigger="<c-b>"
+      let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+      " }}}
     " }}}
 
     " GUI setting
