@@ -21,6 +21,12 @@ brew install ngrep
 # Git
 brew install git
 
+# Node and NPM
+brew install node npm
+
+# Phantomjs
+brew install phantomjs
+
 # Databases
 brew install postgresql sqlite3 elasticsearch17 redis
 
