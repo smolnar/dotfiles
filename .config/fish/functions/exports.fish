@@ -26,6 +26,7 @@ set -xg TERM "screen-256color"
 # }}}
 # Paths {{{
 set PATH /usr/local/bin $PATH
+set PATH /usr/local/sbin $PATH
 set PATH $HOME/.rbenv/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
 set PATH $PATH $HOME/bin
