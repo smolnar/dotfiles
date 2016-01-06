@@ -61,7 +61,7 @@
     Plugin 'tpope/vim-rake'
     Plugin 'Rip-Rip/clang_complete'
     Plugin 'thoughtbot/vim-rspec'
-    Plugin 'SirVer/ultisnips'
+    Plugin 'garbas/vim-snipmate'
     Plugin 'honza/vim-snippets'
     Plugin 'sjl/splice.vim'
     Plugin 'sophacles/vim-processing'
@@ -381,7 +381,7 @@
 
         let g:tex_flavor='latex'
 
-        autocmd FileType latex,tex setlocal spell spelllang=sk_SK
+        autocmd FileType latex,tex setlocal spell spelllang=en_US
       augroup END
       " }}}
 
