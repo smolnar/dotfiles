@@ -1,0 +1,26 @@
+# Use vi
+set -o vi
+
+# Allow the command prompt to wrap to the next line
+set horizontal-scroll-mode Off
+
+set completion-ignore-case On
+set expand-tilde On
+set show-all-if-ambiguous On
+
+# Enable 8bit input
+set meta-flag On
+set input-meta On
+
+# Turns off 8th bit stripping
+set convert-meta Off
+
+# Keep the 8th bit for display
+set output-meta On
+
+# none, visible or audible
+set bell-style none
+
+# Bindings
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
