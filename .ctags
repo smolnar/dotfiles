@@ -1,2 +1,2 @@
 --recurse=yes
---exclude=*.html,*.sql,*.so
+--exclude=*.html,*.sql,*.so,*.log
