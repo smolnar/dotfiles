@@ -24,6 +24,8 @@ golang=ext:go
 --ignore-dir=vendor
 --ignore-dir=log
 --ignore-dir=tmp
+--ignore-dir=node_modules
+--ignore_dir=bower_components
 
 --ignore-file=ext:log
 --ignore-file=ext:orig

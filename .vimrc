@@ -15,7 +15,8 @@
     Plugin 'kien/ctrlp.vim'
     Plugin 'tpope/vim-dispatch.git'
     Plugin 'szw/vim-tags.git'
-    Plugin 'bling/vim-airline'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
     " Plugin 'bling/vim-bufferline'
   "" }}}
 
@@ -50,6 +51,7 @@
     Plugin 'tpope/vim-cucumber'
     Plugin 'slim-template/vim-slim'
     Plugin 'dag/vim-fish'
+    Plugin 'jelera/vim-javascript-syntax'
   "" }}}
 
   "" Tools
@@ -470,7 +472,7 @@
       nnoremap <F2> :CtrlPDir<CR>
       let g:ctrlp_show_hidden = 1
       let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|public)$',
+            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|public|node_modules|bower_components)$',
             \ 'file': '\v\.(exe|so|dll|png|jpg)$'
             \ }
 
