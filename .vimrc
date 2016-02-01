@@ -51,7 +51,6 @@
     Plugin 'tpope/vim-cucumber'
     Plugin 'slim-template/vim-slim'
     Plugin 'dag/vim-fish'
-    Plugin 'jelera/vim-javascript-syntax'
   "" }}}
 
   "" Tools
