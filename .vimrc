@@ -41,7 +41,7 @@
   "" {{{
     Plugin 'ap/vim-css-color'
     Plugin 'othree/html5.vim'
-    Plugin 'pangloss/vim-javascript'
+    Plugin 'jelera/vim-javascript-syntax'
     Plugin 'mustache/vim-mustache-handlebars'
     Plugin 'tpope/vim-rails'
     Plugin 'kchmck/vim-coffee-script'
@@ -383,6 +383,15 @@
         let g:tex_flavor='latex'
 
         autocmd FileType latex,tex setlocal spell spelllang=en_US
+      augroup END
+      " }}}
+
+      " Markdown
+      " {{{
+      augroup Markdown
+        au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+        autocmd FileType markdown setlocal spell
       augroup END
       " }}}
 
