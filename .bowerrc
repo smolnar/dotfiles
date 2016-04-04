@@ -1,0 +1,7 @@
+{
+  "analytics": true,
+  "color": true,
+  "timeout": 60000,
+  "strict-ssl": true,
+  "interactive": true
+}
