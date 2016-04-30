@@ -56,7 +56,6 @@
   "" Tools
   "" {{{
     Plugin 'mattn/gist-vim'
-    Plugin 'mileszs/ack.vim'
     Plugin 'tpope/vim-git'
     Plugin 'tpope/vim-bundler'
     Plugin 'tpope/vim-rake'
@@ -66,6 +65,7 @@
     Plugin 'honza/vim-snippets'
     Plugin 'sjl/splice.vim'
     Plugin 'sophacles/vim-processing'
+    Plugin 'Shutnik/jshint2.vim'
   " }}}
 
   call vundle#end()
@@ -248,9 +248,6 @@
       nnoremap <leader>p "+p
       nnoremap <leader>c "+dd
       nnoremap <leader>y "+y
-
-      " start ack search, (using ACK tool, like grep but for source code)
-      nnoremap <leader>a :Ack 
 
       " Reformat whole file
       nnoremap <leader>= ggVG=
@@ -480,7 +477,7 @@
       nnoremap <F2> :CtrlPDir<CR>
       let g:ctrlp_show_hidden = 1
       let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|public|node_modules|bower_components)$',
+            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|public|node_modules|bower_components|tmp)$',
             \ 'file': '\v\.(exe|so|dll|png|jpg)$'
             \ }
 
@@ -581,6 +578,35 @@
       let g:UltiSnipsJumpForwardTrigger="<c-b>"
       let g:UltiSnipsJumpBackwardTrigger="<c-z>"
       " }}}
+
+      " JSHint
+      " {{{
+      let jshint2_save = 1
+      let jshint2_confirm = 0
+      " }}}
+
+      " The Silver Searcher, alias Ag
+      " {{{
+      if executable('ag')
+        " Use ag over grep
+        set grepprg=ag\ --nogroup\ --nocolor
+
+        " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+        " ag is fast enough that CtrlP doesn't need to cache
+        let g:ctrlp_use_caching = 0
+      endif
+
+      " bind K to grep word under cursor
+      nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+      " bind \ (backward slash) to grep shortcut
+      command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+      " Search with `
+      nnoremap \ :Ag<SPACE>
+      "}}}
     " }}}
 
     " GUI setting

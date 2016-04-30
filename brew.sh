@@ -17,6 +17,7 @@ brew install vim --override-system-vi --disable-nls
 brew install ack
 brew install htop
 brew install ngrep
+brew install the_silver_surfer
 
 # Git
 brew install git
