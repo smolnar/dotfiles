@@ -16,12 +16,7 @@ alias g "git"
 alias h "history"
 alias j "jobs"
 alias p "cd ~/projects"
-
-if ls --color > /dev/null 2>&1 # GNU `ls`
-  alias ls "ls --color"
-else
-  alias ls "ls -GFh"
-end
+alias ls "ls -GFh"
 #}}}
 
 # Helpers {{{
@@ -77,10 +72,9 @@ if [ (uname) = "Darwin" ]
   alias ip myip
 end
 
-# Generic Colouriser - GRC
-set -l GRC=`which grc 2>/dev/null`
+set -l GRC `which grc`
 
-if [ "$TERM" != dumb; and -n "$GRC" ]
+if [ -n "$GRC" ]
     alias colourify "$GRC -es --colour=auto"
     alias configure 'colourify ./configure'
     alias diff 'colourify diff'

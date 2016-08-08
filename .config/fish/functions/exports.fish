@@ -1,6 +1,6 @@
 # Colors {{{
 set -xg CLICOLOR 1
-set -xg LSCOLORS=GxFxCxDxBxegedabagaced
+set -xg LSCOLORS GxFxCxDxBxegedabagaced
 # }}}
 # Locale {{{
 set -xg LANG "en_US.utf-8"
