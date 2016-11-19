@@ -33,4 +33,7 @@ set PATH $PATH $HOME/bin
 
 # Rbenv
 status --is-interactive; and . (rbenv init -|psub)
+
+# Tmux
+set -xg EVENT_NOKQUEUE 1
 # }}}
