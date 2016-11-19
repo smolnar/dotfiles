@@ -72,7 +72,7 @@ if [ (uname) = "Darwin" ]
   alias ip myip
 end
 
-set -l GRC `which grc`
+set -l GRC (which grc)
 
 if [ -n "$GRC" ]
     alias colourify "$GRC -es --colour=auto"
