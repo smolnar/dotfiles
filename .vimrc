@@ -65,7 +65,7 @@
     Plugin 'honza/vim-snippets'
     Plugin 'sjl/splice.vim'
     Plugin 'sophacles/vim-processing'
-    Plugin 'Shutnik/jshint2.vim'
+    Plugin 'junegunn/vim-easy-align'
   " }}}
 
   call vundle#end()
@@ -477,7 +477,7 @@
       nnoremap <F2> :CtrlPDir<CR>
       let g:ctrlp_show_hidden = 1
       let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|public|node_modules|bower_components|tmp)$',
+            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|bower_components|tmp)$',
             \ 'file': '\v\.(exe|so|dll|png|jpg)$'
             \ }
 
@@ -507,9 +507,9 @@
       let g:syntastic_auto_loc_list=1
       let g:syntastic_enable_signs=1
       let g:synastic_quiet_warnings=1
-      let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['tex', 'xml'] }
+      let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['tex', 'xml', 'cucumber'] }
       let g:syntastic_html_tidy_exec = 'tidy5'
-
+      let g:syntastic_javascript_checkers = ['eslint']
       " }}}
 
       " Rspec
@@ -579,12 +579,6 @@
       let g:UltiSnipsJumpBackwardTrigger="<c-z>"
       " }}}
 
-      " JSHint
-      " {{{
-      let jshint2_save = 1
-      let jshint2_confirm = 0
-      " }}}
-
       " The Silver Searcher, alias Ag
       " {{{
       if executable('ag')
@@ -592,10 +586,10 @@
         set grepprg=ag\ --nogroup\ --nocolor
 
         " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+        " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
         " ag is fast enough that CtrlP doesn't need to cache
-        let g:ctrlp_use_caching = 0
+        " let g:ctrlp_use_caching = 0
       endif
 
       " bind K to grep word under cursor
@@ -605,7 +599,7 @@
       command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
       " Search with `
-      nnoremap \ :Ag<SPACE>
+      nnoremap <leader>a :Ag<SPACE>
       "}}}
     " }}}
 
