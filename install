@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+def symlink(path)
+  home_path = "~/#{path}"
+
+  FileUtils.rm_rf(File.expand_path(home_path))
+  puts "Linking #{path}"
+  FileUtils.ln_s(File.expand_path(path), File.expand_path(home_path), force: true)
+end
+
+PATHS = [
+  '.ackrc',
+  '.agignore',
+  '.bowerrc',
+  '.config/fish',
+  '.ctags',
+  '.curlrc',
+  '.gemrc',
+  '.gitconfig',
+  '.hushlogin',
+  '.inputrc',
+  '.tmux.conf',
+  '.vim',
+  '.vimrc',
+  'Library/KeyBindings/DefaultKeyBinding.dict',
+  'bin'
+]
+
+PATHS.each do |path|
+  symlink(path)
+end
