@@ -35,6 +35,7 @@
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'Raimondi/delimitMate'
     Plugin 'kremso/vim-spectator'
+    Plugin 'tpope/vim-eunuch'
   "" }}}
 
   "" Languages
@@ -470,16 +471,11 @@
 
       " CtrlP
       " {{{
-      set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+      set wildignore+=*.so,*.swp,*.zip     " MacOSX/Linux
       nnoremap <F3> :CtrlP<CR>
       nnoremap <F4> :CtrlPBuffer<CR>
       nnoremap <F5> :CtrlPTag<CR>
       nnoremap <F2> :CtrlPDir<CR>
-      let g:ctrlp_show_hidden = 1
-      let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|bower_components|tmp)$',
-            \ 'file': '\v\.(exe|so|dll|png|jpg)$'
-            \ }
 
       map <leader>f :CtrlP<cr>
       map <leader>b :CtrlPMRU<cr>
@@ -506,10 +502,11 @@
       nnoremap <leader>E :SyntasticCheck<CR>
       let g:syntastic_auto_loc_list=1
       let g:syntastic_enable_signs=1
-      let g:synastic_quiet_warnings=1
+      let g:synastic_quiet_warnings=0
       let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['tex', 'xml', 'cucumber'] }
       let g:syntastic_html_tidy_exec = 'tidy5'
       let g:syntastic_javascript_checkers = ['eslint']
+      let g:syntastic_ruby_checkers = ['mri']
       " }}}
 
       " Rspec
@@ -586,10 +583,10 @@
         set grepprg=ag\ --nogroup\ --nocolor
 
         " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-        " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+        let g:ctrlp_user_command = 'ag %s -l --path-to-ignore ~/.agignore --nocolor --hidden -g ""'
 
         " ag is fast enough that CtrlP doesn't need to cache
-        " let g:ctrlp_use_caching = 0
+        let g:ctrlp_use_caching = 0
       endif
 
       " bind K to grep word under cursor

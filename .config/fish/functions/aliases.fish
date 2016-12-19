@@ -17,6 +17,7 @@ alias h "history"
 alias j "jobs"
 alias p "cd ~/projects"
 alias ls "ls -GFh"
+alias ag "ag --path-to-ignore ~/.agignore"
 #}}}
 
 # Helpers {{{
