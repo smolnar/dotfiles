@@ -1,0 +1,62 @@
+snippet cp
+	${1:name}: Ember.computed('${2}', function() {
+		${0}
+	})
+snippet ob
+	${1:name}: Ember.observer('${2}'}, function() {
+		${0}
+	})
+snippet on
+	${1:name}: Ember.on('${2:prop}', function() {
+		${0}
+	})
+snippet tg
+	${1:this}.get('${2}')${0}
+snippet ts
+	${1:this}.set('${2}', ${0});
+snippet er
+	Ember.run(() => {
+		${0}
+	});
+snippet route
+	import Ember from 'ember';
+
+	export default Ember.Route.extend({
+		${0}
+	});
+snippet model
+	import DS from 'ember-data';
+
+	export default DS.Model.extend({
+		${0}
+	});
+snippet helper
+	import Ember from 'ember';
+
+	export default Ember.Handlebars.makeBoundHelper(function(${1}) {
+		${0}
+	});
+snippet service
+	import Ember from 'ember';
+
+	export default Ember.Service.extend({
+		${0}
+	});
+snippet mixin
+	import Ember from "ember";
+
+	export default Ember.Mixin.create({
+		${0}
+	});
+snippet controller
+	import Ember from "ember";
+
+	export default Ember.Controller.extend({
+		${0}
+	});
+snippet component
+	import Ember from "ember";
+
+	export default Ember.Component.extend({
+		${0}
+	});

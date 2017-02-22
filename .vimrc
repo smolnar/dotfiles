@@ -47,8 +47,7 @@
     Plugin 'tpope/vim-rails'
     Plugin 'kchmck/vim-coffee-script'
     Plugin 'vim-ruby/vim-ruby'
-    Plugin 'heartsentwined/vim-emblem'
-    Plugin 'smolnar/vim-ember-script'
+    Plugin 'dsawardekar/ember.vim'
     Plugin 'tpope/vim-cucumber'
     Plugin 'slim-template/vim-slim'
     Plugin 'dag/vim-fish'
@@ -393,6 +392,19 @@
       augroup END
       " }}}
 
+      " Ember
+      " {{{
+      augroup FTJavaScript
+        au BufNewFile,BufFilePre,BufRead *.js set filetype=ember.javascript syntax=javascript
+      augroup END
+      " }}}
+
+      " Mustache & Handlebars
+      " {{{
+      augroup FTHandlebars
+        au BufReadPost *.hbs set filetype=html.handlebars syntax=mustache
+      augroup END
+      " }}}
     " }}}
 
     " Plugins
@@ -511,6 +523,7 @@
 
       " Rspec
       " {{{
+      let g:rspec_command = "!bundle exec rspec --drb {spec}"
       map <Leader>s :call RunCurrentSpecFile()<CR>
       map <Leader>l :call RunNearestSpec()<CR>
       " }}}
