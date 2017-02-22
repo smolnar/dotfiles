@@ -1,5 +1,5 @@
-/.git
-/.svm
-/node_modules
-/bower_components
-/tmp
+.git
+.svm
+node_modules
+bower_components
+tmp
