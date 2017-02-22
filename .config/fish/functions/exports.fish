@@ -23,6 +23,7 @@ set -xg PAGER "less"
 set -xg MANPAGER "$PAGER"
 set -xg EDITOR "vim"
 set -xg TERM "screen-256color"
+set -xg ANDROID_HOME '/usr/local/opt/android-sdk'
 # }}}
 # Paths {{{
 set PATH /usr/local/bin $PATH
