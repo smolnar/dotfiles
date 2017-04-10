@@ -23,14 +23,17 @@ set -xg PAGER "less"
 set -xg MANPAGER "$PAGER"
 set -xg EDITOR "vim"
 set -xg TERM "screen-256color"
-set -xg ANDROID_HOME '/usr/local/opt/android-sdk'
+set -xg ANDROID_HOME $HOME/Library/Android/sdk
 # }}}
 # Paths {{{
+set PATH /usr/local/opt/postgresql@9.5/bin $PATH
 set PATH /usr/local/bin $PATH
 set PATH /usr/local/sbin $PATH
 set PATH $HOME/.rbenv/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
 set PATH $PATH $HOME/bin
+set PATH $PATH $ANDROID_HOME/tools
+set PATH $PATH $ANDROID_HOME/platform-tools
 
 # Rbenv
 status --is-interactive; and . (rbenv init -|psub)

@@ -4,72 +4,67 @@
   filetype off
 
   set shell=/bin/bash
-
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-
-  Plugin 'VundleVim/Vundle.vim'
+ 
+  call plug#begin()
 
   " Core
   " {{{
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'tpope/vim-dispatch.git'
-    Plugin 'szw/vim-tags.git'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    " Plugin 'bling/vim-bufferline'
+    Plug 'kien/ctrlp.vim'
+    Plug 'tpope/vim-dispatch.git'
+    Plug 'szw/vim-tags.git'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plugin 'bling/vim-bufferline'
   "" }}}
 
   "" Helpers & Formatters
   "" {{{
-    Plugin 'sjl/gundo.vim'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'ervandew/supertab'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'tpope/vim-commentary'
-    Plugin 'tpope/vim-endwise'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'MarcWeber/vim-addon-mw-utils'
-    Plugin 'tpope/vim-surround'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'Raimondi/delimitMate'
-    Plugin 'kremso/vim-spectator'
-    Plugin 'tpope/vim-eunuch'
+    Plug 'sjl/gundo.vim'
+    Plug 'scrooloose/nerdtree'
+    Plug 'ervandew/supertab'
+    Plug 'scrooloose/syntastic'
+    Plug 'tomtom/tlib_vim'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-endwise'
+    Plug 'tpope/vim-fugitive'
+    Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'tpope/vim-surround'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'Raimondi/delimitMate'
+    Plug 'kremso/vim-spectator'
+    Plug 'tpope/vim-eunuch'
   "" }}}
 
   "" Languages
   "" {{{
-    Plugin 'ap/vim-css-color'
-    Plugin 'othree/html5.vim'
-    Plugin 'jelera/vim-javascript-syntax'
-    Plugin 'mustache/vim-mustache-handlebars'
-    Plugin 'tpope/vim-rails'
-    Plugin 'kchmck/vim-coffee-script'
-    Plugin 'vim-ruby/vim-ruby'
-    Plugin 'dsawardekar/ember.vim'
-    Plugin 'tpope/vim-cucumber'
-    Plugin 'slim-template/vim-slim'
-    Plugin 'dag/vim-fish'
+    Plug 'ap/vim-css-color'
+    Plug 'othree/html5.vim'
+    Plug 'jelera/vim-javascript-syntax'
+    Plug 'mustache/vim-mustache-handlebars'
+    Plug 'tpope/vim-rails'
+    Plug 'kchmck/vim-coffee-script'
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'dsawardekar/ember.vim'
+    Plug 'tpope/vim-cucumber'
+    Plug 'slim-template/vim-slim'
+    Plug 'dag/vim-fish'
+    Plug 'flowtype/vim-flow'
   "" }}}
 
   "" Tools
   "" {{{
-    Plugin 'mattn/gist-vim'
-    Plugin 'tpope/vim-git'
-    Plugin 'tpope/vim-bundler'
-    Plugin 'tpope/vim-rake'
-    Plugin 'Rip-Rip/clang_complete'
-    Plugin 'thoughtbot/vim-rspec'
-    Plugin 'garbas/vim-snipmate'
-    Plugin 'honza/vim-snippets'
-    Plugin 'sjl/splice.vim'
-    Plugin 'sophacles/vim-processing'
-    Plugin 'junegunn/vim-easy-align'
+    Plug 'tpope/vim-git'
+    Plug 'tpope/vim-bundler'
+    Plug 'tpope/vim-rake'
+    Plug 'thoughtbot/vim-rspec'
+    Plug 'garbas/vim-snipmate'
+    Plug 'honza/vim-snippets'
+    Plug 'sjl/splice.vim'
+    Plug 'sophacles/vim-processing'
+    Plug 'junegunn/vim-easy-align'
   " }}}
 
-  call vundle#end()
-  filetype plugin indent on
+  call plug#end()
 " }}}
 
 " Settings
@@ -273,7 +268,6 @@
       map <Down> gj
       map <Up> gk
 
-
       " Toggle hlsearch with <leader><space>
       nmap <leader><space> :set hlsearch! hlsearch?<CR>
 
@@ -341,9 +335,6 @@
         au!
         autocmd FileType eruby,yaml,ruby         setlocal ai et sta sw=2 sts=2
         autocmd BufNewFile,BufRead *.html.erb    set filetype=eruby.html  " load html snippets along with erb
-        autocmd FileType ruby,eruby              let g:rubycomplete_rails=1
-        autocmd FileType ruby,eruby              let g:rubycomplete_classes_in_global=1
-        autocmd FileType ruby,eruby              let g:rubycomplete_buffer_loading = 1
         autocmd FileType ruby,eruby              set foldmethod=manual
 
         " Rspec {{{
@@ -352,11 +343,6 @@
         " }}}
       augroup END
       " }}}
-
-      " Coffescript
-      " {{{
-      au BufNewFile,BufReadPost *.coffee setl sw=2 expandtab
-      "}}}
 
       augroup C
         au!
@@ -461,7 +447,6 @@
       " vim-bufferline
       " {{{
       let g:bufferline_fname_mod = ':p:.'
-
       " }}}
 
       " vim-tmuxline
@@ -496,15 +481,6 @@
       map <leader>cm :CtrlP app/models<cr>
       " }}}
 
-      " Gist
-      " {{{
-      let g:gist_clip_command = 'xclip -selection clipboard'
-      let g:gist_detect_filetype = 1
-      let g:gist_open_browser_after_post = 1
-      let g:gist_browser_command = 'google-chrome %URL% &' " NOTE: use your browser!
-      let g:gist_show_privates = 1
-      " }}}
-
       " Supertab {{{
       let g:SuperTabDefaultCompletionType = 'context'
       let g:SuperTabContextDefaultCompletionType = '<c-n>'
@@ -521,21 +497,11 @@
       let g:syntastic_ruby_checkers = ['mri']
       " }}}
 
-      " Rspec
+      " RSpec
       " {{{
-      let g:rspec_command = "!bundle exec rspec --drb {spec}"
+      let g:rspec_command = "!bundle exec rspec {spec}"
       map <Leader>s :call RunCurrentSpecFile()<CR>
       map <Leader>l :call RunNearestSpec()<CR>
-      " }}}
-
-      " Rubycomplete {{{
-      let g:rubycomplete_rails=1
-      let g:rubycomplete_classes_in_global=1
-      let g:rubycomplete_buffer_loading=1
-      let g:rubycomplete_include_object=1
-      let g:rubycomplete_include_objectspace=1
-      let g:ruby_debugger_debug_mode=1
-      let g:ruby_debugger_builtin_sender = 0
       " }}}
 
       " Gundo {{{
