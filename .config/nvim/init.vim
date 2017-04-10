@@ -4,17 +4,17 @@
   filetype off
 
   set shell=/bin/bash
- 
+
   call plug#begin()
 
   " Core
   " {{{
     Plug 'kien/ctrlp.vim'
-    Plug 'tpope/vim-dispatch.git'
-    Plug 'szw/vim-tags.git'
+    Plug 'tpope/vim-dispatch'
+    Plug 'szw/vim-tags'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plugin 'bling/vim-bufferline'
+    Plug 'bling/vim-bufferline'
   "" }}}
 
   "" Helpers & Formatters
@@ -76,8 +76,8 @@
       set backspace=indent,eol,start " make backspace a more flexible
       let loaded_matchparen=1 " match paranthesis
       set backup " create backup
-      set backupdir=~/.vim/tmp/backup " where to put backup files
-      set undodir=~/.vim/tmp/undo " directory to place undo files in
+      set backupdir=~/.config/nvim/tmp/backup " where to put backup files
+      set undodir=~/.config/nvim/tmp/undo " directory to place undo files in
       set undofile " create undo file
       set noswapfile
       set mouse=a " use mouse for everything

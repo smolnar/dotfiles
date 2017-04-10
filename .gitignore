@@ -1,6 +1,7 @@
 /.config/nvim/tmp/backup
 /.config/nvim/tmp/swap
 /.config/nvim/tmp/undo
+/.config/nvim/plugged
 *~
 *.log
 /.mpd/mpd.db
