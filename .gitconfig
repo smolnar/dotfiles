@@ -1,6 +1,8 @@
 [user]
   name = Samuel Molnar
   email = molnar.samuel@gmail.com
+[core]
+  editor = "nvim"
 [merge]
   tool = opendiff
   conflictstyle = diff3

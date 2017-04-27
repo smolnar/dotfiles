@@ -14,7 +14,7 @@
     Plug 'szw/vim-tags'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'bling/vim-bufferline'
+    " Plug 'bling/vim-bufferline'
   "" }}}
 
   "" Helpers & Formatters
@@ -210,10 +210,10 @@
       map <S-Down> <C-w><Down>
 
       " Emacs-like keybindings
-      inoremap <C-a> <Home>
-      inoremap <C-e> <End>
-      nnoremap <c-a> <Home>
-      nnoremap <c-e> <End>
+      map <C-a> <Home>
+      map <C-e> <End>
+      imap <C-a> <Home>
+      imap <C-e> <End>
 
       " Run Make with Ctrl+M
       nnoremap <S-m> :Make<CR>
@@ -434,13 +434,21 @@
       let g:airline_symbols = {}
       let g:airline_theme = 'powerlineish'
       let g:airline_powerline_fonts=1
+
       let g:airline_left_sep = ''
       let g:airline_left_alt_sep = ''
       let g:airline_right_sep = ''
       let g:airline_right_alt_sep = ''
-      let g:airline_symbols.branch = ''
-      let g:airline_symbols.readonly = ''
-      let g:airline_symbols.linenr  = ''
+      let g:airline_symbols.crypt = '🔒'
+      let g:airline_symbols.linenr = '␊'
+      let g:airline_symbols.maxlinenr = '☰'
+      let g:airline_symbols.branch = '⎇ '
+      let g:airline_symbols.paste = 'ρ'
+      " let g:airline_symbols.paste = '∥'
+      let g:airline_symbols.spell = 'Ꞩ'
+      let g:airline_symbols.notexists = ' ∄'
+      let g:airline_symbols.whitespace = 'Ξ'
+      let g:airline_symbols.readonly = '⚠'
       " }}}
 
 

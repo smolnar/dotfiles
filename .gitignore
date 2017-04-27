@@ -1,3 +1,5 @@
+/bin/*
+!/bin/iStats.sh
 /.config/nvim/tmp/backup
 /.config/nvim/tmp/swap
 /.config/nvim/tmp/undo
