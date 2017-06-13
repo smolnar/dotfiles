@@ -9,7 +9,7 @@
 
   " Core
   " {{{
-    Plug 'kien/ctrlp.vim'
+    Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-dispatch'
     Plug 'szw/vim-tags'
     Plug 'vim-airline/vim-airline'
@@ -457,36 +457,37 @@
       let g:bufferline_fname_mod = ':p:.'
       " }}}
 
-      " vim-tmuxline
-      " {{{
-      let g:tmuxline_preset = {
-            \'a'    : '#S',
-            \'win'  : ['#I', '#W'],
-            \'cwin' : ['#I', '#W', '#F'],
-            \'y'    : ['%R', '%a', '%Y'],
-            \'z'    : '#H'}
-
-      let g:tmuxline_separators = {
-            \ 'left' : '⮀',
-            \ 'left_alt': '⮁',
-            \ 'right' : '⮂',
-            \ 'right_alt' : '⮃',
-            \ 'space' : ' '}
-      " }}}
-
-      " CtrlP
+      " fzf
       " {{{
       set wildignore+=*.so,*.swp,*.zip     " MacOSX/Linux
-      nnoremap <F3> :CtrlP<CR>
-      nnoremap <F4> :CtrlPBuffer<CR>
-      nnoremap <F5> :CtrlPTag<CR>
-      nnoremap <F2> :CtrlPDir<CR>
+      let g:fzf_command_prefix = 'FZF'
+      let g:fzf_layout = { 'down': '~25%' }
+      let g:fzf_buffers_jump = 1
 
-      map <leader>f :CtrlP<cr>
-      map <leader>b :CtrlPMRU<cr>
-      map <leader>cv :CtrlP app/views<cr>
-      map <leader>cc :CtrlP app/controllers<cr>
-      map <leader>cm :CtrlP app/models<cr>
+      let g:fzf_colors =
+      \ { 'fg':      ['fg', 'Comment'],
+        \ 'bg':      ['bg', 'Normal'],
+        \ 'hl':      ['fg', 'Identifier'],
+        \ 'fg+':     ['fg', 'Normal'],
+        \ 'bg+':     ['bg', 'Normal'],
+        \ 'hl+':     ['fg', 'Identifier'],
+        \ 'info':    ['fg', 'Label'],
+        \ 'prompt':  ['fg', 'Identifier'],
+        \ 'pointer': ['fg', 'Comment'],
+        \ 'marker':  ['fg', 'Conditional'],
+        \ 'spinner': ['fg', 'Comment'],
+        \ 'header':  ['fg', 'Comment'] }
+
+      function! s:fzf_statusline()
+        highlight fzf1 ctermbg=235
+        setlocal statusline=%#fzf1#
+      endfunction
+
+      autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+      nnoremap <F3> :FZFFiles<CR>
+      nnoremap <F4> :FZFBuffer<CR>
+      nnoremap <F5> :FZFTag<CR>
       " }}}
 
       " Supertab {{{
@@ -568,12 +569,6 @@
       if executable('ag')
         " Use ag over grep
         set grepprg=ag\ --nogroup\ --nocolor
-
-        " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-        let g:ctrlp_user_command = 'ag %s -l --path-to-ignore ~/.agignore --nocolor --hidden -g ""'
-
-        " ag is fast enough that CtrlP doesn't need to cache
-        let g:ctrlp_use_caching = 0
       endif
 
       " bind K to grep word under cursor

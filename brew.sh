@@ -18,6 +18,7 @@ brew install ack
 brew install htop
 brew install ngrep
 brew install the_silver_surfer
+brew install fzf
 
 # Git
 brew install git
