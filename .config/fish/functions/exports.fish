@@ -47,4 +47,6 @@ set -xg EVENT_NOKQUEUE 1
 
 # fzf
 set -xg FZF_DEFAULT_COMMAND 'ag --hidden -U -g ""'
+set -xg FZF_COMPLETION_TRIGGER '~~'
+set -xg FZF_DEFAULT_OPTS '-i'
 # }}}
