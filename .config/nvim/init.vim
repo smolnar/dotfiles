@@ -124,11 +124,11 @@
       set linespace=0
       let c_no_trail_space_error = 1 " see c errors
       let java_space_errors = 1 " see java errors
-      set showcmd " show the command being typed
-      set ruler " always show current position
+      set noshowcmd " do not show the command being typed
+      set noruler " never show current position
       set scrolloff=5 " Keep 5 lines (top/bottom) for scop
       set sidescrolloff=10 " Keep 10 lines at the size
-      set showmode " show the current mode (Insert, Visual..)
+      set noshowmode " Hide the current mode (Insert, Visual..)
 
       set expandtab " no real tabs!
       set wrap " wrap lines, we dont want long lines
@@ -463,6 +463,7 @@
       let g:fzf_command_prefix = 'FZF'
       let g:fzf_layout = { 'down': '~25%' }
       let g:fzf_buffers_jump = 1
+      let g:fzf_nvim_statusline = 0
 
       let g:fzf_colors =
       \ { 'fg':      ['fg', 'Comment'],
@@ -478,12 +479,15 @@
         \ 'spinner': ['fg', 'Comment'],
         \ 'header':  ['fg', 'Comment'] }
 
-      function! s:fzf_statusline()
-        highlight fzf1 ctermbg=235
-        setlocal statusline=%#fzf1#
+      function! s:fzf_status_line_settings()
+        set laststatus=0
+        autocmd BufWinLeave <buffer> set laststatus=2
       endfunction
 
-      autocmd! User FzfStatusLine call <SID>fzf_statusline()
+      augroup FZFStatusLine
+        autocmd!
+        autocmd FileType fzf call s:fzf_status_line_settings()
+      augroup END
 
       nnoremap <F3> :FZFFiles<CR>
       nnoremap <F4> :FZFBuffer<CR>
