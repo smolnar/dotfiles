@@ -458,7 +458,7 @@
         \ 'bg+':     ['bg', 'Normal'],
         \ 'hl+':     ['fg', 'Identifier'],
         \ 'info':    ['fg', 'Label'],
-        \ 'prompt':  ['fg', 'Identifier'],
+        \ 'prompt':  ['fg', 'Function'],
         \ 'pointer': ['fg', 'Comment'],
         \ 'marker':  ['fg', 'Conditional'],
         \ 'spinner': ['fg', 'Comment'],
