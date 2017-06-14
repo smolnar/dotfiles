@@ -53,7 +53,6 @@
 
   "" Tools
   "" {{{
-    Plug 'tpope/vim-git'
     Plug 'tpope/vim-bundler'
     Plug 'tpope/vim-rake'
     Plug 'thoughtbot/vim-rspec'
@@ -158,23 +157,9 @@
       "improve autocomplete menu color
       highlight Pmenu ctermbg=238
       " }}}
-      "
-      " Removes trailing spaces
-      function! TrimWhiteSpace()
-        if !&binary && &filetype != 'diff'
-          normal mz
-          normal Hmy
-          %s/^\s\+$//e
-          normal 'yz<CR>
-          normal `z
-        endif
-      endfunction
 
       " Filter and trim whitespaces
-      autocmd FileWritePre * :call TrimWhiteSpace()
-      autocmd FileAppendPre * :call TrimWhiteSpace()
-      autocmd FilterWritePre * :call TrimWhiteSpace()
-      autocmd BufWritePre * :call TrimWhiteSpace()
+      autocmd BufWritePre * %s/^\s\+$//e
 
       " Use relative numbering in insert mode
       autocmd InsertEnter * :set nonumber relativenumber
@@ -522,9 +507,10 @@
       " }}}
 
       " Fugitive {{{
-      nnoremap <leader>gs :Gstatus<cr>
+      nnoremap <leader>gs :Gstatus<CR>
       nnoremap <leader>gc :Gcommit 
-      nnoremap <leader>gd :Gdiff<cr>
+      nnoremap <leader>gd :Gdiff<CR
+      nnoremap <leader>gb :Gblame<CR>
       " }}}
 
       " NERDTree {{{
