@@ -73,7 +73,6 @@
       set re=1 " Use old regex engine with makes things bit faster
 
       set backspace=indent,eol,start " make backspace a more flexible
-      let loaded_matchparen=1 " match paranthesis
       set backup " create backup
       set backupdir=~/.config/nvim/tmp/backup " where to put backup files
       set undodir=~/.config/nvim/tmp/undo " directory to place undo files in
