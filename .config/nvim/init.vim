@@ -113,7 +113,7 @@
       set smartcase " use smartcase, when search query starts with Uppercase, turn off case insensitive search
 
       set list " show trailing characters
-      set listchars=tab:▸\ ,trail:¬,extends:❯,precedes:❮,nbsp:~ " it show ¬ character when as you type, fill free to comment out set list
+      set listchars=tab:»\ ,trail:·,extends:❯,precedes:❮,nbsp:~ " highlight tabs, trailing whitespace, hard spaces, etc.
 
       set number " set line numbering
       set novisualbell " do not blink
@@ -491,7 +491,7 @@
       let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['tex', 'xml', 'cucumber'] }
       let g:syntastic_html_tidy_exec = 'tidy5'
       let g:syntastic_javascript_checkers = ['eslint']
-      let g:syntastic_ruby_checkers = ['mri']
+      let g:syntastic_ruby_checkers = ['mri', 'rubocop']
       " }}}
 
       " RSpec
