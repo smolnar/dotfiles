@@ -39,6 +39,7 @@
   ps = push origin
   pp = push origin master
   br = branch
+  cc = clean-checkout
 
   # List aliases
   la = "!git config -l | grep alias | cut -c 7-"
@@ -60,7 +61,7 @@
   # Find file and content in codebase
   f = "!git ls-files | grep -i"
 [filter "lfs"]
+	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
