@@ -22,7 +22,7 @@
     Plug 'sjl/gundo.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'ervandew/supertab'
-    Plug 'scrooloose/syntastic'
+    Plug 'neomake/neomake'
     Plug 'tomtom/tlib_vim'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-endwise'
@@ -483,15 +483,18 @@
       let g:SuperTabContextDefaultCompletionType = '<c-n>'
       " }}}
 
-      " Syntastic {{{
-      nnoremap <leader>E :SyntasticCheck<CR>
-      let g:syntastic_auto_loc_list=1
-      let g:syntastic_enable_signs=1
-      let g:synastic_quiet_warnings=0
-      let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['tex', 'xml', 'cucumber'] }
-      let g:syntastic_html_tidy_exec = 'tidy5'
-      let g:syntastic_javascript_checkers = ['eslint']
-      let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+      " Neomake {{{
+      nnoremap <leader>E :Neomake!<CR>
+
+      let g:neomake_error_sign = { 'text': '●', 'texthl': 'NeomakeErrorSign' }
+      let g:neomake_warning_sign = { 'text': '●', 'texthl': 'NeomakeWarningSign' }
+      let g:neomake_message_sign = { 'text': '➤', 'texthl': 'NeomakeMessageSign' }
+      let g:neomake_info_sign = { 'text': '●', 'texthl': 'NeomakeInfoSign'}
+
+      augroup NeoMake
+        au!
+        autocmd! BufWritePost * Neomake
+      augroup END
       " }}}
 
       " RSpec
