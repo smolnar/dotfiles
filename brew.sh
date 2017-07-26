@@ -21,7 +21,7 @@ brew install the_silver_surfer
 brew install fzf
 
 # Git
-brew install git
+brew install git diff-so-fancy
 
 # Node and NPM
 brew install node npm

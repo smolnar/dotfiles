@@ -4,6 +4,7 @@
   signingkey = 07684F3C
 [core]
   editor = "nvim"
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [commit]
   verbose = true
   gpgsign = true
@@ -14,6 +15,7 @@
   branch = auto
   diff = auto
   status = auto
+  ui = true
 [diff]
   renames = copies
 [push]
@@ -25,10 +27,12 @@
   remote = green
 [color "diff"]
   renames = copies
-  meta = yellow bold
+  meta = 227
   frag = magenta bold
   old = red bold
   new = green bold
+  commit = 227 bold
+  whitespace = red reverse
 [color "status"]
   added = yellow
   changed = green
@@ -38,7 +42,7 @@
   co = checkout
   cp = cherry-pick
   cl = clone
-  cm = commit
+  cm = "!git diff && git commit"
   st = status
   ps = push origin
   pp = push origin master
@@ -65,10 +69,18 @@
 
   # Find file and content in codebase
   f = "!git ls-files | grep -i"
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [gpg]
-	program = gpg2
+  program = gpg2
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[diff-so-fancy]
+  stripLeadingSymbols = false
