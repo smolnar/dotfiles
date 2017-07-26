@@ -23,79 +23,99 @@ alias ag "ag --path-to-ignore ~/.agignore"
 alias b "bundle exec"
 #}}}
 
-# Helpers {{{
-# IP addresses
-alias myip "dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip "ipconfig getifaddr en0"
-alias ips "ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-
-# View HTTP traffic
-if [ (uname) = "Darwin" ]
-  function sniff
-    if count $argv > /dev/null
-      set -l interface $argv[1]
+# Rails
+# {{{
+  function run_ruby_or_ruby_on_rails_command -d 'Runs Ruby or Ruby on Rails command either from `bin/*` or with `bundle exec`' 
+    if test -e ./bin/$argv[1]
+      set cmd "bin/$argv[1]"
     else
-      set -l interface "en0"
+      set cmd "bundle exec $argv[1]"
     end
 
-    sudo ngrep -d "$interface" -t '^(GET|POST) ' 'tcp and port 80'
+    echo -e "\033[37mRunning \033[1;34m$cmd\033[0m"
+
+    eval $cmd
   end
-else
-  alias sniff "sudo ngrep -d eth0 -t '^(GET|POST) ' 'tcp and port 80'"
-end
 
-# Recursively delete `.DS_Store` files
-alias cleanup "find . -type f -name '*.DS_Store' -ls -delete"
+  for command in rails rake rspec rubocop
+    alias $command "run_ruby_or_ruby_on_rails_command $command"
+  end
+# }}}
 
-# URL-encode strings
-alias urlencode 'python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+# Helpers
+# {{{
+  # IP addresses
+  alias myip "dig +short myip.opendns.com @resolver1.opendns.com"
+  alias localip "ipconfig getifaddr en0"
+  alias ips "ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-# Intuitive map function
-# For example, to list all directories that contain a certain file:
-# find . -name .gitattributes | map dirname
-alias map "xargs -n1"
+  # View HTTP traffic
+  if [ (uname) = "Darwin" ]
+    function sniff
+      if count $argv > /dev/null
+        set -l interface $argv[1]
+      else
+        set -l interface "en0"
+      end
 
-# Vagrant goodies
-alias vp 'vagrant provision'
-alias vup 'vagrant up'
-alias vssh 'vagrant ssh'
-alias vdestroy 'vagrant destroy'
+      sudo ngrep -d "$interface" -t '^(GET|POST) ' 'tcp and port 80'
+    end
+  else
+    alias sniff "sudo ngrep -d eth0 -t '^(GET|POST) ' 'tcp and port 80'"
+  end
 
-if [ (uname) = "Darwin" ]
-  # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-  alias update 'sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; gem update'
+  # Recursively delete `.DS_Store` files
+  alias cleanup "find . -type f -name '*.DS_Store' -ls -delete"
 
-  # Lock the screen (when going AFK)
-  alias afk 'bash -c \'/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend\''
+  # URL-encode strings
+  alias urlencode 'python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
-  # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-  alias stfu "osascript -e 'set volume output muted true'"
-  alias pumpitup "osascript -e 'set volume 7'"
+  # Intuitive map function
+  # For example, to list all directories that contain a certain file:
+  # find . -name .gitattributes | map dirname
+  alias map "xargs -n1"
 
-  # make "ip" an alias to myip (on Linux, ip is a system command)
-  alias ip myip
-end
+  # Vagrant goodies
+  alias vp 'vagrant provision'
+  alias vup 'vagrant up'
+  alias vssh 'vagrant ssh'
+  alias vdestroy 'vagrant destroy'
 
-set -l GRC (which grc)
+  if [ (uname) = "Darwin" ]
+    # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+    alias update 'sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; gem update'
 
-if [ -n "$GRC" ]
-    alias colourify "$GRC -es --colour=auto"
-    alias configure 'colourify ./configure'
-    alias diff 'colourify diff'
-    alias make 'colourify make'
-    alias gcc 'colourify gcc'
-    alias g++ 'colourify g++'
-    alias as 'colourify as'
-    alias ld 'colourify ld'
-    alias netstat 'colourify netstat'
-    alias ping 'colourify ping'
-    alias traceroute 'colourify /usr/sbin/traceroute'
-    alias head 'colourify head'
-    alias tail 'colourify tail'
-    alias dig 'colourify dig'
-    alias mount 'colourify mount'
-    alias ps 'colourify ps'
-    alias mtr 'colourify mtr'
-    alias df 'colourify df'
-end
-#}}}
+    # Lock the screen (when going AFK)
+    alias afk 'bash -c \'/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend\''
+
+    # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
+    alias stfu "osascript -e 'set volume output muted true'"
+    alias pumpitup "osascript -e 'set volume 7'"
+
+    # make "ip" an alias to myip (on Linux, ip is a system command)
+    alias ip myip
+  end
+
+  set -l GRC (which grc)
+
+  if [ -n "$GRC" ]
+      alias colourify "$GRC -es --colour=auto"
+      alias configure 'colourify ./configure'
+      alias diff 'colourify diff'
+      alias make 'colourify make'
+      alias gcc 'colourify gcc'
+      alias g++ 'colourify g++'
+      alias as 'colourify as'
+      alias ld 'colourify ld'
+      alias netstat 'colourify netstat'
+      alias ping 'colourify ping'
+      alias traceroute 'colourify /usr/sbin/traceroute'
+      alias head 'colourify head'
+      alias tail 'colourify tail'
+      alias dig 'colourify dig'
+      alias mount 'colourify mount'
+      alias ps 'colourify ps'
+      alias mtr 'colourify mtr'
+      alias df 'colourify df'
+  end
+# }}}

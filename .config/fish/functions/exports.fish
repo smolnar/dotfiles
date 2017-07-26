@@ -24,7 +24,7 @@ set -xg LC_ALL "en_US.utf-8"
 set -xg PAGER "less"
 set -xg MANPAGER "$PAGER"
 set -xg EDITOR "vim"
-set -xg TERM "screen-256color"
+set -xg TERM "xterm-256color"
 set -xg ANDROID_HOME $HOME/Library/Android/sdk
 # }}}
 
@@ -43,6 +43,10 @@ status --is-interactive; and . (rbenv init -|psub)
 
 # Tmux
 set -xg EVENT_NOKQUEUE 1
+# }}}
+
+# NVIM
+export NVIM_TUI_ENABLE_TRUE_COLOR 0
 # }}}
 
 # fzf
