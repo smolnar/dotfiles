@@ -527,6 +527,11 @@
       let g:nerdtree_tabs_open_on_gui_startup=0
       " }}}
 
+      " Ruby
+      " {{{
+      let g:ruby_indent_assignment_style = 'variable'
+      " }}}
+
       " Rails
       " {{{
       nnoremap <C-p> :completefunc()<CR>
@@ -560,7 +565,7 @@
       " {{{
       if executable('ag')
         " Use ag over grep
-        set grepprg=ag\ --nogroup\ --nocolor
+        set grepprg=ag\ --nogroup\ --nocolor\ --hidden
       endif
 
       " bind K to grep word under cursor
@@ -572,30 +577,5 @@
       " Search with `
       nnoremap <leader>a :Ag<SPACE>
       "}}}
-    " }}}
-
-    " GUI setting
-    " {{{
-    if has('gui_running')
-      set guifont=Ubuntu\ Mono\ 12
-      set guioptions-=m  "remove menu bar
-      set guioptions-=T  "remove toolbar
-      set guioptions-=r  "remove right-hand scroll bar
-      set guioptions-=l
-      set guioptions-=h
-      set guioptions-=b
-      set guioptions-=R
-      set guioptions-=L
-      set showtabline=1   " show tabs in gvim, not vim
-      set guitablabel=%t  " show simple filname as tabname
-
-      " Bindings
-      " {{{
-      nnoremap <c-o> :browse tabnew :pwd<CR>
-      nnoremap <C-M-s> :browse saveas :pwd<CR>
-      nnoremap <C-M-w> :wq<CR>
-      nnoremap <C-M-f> :set guifont=*<CR>
-      " }}}
-    endif
     " }}}
 " }}}
