@@ -1,6 +1,7 @@
 /bin/*
 !/bin/iStats.sh
 !/bin/git-clean-checkout
+!/bin/colors
 /.config/nvim/tmp/backup
 /.config/nvim/tmp/swap
 /.config/nvim/tmp/undo

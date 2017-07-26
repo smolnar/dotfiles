@@ -1,5 +1,6 @@
 #!/bin/bash
 
+git fetch origin
 git co master
 
 if [ `git branch --list $1` ]

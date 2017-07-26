@@ -1,8 +1,12 @@
 [user]
   name = Samuel Molnar
   email = molnar.samuel@gmail.com
+  signingkey = 07684F3C
 [core]
   editor = "nvim"
+[commit]
+  verbose = true
+  gpgsign = true
 [merge]
   tool = opendiff
   conflictstyle = diff3
@@ -40,6 +44,7 @@
   pp = push origin master
   br = branch
   cc = clean-checkout
+  fo = fetch origin
 
   # List aliases
   la = "!git config -l | grep alias | cut -c 7-"
@@ -61,7 +66,9 @@
   # Find file and content in codebase
   f = "!git ls-files | grep -i"
 [filter "lfs"]
-	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+	required = true
+[gpg]
+	program = gpg2
