@@ -32,12 +32,13 @@ alias b "bundle exec"
       set cmd "bundle exec $argv[1]"
     end
 
-    echo -e "\033[37mRunning \033[1;34m$cmd\033[0m"
+    set -e argv[1]
+    echo -e "\033[1;37mRunning \033[1;34m$cmd\033[0;30m $argv\033[0m "
 
-    eval $cmd
+    eval $cmd $argv
   end
 
-  for command in rails rake rspec rubocop
+  for command in rails rake rspec rubocop cap
     alias $command "run_ruby_or_ruby_on_rails_command $command"
   end
 # }}}

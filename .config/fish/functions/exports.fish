@@ -26,6 +26,7 @@ set -xg MANPAGER "$PAGER"
 set -xg EDITOR "vim"
 set -xg TERM "xterm-256color"
 set -xg ANDROID_HOME $HOME/Library/Android/sdk
+set -xg PGHOST localhost
 # }}}
 
 # Paths {{{

@@ -4,9 +4,8 @@
   signingkey = 07684F3C
 [core]
   editor = "nvim"
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = diff-so-fancy | less --tabs=4 -RSX -+F
 [commit]
-  verbose = true
   gpgsign = true
 [merge]
   tool = opendiff
@@ -42,7 +41,7 @@
   co = checkout
   cp = cherry-pick
   cl = clone
-  cm = "!git diff && git commit"
+  cm = "!git add . && git diff --cached && git commit -a"
   st = status
   ps = push origin
   pp = push origin master
@@ -71,10 +70,10 @@
   f = "!git ls-files | grep -i"
 
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [gpg]
   program = gpg2
 [color "diff-highlight"]

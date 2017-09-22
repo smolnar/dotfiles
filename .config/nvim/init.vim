@@ -499,7 +499,7 @@
 
       " RSpec
       " {{{
-      let g:rspec_command = "!bundle exec rspec {spec}"
+      let g:rspec_command = "!rspec {spec}"
       map <Leader>s :call RunCurrentSpecFile()<CR>
       map <Leader>l :call RunNearestSpec()<CR>
       " }}}
