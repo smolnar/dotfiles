@@ -149,11 +149,11 @@
 
       " Cursor highlight
       :hi CursorLine   cterm=NONE ctermbg=8
-      :hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white
+      :hi CursorColumn cterm=NONE ctermbg=32 ctermfg=white
       :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
       set cursorline
 
-      "improve autocomplete menu color
+      " Improve autocomplete menu color
       highlight Pmenu ctermbg=238
       " }}}
 
@@ -172,6 +172,9 @@
 
       " Do not enter ex mode ever
       map Q <Nop>
+
+      " Show cursorcolumn
+      nnoremap <leader>b :set cursorcolumn!<CR>
 
       " Open all folds
       nnoremap <space> :%foldopen<CR>
@@ -276,6 +279,11 @@
       imap <M-8> <Esc>8gt
       map  <M-9> 9gt
       imap <M-9> <Esc>9gt
+
+      " Show hightlight group under cursor
+      function! SyntaxItem()
+        return synIDattr(synID(line("."),col("."),1),"name")
+      endfunction
 
       " Fix for tmux CTRL
       if &term =~ '^screen'

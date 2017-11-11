@@ -48,6 +48,7 @@
   br = branch
   cc = clean-checkout
   fo = fetch origin
+  rpull = pull --rebase
 
   # List aliases
   la = "!git config -l | grep alias | cut -c 7-"

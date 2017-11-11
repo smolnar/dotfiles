@@ -97,6 +97,7 @@ hi rubyRoute ctermfg=81 ctermbg=NONE cterm=NONE
 hi erubyDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE
 hi erubyComment ctermfg=95 ctermbg=NONE cterm=NONE
 hi erubyRailsMethod ctermfg=81 ctermbg=NONE cterm=NONE
+hi rubyTestAction ctermfg=208 ctermbg=NONE cterm=NONE
 
 " HTML
 hi htmlTag ctermfg=NONE ctermbg=NONE cterm=NONE

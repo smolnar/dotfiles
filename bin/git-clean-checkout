@@ -8,4 +8,4 @@ then
   git branch -D $1
 fi
 
-git fetch origin && git co $1
+git co -t origin/$1
