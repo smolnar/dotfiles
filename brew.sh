@@ -24,7 +24,7 @@ brew install fzf
 brew install git diff-so-fancy
 
 # Node and NPM
-brew install node npm
+brew install node npm watchman
 
 # Phantomjs
 brew install phantomjs
