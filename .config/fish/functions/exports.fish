@@ -27,17 +27,20 @@ set -xg EDITOR "vim"
 set -xg TERM "xterm-256color"
 set -xg ANDROID_HOME $HOME/Library/Android/sdk
 set -xg PGHOST localhost
+set -xg NODE_OPTIONS "--max-old-space-size=6000"
 # }}}
 
 # Paths {{{
 set PATH /usr/local/opt/postgresql@9.5/bin $PATH
 set PATH /usr/local/bin $PATH
 set PATH /usr/local/sbin $PATH
+set PATH /usr/local/opt/node@8/bin $PATH
 set PATH $HOME/.rbenv/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
 set PATH $PATH $HOME/bin
 set PATH $PATH $ANDROID_HOME/tools
 set PATH $PATH $ANDROID_HOME/platform-tools
+# set PATH $PATH /usr/local/anaconda3/bin
 
 # Rbenv
 status --is-interactive; and . (rbenv init -|psub)

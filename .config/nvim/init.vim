@@ -524,7 +524,7 @@
       " }}}
 
       " NERDTree {{{
-      nnoremap <F1> :NERDTreeToggle<CR>
+      nnoremap <F1> :NERDTreeFind<CR>
       let g:NERDTreeMinimalUI=1
       let g:NERDTreeDirArrows=1
       let g:NERTreeHighlightCursorLine=1

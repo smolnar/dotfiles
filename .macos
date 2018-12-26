@@ -34,6 +34,9 @@ defaults write com.apple.universalaccess reduceTransparency -bool false
 # Set highlight color to green
 # defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
+# Enable Dark Theme
+defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark
+
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
@@ -351,7 +354,7 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool false
+defaults write com.apple.dock autohide -bool true
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
@@ -406,10 +409,14 @@ defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
 
 # Show the full URL in the address bar (note: this still hides the scheme)
-# defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
-# Set Safari’s home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "about:blank"
+# Set Safari to blank page for faster loading and focus in Search Bar
+defaults write com.apple.Safari NewTabBehavior -int 1
+defaults write com.apple.Safari NewWindowBehavior -int 1
+
+# Always prompt where to download
+defaults write com.apple.Safari AlwaysPromptForDownloadFolder -int 1
 
 # Prevent Safari from opening ‘safe’ files automatically after downloading
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
@@ -449,10 +456,10 @@ defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
 # Disable auto-correct
 defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
 
-# Disable AutoFill
-defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
+# Disable AutoFill only for Misc
+defaults write com.apple.Safari AutoFillFromAddressBook -bool true
+defaults write com.apple.Safari AutoFillPasswords -bool true
+defaults write com.apple.Safari AutoFillCreditCardData -bool true
 defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
 # Warn about fraudulent websites
@@ -481,6 +488,9 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 # Update extensions automatically
 defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
+
+# Show statusbar with link
+defaults write com.apple.Safari ShowOverlayStatusBar -int 1
 
 ###############################################################################
 # Mail                                                                        #
