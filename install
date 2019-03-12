@@ -1,33 +1,27 @@
-#!/usr/bin/env ruby
-require 'fileutils'
+#!/bin/bash
 
-def symlink(path)
-  home_path = "~/#{path}"
+echo "> Installing configuration files ..."
 
-  FileUtils.rm_rf(File.expand_path(home_path))
-  puts "Linking #{path}"
-  FileUtils.ln_s(File.expand_path(path), File.expand_path(home_path), force: true)
-end
+ln -s .ackrc ~/
+ln -s .agignore ~/
+ln -s .bowerrc ~/
+ln -s .config/fish ~/.config/
+ln -s .config/nvim ~/.config/
+ln -s .ctags ~/
+ln -s .curlrc ~/
+ln -s .gemrc ~/
+ln -s .gitconfig ~/
+ln -s .hushlogin ~/
+ln -s .inputrc ~/
+ln -s .tmux.conf ~/
+ln -s .vim ~/
+ln -s vimrc ~/
+ln -s Library/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/
+ln -s bin ~/
+ln -s spectacle.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
+ln -s .tmuxinator ~/
 
-PATHS = [
-  '.ackrc',
-  '.agignore',
-  '.bowerrc',
-  '.config/fish',
-  '.config/nvim',
-  '.ctags',
-  '.curlrc',
-  '.gemrc',
-  '.gitconfig',
-  '.hushlogin',
-  '.inputrc',
-  '.tmux.conf',
-  '.vim',
-  '.vimrc',
-  'Library/KeyBindings/DefaultKeyBinding.dict',
-  'bin'
-]
-
-PATHS.each do |path|
-  symlink(path)
-end
+echo "> Setting up vim ..."
+# Neo Vim
+mkdir -v ~/.config/nvim/{tmp,tmp/backup,undo}
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

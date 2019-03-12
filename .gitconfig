@@ -1,7 +1,7 @@
 [user]
-  name = Samuel Molnar
-  email = molnar.samuel@gmail.com
-  signingkey = 07684F3C
+	name = Samuel Molnar
+	email = molnar.samuel@gmail.com
+	signingkey = 91897B380999D452
 [core]
   editor = "nvim"
   pager = diff-so-fancy | less --tabs=4 -RSX -+F
@@ -77,7 +77,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 [gpg]
-  program = gpg2
+  program = gpg
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
