@@ -61,6 +61,7 @@
     Plug 'sjl/splice.vim'
     Plug 'sophacles/vim-processing'
     Plug 'junegunn/vim-easy-align'
+    Plug 'tidalcycles/vim-tidal'
   " }}}
 
   call plug#end()
@@ -146,7 +147,6 @@
 
     " Advanced macros
     " {{{
-
       " Cursor highlight
       :hi CursorLine   cterm=NONE ctermbg=8
       :hi CursorColumn cterm=NONE ctermbg=32 ctermfg=white
@@ -509,7 +509,6 @@
       " {{{
       let g:rspec_command = "!rspec {spec}"
       map <Leader>s :call RunCurrentSpecFile()<CR>
-      map <Leader>l :call RunNearestSpec()<CR>
       " }}}
 
       " Gundo {{{
@@ -585,5 +584,10 @@
       " Search with `
       nnoremap <leader>a :Ag<SPACE>
       "}}}
+    " }}}
+
+    " Tidal
+    " {{{
+    let g:tidal_default_config = { "socket_name": "default", "target_pane": "tidal:2.1" }
     " }}}
 " }}}

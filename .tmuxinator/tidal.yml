@@ -1,0 +1,8 @@
+name: tidal
+root: ~/projects/tidal
+
+windows:
+  - code:
+    - vim
+  - console:
+    - tidal

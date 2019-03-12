@@ -1,0 +1,22 @@
+name: Intuo
+root: ~/projects/intuo
+
+windows:
+  - rails: cd intuo; vim
+  - directories:
+      - cd intuo
+
+  - console:
+      - cd intuo; bin/rails c
+
+  - servers:
+      - cd intuo; bin/rails s -b 127.0.0.1
+
+  - specs:
+      layout: even-horizontal
+      panes:
+        - cd intuo
+        - cd intuo; tail -f log/test.log
+
+  - misc:
+      - cd intuo; bundle exec sidekiq
