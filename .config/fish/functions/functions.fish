@@ -11,7 +11,7 @@ end
 # Syntax-highlight JSON strings or files
 # Usage: `echo '{"foo":42}' | json`
 function json
-  python -mjson.tool | pygmentize -l javascript
+  python -mjson.tool | pygmentize -l javascript -O style=monokai
 end
 
 # Restart Spolight indexing

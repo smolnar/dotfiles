@@ -16,7 +16,7 @@ ln -s .inputrc ~/
 ln -s .tmux.conf ~/
 ln -s .vim ~/
 ln -s vimrc ~/
-ln -s Library/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/
+cp -f ./Library/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/
 ln -s bin ~/
 ln -s spectacle.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
 ln -s .tmuxinator ~/

@@ -38,7 +38,7 @@ alias b "bundle exec"
     eval $cmd $argv
   end
 
-  for command in rails rake rspec rubocop cap
+  for command in rails rake rspec rubocop cap annotate spring
     alias $command "run_ruby_or_ruby_on_rails_command $command"
   end
 # }}}

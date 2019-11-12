@@ -32,15 +32,23 @@ set -xg NODE_OPTIONS "--max-old-space-size=6000"
 
 # Paths {{{
 set PATH /usr/local/opt/postgresql@9.5/bin $PATH
+set PATH /Applications/Postgres.app/Contents/Versions/latest/bin $PATH
 set PATH /usr/local/bin $PATH
 set PATH /usr/local/sbin $PATH
-set PATH /usr/local/opt/node@8/bin $PATH
+set PATH /usr/local/opt/node@10/bin $PATH
 set PATH $HOME/.rbenv/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
 set PATH $PATH $HOME/bin
 set PATH $PATH $ANDROID_HOME/tools
 set PATH $PATH $ANDROID_HOME/platform-tools
 # set PATH $PATH /usr/local/anaconda3/bin
+
+
+# Compilers {{{
+# set LDFLAGS "-L/usr/local/opt/postgresql@9.5/lib" $LDFLAGS
+# set CPPFLAGS "-I/usr/local/opt/postgresql@9.5/include" $CPPFLAGS
+# set PKG_CONFIG_PATH "/usr/local/opt/postgresql@9.5/lib/pkgconfig" $PKG_CONFIG_PATH
+# }}}
 
 # Rbenv
 status --is-interactive; and . (rbenv init -|psub)
@@ -58,3 +66,10 @@ set -xg FZF_DEFAULT_COMMAND 'ag --hidden -U -g ""'
 set -xg FZF_COMPLETION_TRIGGER '~~'
 set -xg FZF_DEFAULT_OPTS '-i'
 # }}}
+
+# Android Studio
+set -xg ANDROID_HOME $HOME/Library/Android/sdk
+set -xg PATH $PATH $ANDROID_HOME/emulator
+set -xg PATH $PATH $ANDROID_HOME/tools
+set -xg PATH $PATH $ANDROID_HOME/tools/bin
+set -xg PATH $PATH $ANDROID_HOME/platform-tools

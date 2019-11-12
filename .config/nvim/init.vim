@@ -49,6 +49,7 @@
     Plug 'slim-template/vim-slim'
     Plug 'dag/vim-fish'
     Plug 'flowtype/vim-flow'
+    Plug 'leafgarland/typescript-vim'
   "" }}}
 
   "" Tools
