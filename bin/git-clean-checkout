@@ -1,11 +1,20 @@
 #!/bin/bash
 
 git fetch origin
-git co master
 
-if [ `git branch --list $1` ]
-then
-  git branch -D $1
-fi
+branch=tmp-co-branch-`date +%s`
 
-git co -t origin/$1
+git co -b $branch &> /dev/null
+
+{
+  if [ `git branch --list $1` ]
+  then
+    git branch -D $1
+  fi
+
+  git co -t origin/$1
+} || {
+  git co master
+}
+
+git branch -D $branch &> /dev/null

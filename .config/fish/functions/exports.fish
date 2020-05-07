@@ -31,8 +31,7 @@ set -xg NODE_OPTIONS "--max-old-space-size=6000"
 # }}}
 
 # Paths {{{
-set PATH /usr/local/opt/postgresql@9.5/bin $PATH
-set PATH /Applications/Postgres.app/Contents/Versions/latest/bin $PATH
+set PATH /usr/local/opt/postgresql@9.4/bin $PATH
 set PATH /usr/local/bin $PATH
 set PATH /usr/local/sbin $PATH
 set PATH /usr/local/opt/node@10/bin $PATH
@@ -51,7 +50,7 @@ set PATH $PATH $ANDROID_HOME/platform-tools
 # }}}
 
 # Rbenv
-status --is-interactive; and . (rbenv init -|psub)
+rbenv init -| source
 
 # Tmux
 set -xg EVENT_NOKQUEUE 1
